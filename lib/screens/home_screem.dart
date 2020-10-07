@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:growMo/screens/growth_monitoring_screen.dart';
+import 'package:growMo/screens/search_screen.dart';
 import 'edit_record_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -79,7 +81,9 @@ class HomeScreen extends StatelessWidget {
           ),
           GridTile(
             child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed(SearchScreen.routeName);
+                },
                 child: Stack(
                   children: [
                     Image.asset(

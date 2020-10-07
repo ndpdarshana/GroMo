@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../screens/home_screem.dart';
 
+import '../widgets/customFormFields.dart';
+
 class EditRecordScreen extends StatefulWidget {
   static const routeName = '/newRecoord';
 
@@ -137,36 +139,6 @@ class _EditRecordScreenState extends State<EditRecordScreen> {
           ),
         )),
       ),
-    );
-  }
-}
-
-class CustomTextFormField extends StatelessWidget {
-  final FocusNode focusNode;
-  final String labelText;
-  final Function onSaved;
-  final Function onFieldSubmitted;
-  final Function fieldValidator;
-  final dynamic initValue;
-
-  CustomTextFormField(
-      {this.focusNode,
-      @required this.labelText,
-      @required this.onSaved,
-      this.onFieldSubmitted,
-      this.fieldValidator,
-      this.initValue});
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(labelText: this.labelText),
-      textInputAction: TextInputAction.next,
-      focusNode: focusNode,
-      onFieldSubmitted: this.onFieldSubmitted,
-      validator: fieldValidator,
-      onSaved: this.onSaved,
-      initialValue: this.initValue,
     );
   }
 }

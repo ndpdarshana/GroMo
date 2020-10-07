@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/home_screem.dart';
 
 class AuthScreen extends StatelessWidget {
   static const routeName = '/auth';
@@ -86,7 +87,10 @@ class AuthScreen extends StatelessWidget {
                           'Log In',
                           style: TextStyle(color: Colors.white),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushReplacementNamed(HomeScreen.routeName);
+                        },
                       ),
                     ),
                   ],

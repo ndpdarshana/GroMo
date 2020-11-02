@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:growMo/models/babyDetails.dart';
 import 'package:intl/intl.dart';
+
+import '../models/babyDetails.dart';
+import '../screens/growth_monitoring_screen.dart';
 
 import '../widgets/customFormFields.dart';
 
@@ -66,7 +68,10 @@ class SearchScreen extends StatelessWidget {
               itemCount: babies.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context)
+                        .pushNamed(GrowthMonitoringScreen.routeName);
+                  },
                   child: Card(
                     child: ListTile(
                       title: Text(babies[index].name),

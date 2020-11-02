@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:growMo/app_localizations.dart';
 import '../screens/home_screem.dart';
 
 class AuthScreen extends StatelessWidget {
@@ -84,7 +85,8 @@ class AuthScreen extends StatelessWidget {
                         ),
                         color: Colors.green[200],
                         child: Text(
-                          'Log In',
+                          AppLocalizations.of(context)
+                              .translate('login_button'),
                           style: TextStyle(color: Colors.white),
                         ),
                         onPressed: () {

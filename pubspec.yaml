@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   provider: ^4.3.2+2
   intl: ^0.16.1
   http: ^0.12.2
@@ -52,7 +54,8 @@ flutter:
     - assets/images/baby-smile.jpg
     - assets/images/Mobile-Tablet-form.jpg
     - assets/images/Baby-weigth.jpeg
-  #   - images/a_dot_ham.jpeg
+    - assets/lang/en_US.json
+    - assets/lang/id_ID.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

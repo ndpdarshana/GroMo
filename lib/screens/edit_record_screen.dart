@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:growMo/app_localizations.dart';
 import 'package:growMo/widgets/submit_button.dart';
 import 'package:intl/intl.dart';
-import '../screens/home_screem.dart';
+import 'home_screen.dart';
 
 import '../widgets/customFormFields.dart';
 
@@ -66,6 +67,37 @@ class _EditRecordScreenState extends State<EditRecordScreen> {
                 onFieldSubmitted: (value) {
                   FocusScope.of(context).requestFocus();
                 },
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(AppLocalizations.of(context)
+                          .translate('field_label_gender') +
+                      ": "),
+                  Container(
+                    child: Row(
+                      children: [
+                        Text(AppLocalizations.of(context)
+                            .translate('field_placeholder_male')),
+                        Radio(
+                          onChanged: (value) {},
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(AppLocalizations.of(context)
+                            .translate('field_placeholder_female')),
+                        Radio(
+                          onChanged: (value) {},
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
               Container(
                 height: 70,

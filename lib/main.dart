@@ -4,7 +4,7 @@ import 'package:growMo/app_localizations.dart';
 import 'package:growMo/screens/search_screen.dart';
 import './screens/edit_record_screen.dart';
 import './screens/growth_monitoring_screen.dart';
-import './screens/home_screem.dart';
+import 'screens/home_screen.dart';
 
 import './screens/auth_screen.dart';
 

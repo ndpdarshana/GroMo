@@ -44,7 +44,15 @@ class MyApp extends StatelessWidget {
         // from the list (English, in this case)
         return supportedLocales.first;
       },
-      theme: ThemeData(primaryColor: Colors.blue),
+      theme: ThemeData(
+        primaryColor: Colors.blue,
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(),
+          ),
+        ),
+      ),
       home: AuthScreen(),
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),

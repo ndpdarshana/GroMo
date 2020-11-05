@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:growMo/app_localizations.dart';
 import 'package:growMo/login/bloc/login_bloc.dart';
 import 'package:growMo/login/login_form_widget.dart';
-import 'package:growMo/login/login_password_field_widget.dart';
-import 'package:growMo/login/login_username_field_widget.dart';
 import 'home_screen.dart';
 
 class AuthScreen extends StatelessWidget {
@@ -64,109 +62,10 @@ class AuthScreen extends StatelessWidget {
                   ),
                 ),
                 LoginForm(),
-                Container(
-                  width: double.infinity,
-                  margin: const EdgeInsets.only(
-                    left: 40.0,
-                    right: 40.0,
-                    top: 30.0,
-                  ),
-                  alignment: Alignment.center,
-                  child: Flex(
-                    direction: Axis.horizontal,
-                    children: [
-                      Expanded(
-                        child: FlatButton(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 20,
-                            horizontal: 20,
-                          ),
-                          color: Colors.green[200],
-                          child: Text(
-                            AppLocalizations.of(context).translate('btn_login'),
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          onPressed: () {
-                            Navigator.of(context)
-                                .pushReplacementNamed(HomeScreen.routeName);
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                )
               ],
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class LoginInputField extends StatelessWidget {
-  final IconData icon;
-  final String hint;
-  final bool isPassword;
-  final Function onChange;
-
-  const LoginInputField({
-    @required this.icon,
-    this.hint,
-    @required this.isPassword,
-    this.onChange,
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.only(left: 40, right: 40),
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: Colors.white,
-            width: 0.5,
-            style: BorderStyle.solid,
-          ),
-        ),
-      ),
-      padding: EdgeInsets.only(
-        left: 0.0,
-        right: 10,
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 10,
-              bottom: 10,
-              right: 0,
-            ),
-            child: Icon(
-              this.icon,
-              color: Colors.white,
-            ),
-          ),
-          Expanded(
-            child: TextField(
-              style: TextStyle(color: Colors.white),
-              textAlign: TextAlign.center,
-              onChanged: onChange,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: this.hint,
-                hintStyle: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          )
-        ],
       ),
     );
   }

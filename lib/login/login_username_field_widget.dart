@@ -14,7 +14,6 @@ class LoginUsernameField extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.usernameInput != current.usernameInput,
       builder: (context, state) {
-        print('building...');
         return TextFormField(
           autocorrect: false,
           decoration: InputDecoration(

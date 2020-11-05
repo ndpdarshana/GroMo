@@ -28,5 +28,6 @@
   "field_label_immunization":	"Immunization",
   "field_label_gender": "Sex",
   "field_placeholder_male": "Male",
-  "field_placeholder_female": "Female"
+  "field_placeholder_female": "Female",
+  "error_login": "Incorrect username or password"
 }

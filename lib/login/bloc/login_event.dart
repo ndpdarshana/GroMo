@@ -19,3 +19,10 @@ class LoginPasswordChanged extends LoginEvent {
   @override
   List<Object> get props => [password];
 }
+
+class LoginPasswordObscurityToggled extends LoginEvent {
+  const LoginPasswordObscurityToggled();
+
+  @override
+  List<Object> get props => [];
+}

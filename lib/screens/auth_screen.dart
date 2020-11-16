@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:growMo/app_localizations.dart';
 import 'package:growMo/login/bloc/login_bloc.dart';
 import 'package:growMo/login/login_form_widget.dart';
-import 'home_screen.dart';
 
 class AuthScreen extends StatelessWidget {
   static const routeName = '/auth';

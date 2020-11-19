@@ -55,6 +55,7 @@ class _EditRecordScreenState extends State<EditRecordScreen> {
         child: Form(
             child: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               CustomTextFormField(
                 labelText: 'Name',
@@ -80,6 +81,8 @@ class _EditRecordScreenState extends State<EditRecordScreen> {
                         Text(AppLocalizations.of(context)
                             .translate('field_placeholder_male')),
                         Radio(
+                          groupValue: null,
+                          value: 1,
                           onChanged: (value) {},
                         ),
                       ],
@@ -92,6 +95,8 @@ class _EditRecordScreenState extends State<EditRecordScreen> {
                         Text(AppLocalizations.of(context)
                             .translate('field_placeholder_female')),
                         Radio(
+                          groupValue: null,
+                          value: 0,
                           onChanged: (value) {},
                         ),
                       ],

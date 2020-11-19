@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:growMo/login/bloc/login_bloc.dart';
 import 'package:growMo/login/login_form_widget.dart';
 
-class AuthScreen extends StatelessWidget {
+class LoginScreen extends StatelessWidget {
   static const routeName = '/auth';
   final FocusNode passwordFocusNode = FocusNode();
   @override

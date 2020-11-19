@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                 child: Stack(
                   children: [
                     Image.asset(
-                      'assets/images/baby-smile.jpg',
+                      'assets/images/new-born.png',
                       fit: BoxFit.cover,
                       height: double.infinity,
                     ),
@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                 child: Stack(
                   children: [
                     Image.asset(
-                      'assets/images/Baby-weigth.jpeg',
+                      'assets/images/childs-weight.jpeg',
                       fit: BoxFit.cover,
                       height: double.infinity,
                     ),

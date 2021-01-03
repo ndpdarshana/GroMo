@@ -36,16 +36,16 @@ class GrowthMonitoringScreen extends StatelessWidget {
                     FocusScope.of(context).requestFocus();
                   },
                 ),
-                Row(
-                  children: [
-                    Text(AppLocalizations.of(context)
-                        .translate('field_label_arm_height')),
-                    Checkbox(
-                      value: false,
-                      onChanged: (value) {},
-                    )
-                  ],
-                ),
+                // Row(
+                //   children: [
+                //     Text(AppLocalizations.of(context)
+                //         .translate('field_label_arm_height')),
+                //     Checkbox(
+                //       value: false,
+                //       onChanged: (value) {},
+                //     )
+                //   ],
+                // ),
                 Row(
                   children: [
                     Text(AppLocalizations.of(context)
@@ -69,7 +69,7 @@ class GrowthMonitoringScreen extends StatelessWidget {
                 Row(
                   children: [
                     Text(AppLocalizations.of(context)
-                        .translate('field_label_ASI')),
+                        .translate('field_label_pmt')),
                     Checkbox(
                       value: false,
                       onChanged: (value) {},

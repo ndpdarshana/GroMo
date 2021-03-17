@@ -1,4 +1,4 @@
-class BabyDetails {
+class ChildDetails {
   final String name;
   final String nik;
   final DateTime dob;
@@ -7,7 +7,7 @@ class BabyDetails {
   final String parentNik;
   final String contact;
 
-  BabyDetails({
+  ChildDetails({
     this.name,
     this.nik,
     this.dob,

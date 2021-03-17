@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../models/babyDetails.dart';
+import '../models/child_details.dart';
 import '../screens/growth_monitoring_screen.dart';
 
 import '../widgets/customFormFields.dart';
@@ -9,8 +9,8 @@ import '../widgets/customFormFields.dart';
 class SearchScreen extends StatelessWidget {
   static const routeName = '/search';
 
-  List<BabyDetails> babies = [
-    BabyDetails(
+  List<ChildDetails> babies = [
+    ChildDetails(
       name: 'Thilini Amodhya',
       nik: '2929771',
       address: '123/2 kohilawatta, Nottonbridge',
@@ -19,7 +19,7 @@ class SearchScreen extends StatelessWidget {
       parentNik: '1994982982',
       contact: '123456789',
     ),
-    BabyDetails(
+    ChildDetails(
       name: 'Thejan Makumbura',
       nik: '8795612',
       address: '78 Kutipigedara, Narahenpita',
@@ -69,14 +69,12 @@ class SearchScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    Navigator.of(context)
-                        .pushNamed(GrowthMonitoringScreen.routeName);
+                    Navigator.of(context).pushNamed(GrowthMonitoringScreen.routeName);
                   },
                   child: Card(
                     child: ListTile(
                       title: Text(babies[index].name),
-                      subtitle:
-                          Text(DateFormat.yMMMMd().format(babies[index].dob)),
+                      subtitle: Text(DateFormat.yMMMMd().format(babies[index].dob)),
                     ),
                   ),
                 );

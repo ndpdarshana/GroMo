@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "975078313574",
+    "firebase_url": "https://growmo.firebaseio.com",
+    "project_id": "growmo",
+    "storage_bucket": "growmo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975078313574:android:455322584d86de10be27a7",
+        "android_client_info": {
+          "package_name": "com.ndpdarshana.growmo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "975078313574-lekj18stvpk0nm3t3f1jpmbbbnkgqtcu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ndpdarshana.growmo",
+            "certificate_hash": "43ed7fe469f0e673f49398088586e18bad6befeb"
+          }
+        },
+        {
+          "client_id": "975078313574-9ak0rd63evp1sutij47hmf60qmdvnqsh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYXbrlQolHywvAGdEQMQgFkIMw-iK3jAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "975078313574-9ak0rd63evp1sutij47hmf60qmdvnqsh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

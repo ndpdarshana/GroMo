@@ -1,69 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
+import 'package:growMo/app/bloc/app_bloc.dart';
+import 'package:growMo/auth/bloc/auth_bloc.dart';
 import 'package:growMo/login/bloc/login_bloc.dart';
 import 'package:growMo/login/login_form_widget.dart';
+import 'package:growMo/widgets/logo_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   static const routeName = '/auth';
   final FocusNode passwordFocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment(1.0, 1.0),
-            colors: [
-              Colors.blue[100],
-              Colors.blue[700],
-            ],
-          ),
-        ),
-        height: MediaQuery.of(context).size.height,
-        child: BlocProvider(
-          create: (context) => LoginBloc(),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(
-                    top: 120,
-                    bottom: 50,
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 128,
-                        width: 128,
-                        child: CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          foregroundColor: Colors.white,
-                          radius: 100,
-                          child: Text(
-                            'GrowMo',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.w300,
-                            ),
-                          ),
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.white,
-                            width: 4,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+    return BlocProvider(
+      create: (context) => LoginBloc(appBloc: context.read<AppBloc>(), authBloc: context.read<AuthBloc>()),
+      child: Stack(
+        children: [
+          Scaffold(
+            body: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment(1.0, 1.0),
+                  colors: [
+                    Colors.blue[100],
+                    Colors.blue[700],
+                  ],
                 ),
-                LoginForm(),
-              ],
+              ),
+              height: MediaQuery.of(context).size.height,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    LogoWidget(),
+                    LoginForm(),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
+          BlocBuilder<LoginBloc, LoginState>(
+            buildWhen: (previous, current) => previous.status != current.status,
+            builder: (_, state) {
+              print(state.status);
+              return Visibility(
+                visible:
+                    state.status == FormzStatus.submissionInProgress || state.status == FormzStatus.submissionSuccess,
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(color: Colors.black54),
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            },
+          )
+        ],
       ),
     );
   }

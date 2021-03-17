@@ -26,3 +26,25 @@ class LoginPasswordObscurityToggled extends LoginEvent {
   @override
   List<Object> get props => [];
 }
+
+class LoginSubmit extends LoginEvent {
+  const LoginSubmit();
+
+  @override
+  List<Object> get props => [];
+}
+
+class LoginSuccess extends LoginEvent {
+  const LoginSuccess();
+
+  @override
+  List<Object> get props => [];
+}
+
+class LoginFailed extends LoginEvent {
+  final AppError error;
+  const LoginFailed({this.error});
+
+  @override
+  List<Object> get props => [error];
+}

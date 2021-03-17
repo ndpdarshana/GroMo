@@ -1,12 +1,15 @@
 part of 'app_bloc.dart';
 
+enum AppStatus { unknown, done }
+
 class AppState extends Equatable {
-  const AppState();
+  final AppStatus status;
+  const AppState({this.status = AppStatus.unknown});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [status];
 
-  AppState copyWith() {
-    return AppState();
+  AppState copyWith({AppStatus status}) {
+    return AppState(status: status ?? this.status);
   }
 }

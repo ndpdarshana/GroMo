@@ -4,20 +4,17 @@ import 'package:growMo/app_localizations.dart';
 import 'package:growMo/login/bloc/login_bloc.dart';
 import 'package:growMo/login/login_password_field_widget.dart';
 import 'package:growMo/login/login_username_field_widget.dart';
-import 'package:growMo/screens/home_screen.dart';
 
 class LoginForm extends StatelessWidget {
   final FocusNode passwordFocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginState>(
-      listenWhen: (previous, current) =>
-          previous.formzStatus != current.formzStatus,
+      listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
         Scaffold.of(context).removeCurrentSnackBar();
-        if (state.appError != null) {
-          String message =
-              AppLocalizations.of(context).translate('error_login');
+        if (state.error != null) {
+          String message = AppLocalizations.of(context).translate('error_login');
           Scaffold.of(context).showSnackBar(SnackBar(content: Text(message)));
         }
       },
@@ -37,29 +34,21 @@ class LoginForm extends StatelessWidget {
               LoginPasswordField(passwordFieldFocus: passwordFocusNode),
               Container(
                 width: double.infinity,
-                margin: const EdgeInsets.only(
-                  left: 40.0,
-                  right: 40.0,
-                  top: 30.0,
-                ),
+                margin: const EdgeInsets.only(left: 40.0, right: 40.0, top: 30.0),
                 alignment: Alignment.center,
                 child: Flex(
                   direction: Axis.horizontal,
                   children: [
                     Expanded(
                       child: FlatButton(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 20,
-                          horizontal: 20,
-                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                         color: Colors.green[200],
                         child: Text(
                           AppLocalizations.of(context).translate('btn_login'),
                           style: TextStyle(color: Colors.white),
                         ),
                         onPressed: () {
-                          Navigator.of(context)
-                              .pushReplacementNamed(HomeScreen.routeName);
+                          context.read<LoginBloc>().add(LoginSubmit());
                         },
                       ),
                     ),

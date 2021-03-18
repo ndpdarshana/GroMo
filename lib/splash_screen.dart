@@ -17,7 +17,8 @@ class SplashScreen extends StatelessWidget {
           ),
         ),
         height: MediaQuery.of(context).size.height,
-        child: LogoWidget(),
+        width: double.infinity,
+        child: Center(child: LogoWidget()),
       ),
     );
   }

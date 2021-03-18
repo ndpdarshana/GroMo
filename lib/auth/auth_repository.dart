@@ -43,8 +43,21 @@ class AuthRepository {
 
   Future<AuthRepositoryResult> retriveUser() async {
     try {
-      if (_firebaseAuth.currentUser != null) {}
-    } catch (e) {}
+      if (_firebaseAuth.currentUser != null) {
+        final idTokenResult = await _firebaseAuth.currentUser.getIdTokenResult();
+
+        if (idTokenResult != null) {
+          return AuthRepositoryResult(
+              user: AppUser(id: idTokenResult.claims['uid'], username: idTokenResult.claims['username']));
+        }
+        return Future.value(AuthRepositoryResult(error: AppError(code: '403', message: 'Session expired')));
+      }
+
+      return Future.value(AuthRepositoryResult(error: AppError(code: '403', message: 'No user logged in')));
+    } catch (e) {
+      print('AuthRepository->retriveUser $e');
+      return Future.value(AuthRepositoryResult(error: AppError(code: '500', message: 'Unexpected error')));
+    }
   }
 
   Future<AuthRepositoryResult> signin({@required String username, @required String password}) async {

@@ -42,7 +42,6 @@ class LoginScreen extends StatelessWidget {
           BlocBuilder<LoginBloc, LoginState>(
             buildWhen: (previous, current) => previous.status != current.status,
             builder: (_, state) {
-              print(state.status);
               return Visibility(
                 visible:
                     state.status == FormzStatus.submissionInProgress || state.status == FormzStatus.submissionSuccess,

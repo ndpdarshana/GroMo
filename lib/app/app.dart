@@ -6,11 +6,7 @@ import 'package:growMo/app_localizations.dart';
 import 'package:growMo/app_theme_data.dart';
 import 'package:growMo/auth/bloc/auth_bloc.dart';
 import 'package:growMo/login/login_screen.dart';
-import 'package:growMo/pods/pods_screen.dart';
-import 'package:growMo/screens/edit_record_screen.dart';
-import 'package:growMo/screens/growth_monitoring_screen.dart';
-import 'package:growMo/screens/home_screen.dart';
-import 'package:growMo/screens/search_screen.dart';
+import 'package:growMo/pod_list/pods_screen.dart';
 import 'package:growMo/splash_screen.dart';
 
 class App extends StatelessWidget {

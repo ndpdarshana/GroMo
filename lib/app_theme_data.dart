@@ -5,11 +5,10 @@ class AppThemeData {
     return ThemeData(
       primaryColor: Colors.blue,
       inputDecorationTheme: InputDecorationTheme(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(),
-        ),
-      ),
+          border: OutlineInputBorder(
+            borderSide: BorderSide(),
+          ),
+          contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8)),
     );
   }
 }

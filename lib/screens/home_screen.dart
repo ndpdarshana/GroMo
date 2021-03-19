@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:growMo/screens/growth_monitoring_screen.dart';
 import 'package:growMo/screens/search_screen.dart';
-import 'edit_record_screen.dart';
+
+import './edit_record_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = '/home';
@@ -38,8 +38,7 @@ class HomeScreen extends StatelessWidget {
                       child: Container(
                         width: 300,
                         color: Colors.black54,
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                         child: Text(
                           'New Baby Record',
                           style: TextStyle(fontSize: 18, color: Colors.white),
@@ -66,8 +65,7 @@ class HomeScreen extends StatelessWidget {
                       child: Container(
                         width: 300,
                         color: Colors.black54,
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                         child: Text(
                           'F1 Form',
                           style: TextStyle(fontSize: 18, color: Colors.white),
@@ -96,8 +94,7 @@ class HomeScreen extends StatelessWidget {
                       child: Container(
                         width: 300,
                         color: Colors.black54,
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                         child: Text(
                           'Growth Monitor',
                           style: TextStyle(fontSize: 18, color: Colors.white),

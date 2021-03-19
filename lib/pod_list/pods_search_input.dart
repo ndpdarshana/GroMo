@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:growMo/app_localizations.dart';
-import 'package:growMo/pods/bloc/pods_bloc.dart';
+import 'package:growMo/pod_list/bloc/pods_bloc.dart';
 
 class PodsSearchInput extends StatelessWidget {
   @override

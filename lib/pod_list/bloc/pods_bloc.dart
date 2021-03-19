@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:growMo/models/app_error.dart';
 import 'package:growMo/models/pod.dart';
-import 'package:growMo/pods/pods_repository.dart';
+import 'package:growMo/pod_list/pods_repository.dart';
 
 part 'pods_event.dart';
 part 'pods_state.dart';

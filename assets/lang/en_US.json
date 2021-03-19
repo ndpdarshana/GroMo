@@ -29,5 +29,6 @@
   "field_label_gender": "Sex",
   "field_placeholder_male": "Male",
   "field_placeholder_female": "Female",
-  "error_login": "Incorrect username or password"
+  "error_login": "Incorrect username or password",
+  "field_label_search": "Search"
 }

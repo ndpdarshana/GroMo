@@ -6,6 +6,7 @@ import 'package:growMo/app_localizations.dart';
 import 'package:growMo/app_theme_data.dart';
 import 'package:growMo/auth/bloc/auth_bloc.dart';
 import 'package:growMo/login/login_screen.dart';
+import 'package:growMo/pods/pods_screen.dart';
 import 'package:growMo/screens/edit_record_screen.dart';
 import 'package:growMo/screens/growth_monitoring_screen.dart';
 import 'package:growMo/screens/home_screen.dart';
@@ -55,7 +56,7 @@ class App extends StatelessWidget {
             listenWhen: (previous, current) => previous.status != current.status,
             listener: (_, state) {
               if (state.status == AppStatus.done) {
-                _navigator.pushNamedAndRemoveUntil(HomeScreen.routeName, (route) => false);
+                _navigator.pushNamedAndRemoveUntil(PodsScreen.routeName, (route) => false);
               }
             },
           ),
@@ -78,18 +79,21 @@ class App extends StatelessWidget {
           case LoginScreen.routeName:
             widget = LoginScreen();
             break;
-          case HomeScreen.routeName:
-            widget = HomeScreen();
+          case PodsScreen.routeName:
+            widget = PodsScreen();
             break;
-          case EditRecordScreen.routeName:
-            widget = EditRecordScreen();
-            break;
-          case SearchScreen.routeName:
-            widget = SearchScreen();
-            break;
-          case GrowthMonitoringScreen.routeName:
-            widget = GrowthMonitoringScreen();
-            break;
+          // case HomeScreen.routeName:
+          //   widget = HomeScreen();
+          //   break;
+          // case EditRecordScreen.routeName:
+          //   widget = EditRecordScreen();
+          //   break;
+          // case SearchScreen.routeName:
+          //   widget = SearchScreen();
+          //   break;
+          // case GrowthMonitoringScreen.routeName:
+          //   widget = GrowthMonitoringScreen();
+          //   break;
         }
         return MaterialPageRoute(builder: (_) => widget, settings: settings);
       },

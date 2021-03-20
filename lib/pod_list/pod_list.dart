@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:growMo/pod_details/pod_details_screen.dart';
 import 'package:growMo/pod_list/bloc/pods_bloc.dart';
 import 'package:intl/intl.dart';
 
@@ -18,9 +19,7 @@ class PodList extends StatelessWidget {
       },
       buildWhen: (previous, current) => previous.status != current.status,
       builder: (_, state) {
-        if (state.status == PodsStateStatus.loading) {
-          return Center(child: Text('loading...'));
-        } else if (state.status == PodsStateStatus.pristine || state.status == PodsStateStatus.filtered) {
+        if (state.status == PodsStateStatus.pristine || state.status == PodsStateStatus.filtered) {
           return ListView.builder(
             itemCount: state.filteredPods.length,
             itemBuilder: (_, index) {
@@ -33,7 +32,8 @@ class PodList extends StatelessWidget {
                   subtitle: Text(state.filteredPods[index].lastUpdate != null
                       ? DateFormat.yMMMEd().format(state.filteredPods[index].lastUpdate)
                       : '-'),
-                  onTap: () => print(state.filteredPods[index].id),
+                  onTap: () =>
+                      Navigator.of(context).pushNamed(PodDetailsScreen.routeName, arguments: state.filteredPods[index]),
                 ),
               );
             },

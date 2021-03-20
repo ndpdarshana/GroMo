@@ -5,6 +5,7 @@ import 'package:growMo/app/bloc/app_bloc.dart';
 import 'package:growMo/auth/bloc/auth_bloc.dart';
 import 'package:growMo/login/bloc/login_bloc.dart';
 import 'package:growMo/login/login_form_widget.dart';
+import 'package:growMo/widgets/loading_indecator.dart';
 import 'package:growMo/widgets/logo_widget.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -42,14 +43,9 @@ class LoginScreen extends StatelessWidget {
           BlocBuilder<LoginBloc, LoginState>(
             buildWhen: (previous, current) => previous.status != current.status,
             builder: (_, state) {
-              return Visibility(
+              return LoadingIndecator(
                 visible:
                     state.status == FormzStatus.submissionInProgress || state.status == FormzStatus.submissionSuccess,
-                child: Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(color: Colors.black54),
-                  child: CircularProgressIndicator(),
-                ),
               );
             },
           )

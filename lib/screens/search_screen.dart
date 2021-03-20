@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../models/child_details.dart';
+import '../models/child.dart';
 import '../screens/growth_monitoring_screen.dart';
 
 import '../widgets/customFormFields.dart';
@@ -9,8 +9,8 @@ import '../widgets/customFormFields.dart';
 class SearchScreen extends StatelessWidget {
   static const routeName = '/search';
 
-  List<ChildDetails> babies = [
-    ChildDetails(
+  List<Child> babies = [
+    Child(
       name: 'Thilini Amodhya',
       nik: '2929771',
       address: '123/2 kohilawatta, Nottonbridge',
@@ -19,7 +19,7 @@ class SearchScreen extends StatelessWidget {
       parentNik: '1994982982',
       contact: '123456789',
     ),
-    ChildDetails(
+    Child(
       name: 'Thejan Makumbura',
       nik: '8795612',
       address: '78 Kutipigedara, Narahenpita',

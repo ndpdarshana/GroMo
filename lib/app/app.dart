@@ -6,6 +6,8 @@ import 'package:growMo/app_localizations.dart';
 import 'package:growMo/app_theme_data.dart';
 import 'package:growMo/auth/bloc/auth_bloc.dart';
 import 'package:growMo/login/login_screen.dart';
+import 'package:growMo/models/pod.dart';
+import 'package:growMo/pod_details/pod_details_screen.dart';
 import 'package:growMo/pod_list/pods_screen.dart';
 import 'package:growMo/splash_screen.dart';
 
@@ -77,6 +79,10 @@ class App extends StatelessWidget {
             break;
           case PodsScreen.routeName:
             widget = PodsScreen();
+            break;
+          case PodDetailsScreen.routeName:
+            Pod pod = settings.arguments;
+            widget = PodDetailsScreen(pod: pod);
             break;
           // case HomeScreen.routeName:
           //   widget = HomeScreen();

@@ -24,7 +24,7 @@ class LoginUsernameField extends StatelessWidget {
           enableSuggestions: false,
           key: ValueKey('field-username'),
           maxLength: 100,
-          onChanged: (username) => context.bloc<LoginBloc>().add(LoginUsernameChanged(username)),
+          onChanged: (username) => context.read<LoginBloc>().add(LoginUsernameChanged(username)),
           onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(passwordFieldFocus),
           textInputAction: TextInputAction.next,
         );

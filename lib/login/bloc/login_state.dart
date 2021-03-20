@@ -6,6 +6,7 @@ class LoginState extends Equatable {
   final PasswordInput passwordInput;
   final bool obscurePassword;
   final AppError error;
+
   const LoginState({
     this.status = FormzStatus.pure,
     this.usernameInput = const UsernameInput.pure(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:growMo/child_record_editor/child_record_editor_screen.dart';
 import 'package:growMo/pod_details/bloc/pod_details_bloc.dart';
 
 class BottomNavigator extends StatelessWidget {
@@ -20,7 +21,7 @@ class BottomNavigator extends StatelessWidget {
                 context.read<PodDetailsBloc>().add(ChangeSelectedPage(page: PodDetailPages.children));
                 break;
               case (1):
-                //TODO child create form
+                Navigator.of(context).pushNamed(ChildRecordEditorScreen.routeName);
                 break;
               case (2):
                 context.read<PodDetailsBloc>().add(ChangeSelectedPage(page: PodDetailPages.reports));

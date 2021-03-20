@@ -6,26 +6,27 @@ import '../screens/growth_monitoring_screen.dart';
 
 import '../widgets/customFormFields.dart';
 
+@deprecated //TODO remove
 class SearchScreen extends StatelessWidget {
   static const routeName = '/search';
 
   List<Child> babies = [
     Child(
       name: 'Thilini Amodhya',
-      nik: '2929771',
+      nic: '2929771',
       address: '123/2 kohilawatta, Nottonbridge',
       dob: DateTime.now(),
       parentName: 'Pushpalatha kumarani',
-      parentNik: '1994982982',
+      parentNic: '1994982982',
       contact: '123456789',
     ),
     Child(
       name: 'Thejan Makumbura',
-      nik: '8795612',
+      nic: '8795612',
       address: '78 Kutipigedara, Narahenpita',
       dob: DateTime.now(),
       parentName: 'Dharmasena Pathiraja',
-      parentNik: '584622542',
+      parentNic: '584622542',
       contact: '85643127',
     ),
   ];

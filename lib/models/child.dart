@@ -1,4 +1,7 @@
-class ChildDetails {
+import 'package:equatable/equatable.dart';
+
+class Child extends Equatable {
+  final String id;
   final String name;
   final String nik;
   final DateTime dob;
@@ -7,7 +10,8 @@ class ChildDetails {
   final String parentNik;
   final String contact;
 
-  ChildDetails({
+  Child({
+    this.id,
     this.name,
     this.nik,
     this.dob,
@@ -16,4 +20,7 @@ class ChildDetails {
     this.parentNik,
     this.contact,
   });
+
+  @override
+  List<Object> get props => [id, name, nik, dob, address, parentName, parentNik, contact];
 }

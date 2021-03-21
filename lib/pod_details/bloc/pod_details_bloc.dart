@@ -18,16 +18,16 @@ class PodDetailsBloc extends Bloc<PodDetailsEvent, PodDetailsState> {
     PodDetailsEvent event,
   ) async* {
     if (event is LoadPodDetails) {
-      yield* _mapLoadPodDetailsToState(state);
+      yield* _mapLoadPodDetailsToState(event, state);
     } else if (event is ChangeSelectedPage) {
       yield _mapChangeSelectedPageToState(event, state);
     }
   }
 
-  Stream<PodDetailsState> _mapLoadPodDetailsToState(PodDetailsState state) async* {
+  Stream<PodDetailsState> _mapLoadPodDetailsToState(LoadPodDetails event, PodDetailsState state) async* {
     // yield state.copyWith(status: PodDetailsStateStatus.loading);
 
-    yield state.copyWith(status: PodDetailsStateStatus.pristine, page: PodDetailPages.children);
+    yield state.copyWith(status: PodDetailsStateStatus.pristine, pod: event.pod, page: PodDetailPages.children);
   }
 
   PodDetailsState _mapChangeSelectedPageToState(ChangeSelectedPage event, PodDetailsState state) {

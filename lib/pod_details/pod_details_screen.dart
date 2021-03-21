@@ -15,7 +15,7 @@ class PodDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => PodDetailsBloc()..add(LoadPodDetails()),
+      create: (_) => PodDetailsBloc()..add(LoadPodDetails(pod: pod)),
       child: SafeArea(
         top: false,
         child: Scaffold(

@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
+import 'package:growMo/child_record_editor/child_record_repository.dart';
 import 'package:growMo/child_record_editor/datetime_field_dob.dart';
 import 'package:growMo/child_record_editor/number_field_contact.dart';
 import 'package:growMo/child_record_editor/text_field_address.dart';
@@ -11,6 +13,7 @@ import 'package:growMo/child_record_editor/text_field_child_nic.dart';
 import 'package:growMo/child_record_editor/text_field_parent_name.dart';
 import 'package:growMo/child_record_editor/text_field_parent_nic.dart';
 import 'package:growMo/models/app_error.dart';
+import 'package:growMo/models/child.dart';
 
 part 'child_record_editor_event.dart';
 part 'child_record_editor_state.dart';
@@ -38,6 +41,8 @@ class ChildRecordEditorBloc extends Bloc<ChildRecordEditorEvent, ChildRecordEdit
       yield _mapParentNicFieldChangedToState(event, state);
     } else if (event is ContactFieldChanged) {
       yield _mapContactFieldChangedToState(event, state);
+    } else if (event is SubmitChildRecordCreateRequest) {
+      yield* _mapSubmitChildRecordCreateRequestToState(event, state);
     }
   }
 
@@ -159,5 +164,30 @@ class ChildRecordEditorBloc extends Bloc<ChildRecordEditorEvent, ChildRecordEdit
       ]),
       contactInput: contactInput,
     );
+  }
+
+  Stream<ChildRecordEditorState> _mapSubmitChildRecordCreateRequestToState(
+      SubmitChildRecordCreateRequest event, ChildRecordEditorState state) async* {
+    if (state.status == FormzStatus.valid) {
+      yield state.copyWith(status: FormzStatus.submissionInProgress);
+
+      var child = Child(
+          podId: event.podId,
+          name: state.childNameInput.value,
+          nic: state.childNicInput.value,
+          gender: state.gender,
+          dob: state.dobInput.value,
+          address: state.addressInput.value,
+          parentName: state.parentNameInput.value,
+          parentNic: state.parentNicInput.value,
+          contact: state.contactInput.value);
+
+      ChildrenRecordRepositoryResult result = await ChildrenRecordRepository().createChild(child);
+      if (result.singleChild != null) {
+        yield state.copyWith(status: FormzStatus.submissionSuccess);
+      } else {
+        yield state.copyWith(status: FormzStatus.submissionFailure, error: result.error);
+      }
+    }
   }
 }

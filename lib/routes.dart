@@ -25,7 +25,8 @@ class AppRoutes {
           widget = PodDetailsScreen(pod: pod);
           break;
         case ChildRecordEditorScreen.routeName:
-          widget = ChildRecordEditorScreen();
+          Pod pod = settings.arguments;
+          widget = ChildRecordEditorScreen(pod: pod);
           break;
         // case HomeScreen.routeName:
         //   widget = HomeScreen();

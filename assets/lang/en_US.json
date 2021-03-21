@@ -38,5 +38,7 @@
   "field_placeholder_male": "Male",
   "field_placeholder_female": "Female",
   "error_login": "Incorrect username or password",
-  "field_label_search": "Search"
+  "field_label_search": "Search",
+  "message_user_canceled": "User canceled the opereration",
+  "message_created": "Record created successfully"
 }

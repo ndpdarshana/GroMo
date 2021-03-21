@@ -8,10 +8,12 @@ abstract class PodDetailsEvent extends Equatable {
 }
 
 class LoadPodDetails extends PodDetailsEvent {
-  const LoadPodDetails();
+  final Pod pod;
+
+  const LoadPodDetails({@required this.pod}) : assert(pod != null);
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [pod];
 }
 
 class ChangeSelectedPage extends PodDetailsEvent {

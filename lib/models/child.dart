@@ -92,7 +92,7 @@ class Child extends Equatable {
       'name': name,
       'nic': nic,
       'gender': gender.index,
-      'dob': dob.toIso8601String(),
+      'dob': dob,
       'address': address,
       'parent_name': parentName,
       'parent_nic': parentNic,

@@ -16,6 +16,15 @@ class LoadPodDetails extends PodDetailsEvent {
   List<Object> get props => [pod];
 }
 
+class PodChildrenUpdated extends PodDetailsEvent {
+  final List<Child> children;
+
+  const PodChildrenUpdated({this.children});
+
+  @override
+  List<Object> get props => [children];
+}
+
 class ChangeSelectedPage extends PodDetailsEvent {
   final PodDetailPages page;
 
@@ -23,4 +32,20 @@ class ChangeSelectedPage extends PodDetailsEvent {
 
   @override
   List<Object> get props => [page];
+}
+
+class ChildrenSerachTextChanged extends PodDetailsEvent {
+  final String searchTerm;
+
+  const ChildrenSerachTextChanged({this.searchTerm});
+
+  @override
+  List<Object> get props => [searchTerm];
+}
+
+class ChildrenFilterBySerachText extends PodDetailsEvent {
+  const ChildrenFilterBySerachText();
+
+  @override
+  List<Object> get props => [];
 }

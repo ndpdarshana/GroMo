@@ -5,6 +5,7 @@ import 'package:growMo/pod_details/bloc/pod_details_bloc.dart';
 import 'package:growMo/pod_details/bottom_navigator.dart';
 import 'package:growMo/pod_details/children_page.dart';
 import 'package:growMo/pod_details/reports_page.dart';
+import 'package:growMo/widgets/loading_indecator.dart';
 
 class PodDetailsScreen extends StatelessWidget {
   static const String routeName = '/pods/pod_details';
@@ -35,6 +36,7 @@ class PodDetailsScreen extends StatelessWidget {
                     child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: BlocBuilder<PodDetailsBloc, PodDetailsState>(
+                          buildWhen: (previous, current) => previous.page != current.page,
                           builder: (_, state) {
                             if (state.page == PodDetailPages.reports) {
                               return ReportsPage();
@@ -53,6 +55,12 @@ class PodDetailsScreen extends StatelessWidget {
                   onPressed: () => Navigator.of(context).pop(),
                 ),
               ),
+              BlocBuilder<PodDetailsBloc, PodDetailsState>(
+                buildWhen: (previous, current) => previous.status != current.status,
+                builder: (_, state) {
+                  return LoadingIndecator(visible: state.status == PodDetailsStateStatus.loading);
+                },
+              )
             ],
           ),
           bottomNavigationBar: BottomNavigator(),

@@ -29,16 +29,12 @@ class ChildrenRecordRepository {
 
   ChildrenRecordRepository._internal() : childrenCollection = _firestore.collection('children');
 
-  Future<ChildrenRecordRepositoryResult> getChildrenList({@required String podId}) async {
+  Stream<List<Child>> getChildrenList({@required String podId}) {
     assert(podId != null);
-    try {
-      QuerySnapshot snapshot = await childrenCollection.where('podId', isEqualTo: podId).get();
-      final children = snapshot.docs.map((snapshot) => Child.fromMap(snapshot.id, snapshot.data())).toList();
-      return Future.value(ChildrenRecordRepositoryResult(children: children));
-    } on FirebaseException catch (e) {
-      print('ChildrenRecordRepository->getChildrenList $e');
-      return Future.value(ChildrenRecordRepositoryResult(error: AppError(code: e.code, message: e.message)));
-    }
+    return childrenCollection
+        .where('pod_id', isEqualTo: podId)
+        .snapshots()
+        .map((snapshot) => snapshot.docs.map((doc) => Child.fromMap(doc.id, doc.data())).toList());
   }
 
   Future<ChildrenRecordRepositoryResult> createChild(Child child) async {

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:growMo/child_details/child_details_screen.dart';
 import 'package:growMo/child_record_editor/child_record_editor_screen.dart';
 import 'package:growMo/login/login_screen.dart';
+import 'package:growMo/models/child.dart';
 import 'package:growMo/models/pod.dart';
+import 'package:growMo/monitor_record_editor/monitor_record_editor_screen.dart';
 import 'package:growMo/pod_details/pod_details_screen.dart';
 import 'package:growMo/pod_list/pods_screen.dart';
 import 'package:growMo/splash_screen.dart';
@@ -28,18 +31,14 @@ class AppRoutes {
           Pod pod = settings.arguments;
           widget = ChildRecordEditorScreen(pod: pod);
           break;
-        // case HomeScreen.routeName:
-        //   widget = HomeScreen();
-        //   break;
-        // case EditRecordScreen.routeName:
-        //   widget = EditRecordScreen();
-        //   break;
-        // case SearchScreen.routeName:
-        //   widget = SearchScreen();
-        //   break;
-        // case GrowthMonitoringScreen.routeName:
-        //   widget = GrowthMonitoringScreen();
-        //   break;
+        case ChildDetailsSecreen.routeName:
+          Child child = settings.arguments;
+          widget = ChildDetailsSecreen(child: child);
+          break;
+        case MonitorRecordEditorScreen.routeName:
+          Child child = settings.arguments;
+          widget = MonitorRecordEditorScreen(child: child);
+          break;
       }
       return MaterialPageRoute(builder: (_) => widget, settings: settings);
     };

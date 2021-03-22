@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:growMo/models/pod.dart';
-import 'package:growMo/pod_details/bloc/pod_details_bloc.dart';
-import 'package:growMo/pod_details/pod_bottom_navigator.dart';
-import 'package:growMo/pod_details/children_page.dart';
-import 'package:growMo/pod_details/reports_page.dart';
+import 'package:growMo/child_details/bloc/child_details_bloc.dart';
+import 'package:growMo/child_details/child_bottom_navigator.dart';
+import 'package:growMo/child_details/child_overview_page.dart';
+import 'package:growMo/child_details/child_records_page.dart';
+import 'package:growMo/models/child.dart';
 import 'package:growMo/widgets/loading_indecator.dart';
 
-class PodDetailsScreen extends StatelessWidget {
-  static const String routeName = '/pods/pod_details';
-  final Pod pod;
+class ChildDetailsSecreen extends StatelessWidget {
+  static const routeName = '/pods/pod_details/child';
 
-  PodDetailsScreen({@required this.pod}) : assert(pod != null);
+  final Child child;
+
+  const ChildDetailsSecreen({@required this.child}) : assert(child != null);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => PodDetailsBloc()..add(LoadPodDetails(pod: pod)),
+      create: (context) => ChildDetailsBloc()..add(LoadChildDetails(child)),
       child: SafeArea(
         top: false,
         child: Scaffold(
@@ -29,24 +30,24 @@ class PodDetailsScreen extends StatelessWidget {
                     height: 180,
                     color: Theme.of(context).primaryColor,
                     child: Center(
-                      child: Text(pod.code),
+                      child: Text(child.name),
                     ),
                   ),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: BlocBuilder<PodDetailsBloc, PodDetailsState>(
+                      child: BlocBuilder<ChildDetailsBloc, ChildDetailsState>(
                         buildWhen: (previous, current) => previous.page != current.page,
                         builder: (_, state) {
-                          if (state.page == PodDetailPages.reports) {
-                            return ReportsPage();
+                          if (state.page == ChildDetailPages.overview) {
+                            return ChildOverviewPage();
                           } else {
-                            return ChildrenPage();
+                            return ChildRecordsPage();
                           }
                         },
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
               Positioned(
@@ -56,15 +57,15 @@ class PodDetailsScreen extends StatelessWidget {
                   onPressed: () => Navigator.of(context).pop(),
                 ),
               ),
-              BlocBuilder<PodDetailsBloc, PodDetailsState>(
+              BlocBuilder<ChildDetailsBloc, ChildDetailsState>(
                 buildWhen: (previous, current) => previous.status != current.status,
                 builder: (_, state) {
-                  return LoadingIndecator(visible: state.status == PodDetailsStateStatus.loading);
+                  return LoadingIndecator(visible: state.status == ChildDetailsStateStatus.loading);
                 },
               )
             ],
           ),
-          bottomNavigationBar: PodBottomNavigator(),
+          bottomNavigationBar: ChildBottomNavigator(),
         ),
       ),
     );

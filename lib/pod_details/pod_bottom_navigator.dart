@@ -4,7 +4,7 @@ import 'package:growMo/app_localizations.dart';
 import 'package:growMo/child_record_editor/child_record_editor_screen.dart';
 import 'package:growMo/pod_details/bloc/pod_details_bloc.dart';
 
-class BottomNavigator extends StatelessWidget {
+class PodBottomNavigator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PodDetailsBloc, PodDetailsState>(
@@ -12,9 +12,12 @@ class BottomNavigator extends StatelessWidget {
         return BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Children'),
-            BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Create New'),
-            BottomNavigationBarItem(icon: Icon(Icons.article), label: 'F1 Report'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.search), label: AppLocalizations.of(context).translate('label_children')),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.add), label: AppLocalizations.of(context).translate('label_create_new')),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.article), label: AppLocalizations.of(context).translate('label_f1_form')),
           ],
           onTap: (index) async {
             switch (index) {

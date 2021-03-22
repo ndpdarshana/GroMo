@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:growMo/child_details/child_details_screen.dart';
 import 'package:growMo/pod_details/bloc/pod_details_bloc.dart';
 import 'package:growMo/pod_details/children_search_input.dart';
 import 'package:intl/intl.dart';
@@ -35,8 +36,8 @@ class ChildrenPage extends StatelessWidget {
                         subtitle: Text(state.filteredChildren[index].dob != null
                             ? DateFormat.yMMMEd().format(state.filteredChildren[index].dob)
                             : '-'),
-                        // onTap: () => Navigator.of(context)
-                        //     .pushNamed(PodDetailsScreen.routeName, arguments: state.children[index]),
+                        onTap: () => Navigator.of(context)
+                            .pushNamed(ChildDetailsSecreen.routeName, arguments: state.filteredChildren[index]),
                       ),
                     );
                   },

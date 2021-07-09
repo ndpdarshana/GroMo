@@ -18,54 +18,55 @@ class ChildDetailsSecreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ChildDetailsBloc()..add(LoadChildDetails(child)),
-      child: SafeArea(
-        top: false,
-        child: Scaffold(
-          body: Stack(
-            children: [
-              Column(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 180,
-                    color: Theme.of(context).primaryColor,
-                    child: Center(
-                      child: Text(child.name),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: BlocBuilder<ChildDetailsBloc, ChildDetailsState>(
-                        buildWhen: (previous, current) => previous.page != current.page,
-                        builder: (_, state) {
-                          if (state.page == ChildDetailPages.overview) {
-                            return ChildOverviewPage();
-                          } else {
-                            return ChildRecordsPage();
-                          }
-                        },
+      child: Container(
+        color: Theme.of(context).primaryColor,
+        child: SafeArea(
+          child: Scaffold(
+            body: Stack(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 180,
+                      color: Theme.of(context).primaryColor,
+                      child: Center(
+                        child: Text(child.name),
                       ),
                     ),
-                  )
-                ],
-              ),
-              Positioned(
-                top: 20,
-                child: IconButton(
-                  icon: BackButtonIcon(),
-                  onPressed: () => Navigator.of(context).pop(),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: BlocBuilder<ChildDetailsBloc, ChildDetailsState>(
+                          buildWhen: (previous, current) => previous.page != current.page,
+                          builder: (_, state) {
+                            if (state.page == ChildDetailPages.overview) {
+                              return ChildOverviewPage();
+                            } else {
+                              return ChildRecordsPage();
+                            }
+                          },
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-              ),
-              BlocBuilder<ChildDetailsBloc, ChildDetailsState>(
-                buildWhen: (previous, current) => previous.status != current.status,
-                builder: (_, state) {
-                  return LoadingIndecator(visible: state.status == ChildDetailsStateStatus.loading);
-                },
-              )
-            ],
+                Positioned(
+                  child: IconButton(
+                    icon: BackButtonIcon(),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                ),
+                BlocBuilder<ChildDetailsBloc, ChildDetailsState>(
+                  buildWhen: (previous, current) => previous.status != current.status,
+                  builder: (_, state) {
+                    return LoadingIndecator(visible: state.status == ChildDetailsStateStatus.loading);
+                  },
+                )
+              ],
+            ),
+            bottomNavigationBar: ChildBottomNavigator(),
           ),
-          bottomNavigationBar: ChildBottomNavigator(),
         ),
       ),
     );

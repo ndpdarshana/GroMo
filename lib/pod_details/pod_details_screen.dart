@@ -17,54 +17,55 @@ class PodDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => PodDetailsBloc()..add(LoadPodDetails(pod: pod)),
-      child: SafeArea(
-        top: false,
-        child: Scaffold(
-          body: Stack(
-            children: [
-              Column(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 180,
-                    color: Theme.of(context).primaryColor,
-                    child: Center(
-                      child: Text(pod.code),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: BlocBuilder<PodDetailsBloc, PodDetailsState>(
-                        buildWhen: (previous, current) => previous.page != current.page,
-                        builder: (_, state) {
-                          if (state.page == PodDetailPages.reports) {
-                            return ReportsPage();
-                          } else {
-                            return ChildrenPage();
-                          }
-                        },
+      child: Container(
+        color: Theme.of(context).primaryColor,
+        child: SafeArea(
+          child: Scaffold(
+            body: Stack(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 180,
+                      color: Theme.of(context).primaryColor,
+                      child: Center(
+                        child: Text(pod.code),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Positioned(
-                top: 20,
-                child: IconButton(
-                  icon: BackButtonIcon(),
-                  onPressed: () => Navigator.of(context).pop(),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: BlocBuilder<PodDetailsBloc, PodDetailsState>(
+                          buildWhen: (previous, current) => previous.page != current.page,
+                          builder: (_, state) {
+                            if (state.page == PodDetailPages.reports) {
+                              return ReportsPage();
+                            } else {
+                              return ChildrenPage();
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              BlocBuilder<PodDetailsBloc, PodDetailsState>(
-                buildWhen: (previous, current) => previous.status != current.status,
-                builder: (_, state) {
-                  return LoadingIndecator(visible: state.status == PodDetailsStateStatus.loading);
-                },
-              )
-            ],
+                Positioned(
+                  child: IconButton(
+                    icon: BackButtonIcon(),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                ),
+                BlocBuilder<PodDetailsBloc, PodDetailsState>(
+                  buildWhen: (previous, current) => previous.status != current.status,
+                  builder: (_, state) {
+                    return LoadingIndecator(visible: state.status == PodDetailsStateStatus.loading);
+                  },
+                )
+              ],
+            ),
+            bottomNavigationBar: PodBottomNavigator(),
           ),
-          bottomNavigationBar: PodBottomNavigator(),
         ),
       ),
     );

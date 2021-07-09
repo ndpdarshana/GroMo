@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:growMo/app_localizations.dart';
 import 'package:growMo/child_details/bloc/child_details_bloc.dart';
-import 'package:growMo/monitor_record_editor/monitor_record_editor_screen.dart';
+import 'package:growMo/growth_record_editor/growth_record_editor_screen.dart';
 
 class ChildBottomNavigator extends StatelessWidget {
   @override
@@ -14,7 +14,7 @@ class ChildBottomNavigator extends StatelessWidget {
             BottomNavigationBarItem(
                 icon: Icon(Icons.pages), label: AppLocalizations.of(context).translate('label_overview')),
             BottomNavigationBarItem(
-                icon: Icon(Icons.add), label: AppLocalizations.of(context).translate('label_new_growth_record')),
+                icon: Icon(Icons.add), label: AppLocalizations.of(context).translate('label_create_new')),
             BottomNavigationBarItem(
                 icon: Icon(Icons.article), label: AppLocalizations.of(context).translate('label_records'))
           ],
@@ -25,7 +25,7 @@ class ChildBottomNavigator extends StatelessWidget {
                 break;
               case (1):
                 final result =
-                    await Navigator.of(context).pushNamed(MonitorRecordEditorScreen.routeName, arguments: state.child);
+                    await Navigator.of(context).pushNamed(GrowthRecordEditorScreen.routeName, arguments: state.child);
 
                 if (result != null) {
                   Scaffold.of(context)

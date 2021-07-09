@@ -4,7 +4,7 @@ import 'package:growMo/child_record_editor/child_record_editor_screen.dart';
 import 'package:growMo/login/login_screen.dart';
 import 'package:growMo/models/child.dart';
 import 'package:growMo/models/pod.dart';
-import 'package:growMo/monitor_record_editor/monitor_record_editor_screen.dart';
+import 'package:growMo/growth_record_editor/growth_record_editor_screen.dart';
 import 'package:growMo/pod_details/pod_details_screen.dart';
 import 'package:growMo/pod_list/pods_screen.dart';
 import 'package:growMo/splash_screen.dart';
@@ -35,9 +35,9 @@ class AppRoutes {
           Child child = settings.arguments;
           widget = ChildDetailsSecreen(child: child);
           break;
-        case MonitorRecordEditorScreen.routeName:
+        case GrowthRecordEditorScreen.routeName:
           Child child = settings.arguments;
-          widget = MonitorRecordEditorScreen(child: child);
+          widget = GrowthRecordEditorScreen(child: child);
           break;
       }
       return MaterialPageRoute(builder: (_) => widget, settings: settings);

@@ -6,3 +6,5 @@ abstract class GrowthRecordEditorEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class GrowthRecordSubmitted extends GrowthRecordEditorEvent {}

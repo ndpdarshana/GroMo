@@ -6,7 +6,7 @@ import 'package:growMo/child_record_editor/bloc/child_record_editor_bloc.dart';
 import 'package:growMo/child_record_editor/datetime_field_dob.dart';
 import 'package:growMo/child_record_editor/number_field_contact.dart';
 import 'package:growMo/child_record_editor/radio_button_sex.dart';
-import 'package:growMo/child_record_editor/save_record_button.dart';
+import 'package:growMo/child_record_editor/child_save_record_button.dart';
 import 'package:growMo/child_record_editor/text_field_address.dart';
 import 'package:growMo/child_record_editor/text_field_child_name.dart';
 import 'package:growMo/child_record_editor/text_field_child_nic.dart';
@@ -40,7 +40,7 @@ class ChildRecordEditorScreen extends StatelessWidget {
             onPressed: () => Navigator.pop(context, AppLocalizations.of(context).translate('message_user_canceled')),
           ),
           title: Text(AppLocalizations.of(context).translate('title_new_child_record')),
-          actions: [SaveRecordButton(pod: pod)],
+          actions: [ChildSaveRecordButton(pod: pod)],
         ),
         body: BlocListener<ChildRecordEditorBloc, ChildRecordEditorState>(
           listenWhen: (previous, current) => previous.status != current.status,

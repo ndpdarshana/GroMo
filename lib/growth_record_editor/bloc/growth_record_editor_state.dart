@@ -1,10 +1,12 @@
 part of 'growth_record_editor_bloc.dart';
 
-abstract class GrowthRecordEditorState extends Equatable {
-  const GrowthRecordEditorState();
-  
-  @override
-  List<Object> get props => [];
-}
+class GrowthRecordEditorState extends Equatable {
+  final FormzStatus status;
 
-class GrowthRecordEditorInitial extends GrowthRecordEditorState {}
+  const GrowthRecordEditorState({
+    this.status = FormzStatus.pure,
+  });
+
+  @override
+  List<Object> get props => [status];
+}

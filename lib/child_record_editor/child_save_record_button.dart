@@ -5,10 +5,10 @@ import 'package:growMo/app_localizations.dart';
 import 'package:growMo/child_record_editor/bloc/child_record_editor_bloc.dart';
 import 'package:growMo/models/pod.dart';
 
-class SaveRecordButton extends StatelessWidget {
+class ChildSaveRecordButton extends StatelessWidget {
   final Pod pod;
 
-  const SaveRecordButton({@required this.pod}) : assert(pod != null);
+  const ChildSaveRecordButton({@required this.pod}) : assert(pod != null);
 
   @override
   Widget build(BuildContext context) {

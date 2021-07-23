@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:growMo/pod_list/bloc/pods_bloc.dart';
-import 'package:growMo/pod_list/pod_list.dart';
-import 'package:growMo/pod_list/pods_search_input.dart';
-import 'package:growMo/widgets/loading_indecator.dart';
+import '/pod_list/bloc/pods_bloc.dart';
+import '/pod_list/pod_list.dart';
+import '/pod_list/pods_search_input.dart';
+import '/widgets/loading_indecator.dart';
 
 class PodsScreen extends StatelessWidget {
   static const String routeName = '/pods';

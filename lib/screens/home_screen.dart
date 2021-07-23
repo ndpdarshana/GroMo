@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:growMo/screens/search_screen.dart';
+import '/screens/search_screen.dart';
 
 import './edit_record_screen.dart';
 

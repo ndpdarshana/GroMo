@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:growMo/pod_details/pod_details_screen.dart';
-import 'package:growMo/pod_list/bloc/pods_bloc.dart';
+import '/pod_details/pod_details_screen.dart';
+import '/pod_list/bloc/pods_bloc.dart';
 import 'package:intl/intl.dart';
 
 class PodList extends StatelessWidget {

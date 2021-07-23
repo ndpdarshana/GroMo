@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:growMo/app_localizations.dart';
+import '/app_localizations.dart';
 
 class AsiSwitchFieldWidget extends StatelessWidget {
   const AsiSwitchFieldWidget();

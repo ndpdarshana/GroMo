@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:growMo/models/app_error.dart';
-import 'package:growMo/models/app_user.dart';
+import '/models/app_error.dart';
+import '/models/app_user.dart';
 
 class AuthRepositoryResult extends Equatable {
   final AppUser user;

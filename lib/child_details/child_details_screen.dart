@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:growMo/child_details/bloc/child_details_bloc.dart';
-import 'package:growMo/child_details/child_bottom_navigator.dart';
-import 'package:growMo/child_details/child_overview_page.dart';
-import 'package:growMo/child_details/child_records_page.dart';
-import 'package:growMo/models/child.dart';
-import 'package:growMo/widgets/loading_indecator.dart';
+import '/child_details/bloc/child_details_bloc.dart';
+import '/child_details/child_bottom_navigator.dart';
+import '/child_details/child_overview_page.dart';
+import '/child_details/child_records_page.dart';
+import '/models/child.dart';
+import '/widgets/loading_indecator.dart';
 
 class ChildDetailsSecreen extends StatelessWidget {
   static const routeName = '/pods/pod_details/child';

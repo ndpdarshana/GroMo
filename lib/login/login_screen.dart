@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:growMo/app/bloc/app_bloc.dart';
-import 'package:growMo/auth/bloc/auth_bloc.dart';
-import 'package:growMo/login/bloc/login_bloc.dart';
-import 'package:growMo/login/login_form_widget.dart';
-import 'package:growMo/widgets/loading_indecator.dart';
-import 'package:growMo/widgets/logo_widget.dart';
+import '/app/bloc/app_bloc.dart';
+import '/auth/bloc/auth_bloc.dart';
+import '/login/bloc/login_bloc.dart';
+import '/login/login_form_widget.dart';
+import '/widgets/loading_indecator.dart';
+import '/widgets/logo_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   static const routeName = '/auth';

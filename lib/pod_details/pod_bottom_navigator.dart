@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:growMo/app_localizations.dart';
-import 'package:growMo/child_record_editor/child_record_editor_screen.dart';
-import 'package:growMo/pod_details/bloc/pod_details_bloc.dart';
+import '/app_localizations.dart';
+import '/child_record_editor/child_record_editor_screen.dart';
+import '/pod_details/bloc/pod_details_bloc.dart';
 
 class PodBottomNavigator extends StatelessWidget {
   @override

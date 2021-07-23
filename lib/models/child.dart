@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
-import 'package:growMo/child_record_editor/bloc/child_record_editor_bloc.dart';
+import '/child_record_editor/bloc/child_record_editor_bloc.dart';
 
 class Child extends Equatable {
   final String id;

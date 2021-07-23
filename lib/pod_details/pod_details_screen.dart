@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:growMo/models/pod.dart';
-import 'package:growMo/pod_details/bloc/pod_details_bloc.dart';
-import 'package:growMo/pod_details/pod_bottom_navigator.dart';
-import 'package:growMo/pod_details/children_page.dart';
-import 'package:growMo/pod_details/reports_page.dart';
-import 'package:growMo/widgets/loading_indecator.dart';
+import '/models/pod.dart';
+import '/pod_details/bloc/pod_details_bloc.dart';
+import '/pod_details/pod_bottom_navigator.dart';
+import '/pod_details/children_page.dart';
+import '/pod_details/reports_page.dart';
+import '/widgets/loading_indecator.dart';
 
 class PodDetailsScreen extends StatelessWidget {
   static const String routeName = '/pods/pod_details';

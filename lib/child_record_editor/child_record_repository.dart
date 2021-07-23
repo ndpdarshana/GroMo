@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:growMo/models/app_error.dart';
-import 'package:growMo/models/child.dart';
+import '/models/app_error.dart';
+import '/models/child.dart';
 
 class ChildrenRecordRepositoryResult extends Equatable {
   final List<Child> children;

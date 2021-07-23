@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:growMo/auth/bloc/auth_bloc.dart';
-import 'package:growMo/bloc_message_service.dart';
+import '/auth/bloc/auth_bloc.dart';
+import '/bloc_message_service.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:growMo/app_localizations.dart';
-import 'package:growMo/growth_record_editor/bloc/growth_record_editor_bloc.dart';
-import 'package:growMo/models/child.dart';
+import '/app_localizations.dart';
+import '/growth_record_editor/bloc/growth_record_editor_bloc.dart';
+import '/models/child.dart';
 
 class GrowthSaveRecordButton extends StatelessWidget {
   final Child child;

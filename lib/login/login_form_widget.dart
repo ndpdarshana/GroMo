@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:growMo/app_localizations.dart';
-import 'package:growMo/login/bloc/login_bloc.dart';
-import 'package:growMo/login/login_password_field_widget.dart';
-import 'package:growMo/login/login_username_field_widget.dart';
+import 'package:growmo/login/login_username_field_widget.dart';
+import '/app_localizations.dart';
+import '/login/bloc/login_bloc.dart';
+import '/login/login_password_field_widget.dart';
 
 class LoginForm extends StatelessWidget {
   final FocusNode passwordFocusNode = FocusNode();

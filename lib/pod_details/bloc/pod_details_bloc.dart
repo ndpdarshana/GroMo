@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:growMo/child_record_editor/child_record_repository.dart';
-import 'package:growMo/models/app_error.dart';
-import 'package:growMo/models/child.dart';
-import 'package:growMo/models/pod.dart';
+import '/child_record_editor/child_record_repository.dart';
+import '/models/app_error.dart';
+import '/models/child.dart';
+import '/models/pod.dart';
 
 part 'pod_details_event.dart';
 part 'pod_details_state.dart';

@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:growMo/app/bloc/app_bloc.dart';
-import 'package:growMo/auth/auth_repository.dart';
-import 'package:growMo/bloc_message_service.dart';
-import 'package:growMo/models/app_error.dart';
-import 'package:growMo/models/app_user.dart';
+import '/app/bloc/app_bloc.dart';
+import '/auth/auth_repository.dart';
+import '/bloc_message_service.dart';
+import '/models/app_error.dart';
+import '/models/app_user.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

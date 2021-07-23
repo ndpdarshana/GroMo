@@ -1,4 +1,4 @@
-# growMo
+# GrowMo.s
 
 A new Flutter project.
 

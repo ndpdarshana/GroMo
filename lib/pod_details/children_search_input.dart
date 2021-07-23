@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:growMo/app_localizations.dart';
-import 'package:growMo/pod_details/bloc/pod_details_bloc.dart';
+import '/app_localizations.dart';
+import '/pod_details/bloc/pod_details_bloc.dart';
 
 class ChildrenSearchInput extends StatelessWidget {
   @override

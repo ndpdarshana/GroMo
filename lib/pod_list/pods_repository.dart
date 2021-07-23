@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
-import 'package:growMo/models/app_error.dart';
-import 'package:growMo/models/pod.dart';
+import '/models/app_error.dart';
+import '/models/pod.dart';
 
 class PodsRepositoryResult extends Equatable {
   final List<Pod> pods;

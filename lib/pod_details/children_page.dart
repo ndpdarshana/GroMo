@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:growMo/child_details/child_details_screen.dart';
-import 'package:growMo/pod_details/bloc/pod_details_bloc.dart';
-import 'package:growMo/pod_details/children_search_input.dart';
+import '/child_details/child_details_screen.dart';
+import '/pod_details/bloc/pod_details_bloc.dart';
+import '/pod_details/children_search_input.dart';
 import 'package:intl/intl.dart';
 
 class ChildrenPage extends StatelessWidget {

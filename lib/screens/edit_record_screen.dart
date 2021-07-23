@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:growMo/app_localizations.dart';
-import 'package:growMo/widgets/submit_button.dart';
+import '/app_localizations.dart';
+import '/widgets/submit_button.dart';
 import 'package:intl/intl.dart';
-import 'home_screen.dart';
 
 import '../widgets/customFormFields.dart';
 
@@ -28,11 +27,7 @@ class _EditRecordScreenState extends State<EditRecordScreen> {
   }
 
   void _openDatePicker() {
-    showDatePicker(
-            context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime(2020),
-            lastDate: DateTime.now())
+    showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2020), lastDate: DateTime.now())
         .then((pickedDate) {
       if (pickedDate == null) {
         return;
@@ -72,14 +67,11 @@ class _EditRecordScreenState extends State<EditRecordScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(AppLocalizations.of(context)
-                          .translate('field_label_gender') +
-                      ": "),
+                  Text(AppLocalizations.of(context).translate('field_label_gender') + ": "),
                   Container(
                     child: Row(
                       children: [
-                        Text(AppLocalizations.of(context)
-                            .translate('field_placeholder_male')),
+                        Text(AppLocalizations.of(context).translate('field_placeholder_male')),
                         Radio(
                           groupValue: null,
                           value: 1,
@@ -92,8 +84,7 @@ class _EditRecordScreenState extends State<EditRecordScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(AppLocalizations.of(context)
-                            .translate('field_placeholder_female')),
+                        Text(AppLocalizations.of(context).translate('field_placeholder_female')),
                         Radio(
                           groupValue: null,
                           value: 0,
@@ -110,9 +101,7 @@ class _EditRecordScreenState extends State<EditRecordScreen> {
                   children: [
                     Text('Date of Birth: '),
                     Expanded(
-                      child: Text(_selectedDate == null
-                          ? 'No date choosed'
-                          : DateFormat.yMd().format(_selectedDate)),
+                      child: Text(_selectedDate == null ? 'No date choosed' : DateFormat.yMd().format(_selectedDate)),
                     ),
                     FlatButton(
                       textColor: Theme.of(context).primaryColor,

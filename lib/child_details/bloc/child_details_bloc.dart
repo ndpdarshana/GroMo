@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:growMo/models/app_error.dart';
-import 'package:growMo/models/child.dart';
+import '/models/app_error.dart';
+import '/models/child.dart';
 
 part 'child_details_event.dart';
 part 'child_details_state.dart';

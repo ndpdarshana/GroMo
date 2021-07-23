@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:growMo/child_details/child_details_screen.dart';
-import 'package:growMo/child_record_editor/child_record_editor_screen.dart';
-import 'package:growMo/login/login_screen.dart';
-import 'package:growMo/models/child.dart';
-import 'package:growMo/models/pod.dart';
-import 'package:growMo/growth_record_editor/growth_record_editor_screen.dart';
-import 'package:growMo/pod_details/pod_details_screen.dart';
-import 'package:growMo/pod_list/pods_screen.dart';
-import 'package:growMo/splash_screen.dart';
+import '/child_details/child_details_screen.dart';
+import '/child_record_editor/child_record_editor_screen.dart';
+import '/login/login_screen.dart';
+import '/models/child.dart';
+import '/models/pod.dart';
+import '/growth_record_editor/growth_record_editor_screen.dart';
+import '/pod_details/pod_details_screen.dart';
+import '/pod_list/pods_screen.dart';
+import '/splash_screen.dart';
 
 class AppRoutes {
   static generate() {

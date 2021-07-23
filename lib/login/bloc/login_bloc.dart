@@ -4,11 +4,11 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:formz/formz.dart';
-import 'package:growMo/app/bloc/app_bloc.dart';
-import 'package:growMo/auth/bloc/auth_bloc.dart';
-import 'package:growMo/login/password_input.dart';
-import 'package:growMo/login/usernam_input.dart';
-import 'package:growMo/models/app_error.dart';
+import '/app/bloc/app_bloc.dart';
+import '/auth/bloc/auth_bloc.dart';
+import '/login/password_input.dart';
+import '/login/usernam_input.dart';
+import '/models/app_error.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:growMo/app_localizations.dart';
-import 'package:growMo/login/bloc/login_bloc.dart';
+import '/app_localizations.dart';
+import '/login/bloc/login_bloc.dart';
 
 class LoginPasswordField extends StatelessWidget {
   final FocusNode passwordFieldFocus;

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:growMo/app_localizations.dart';
-import 'package:growMo/child_record_editor/bloc/child_record_editor_bloc.dart';
-import 'package:growMo/child_record_editor/datetime_field_dob.dart';
-import 'package:growMo/child_record_editor/number_field_contact.dart';
-import 'package:growMo/child_record_editor/radio_button_sex.dart';
-import 'package:growMo/child_record_editor/child_save_record_button.dart';
-import 'package:growMo/child_record_editor/text_field_address.dart';
-import 'package:growMo/child_record_editor/text_field_child_name.dart';
-import 'package:growMo/child_record_editor/text_field_child_nic.dart';
-import 'package:growMo/child_record_editor/text_field_parent_name.dart';
-import 'package:growMo/child_record_editor/text_field_parent_nic.dart';
-import 'package:growMo/models/pod.dart';
+import '/app_localizations.dart';
+import '/child_record_editor/bloc/child_record_editor_bloc.dart';
+import '/child_record_editor/datetime_field_dob.dart';
+import '/child_record_editor/number_field_contact.dart';
+import '/child_record_editor/radio_button_sex.dart';
+import '/child_record_editor/child_save_record_button.dart';
+import '/child_record_editor/text_field_address.dart';
+import '/child_record_editor/text_field_child_name.dart';
+import '/child_record_editor/text_field_child_nic.dart';
+import '/child_record_editor/text_field_parent_name.dart';
+import '/child_record_editor/text_field_parent_nic.dart';
+import '/models/pod.dart';
 
 enum PopStatus { user_canceled, record_created, record_updated }
 

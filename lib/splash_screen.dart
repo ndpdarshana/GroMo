@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:growMo/widgets/logo_widget.dart';
+import '/widgets/logo_widget.dart';
 
 class SplashScreen extends StatelessWidget {
   @override

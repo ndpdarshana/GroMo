@@ -12,11 +12,11 @@ class ChildBottomNavigator extends StatelessWidget {
         return BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.pages), label: AppLocalizations.of(context).translate('label_overview')),
+                icon: Icon(Icons.pages), label: AppLocalizations.of(context)!.translate('label_overview')),
             BottomNavigationBarItem(
-                icon: Icon(Icons.add), label: AppLocalizations.of(context).translate('label_create_new')),
+                icon: Icon(Icons.add), label: AppLocalizations.of(context)!.translate('label_create_new')),
             BottomNavigationBarItem(
-                icon: Icon(Icons.article), label: AppLocalizations.of(context).translate('label_records'))
+                icon: Icon(Icons.article), label: AppLocalizations.of(context)!.translate('label_records'))
           ],
           onTap: (index) async {
             switch (index) {
@@ -30,7 +30,7 @@ class ChildBottomNavigator extends StatelessWidget {
                 if (result != null) {
                   Scaffold.of(context)
                     ..removeCurrentSnackBar()
-                    ..showSnackBar(SnackBar(content: Text(result)));
+                    ..showSnackBar(SnackBar(content: Text(result as String)));
                 }
                 break;
               case (2):

@@ -13,7 +13,7 @@ class PmtSwitchFieldWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            AppLocalizations.of(context).translate('field_label_pmt'),
+            AppLocalizations.of(context)!.translate('field_label_pmt')!,
             style: Theme.of(context).textTheme.subtitle1,
           ),
           Switch(value: false, onChanged: (value) {}),

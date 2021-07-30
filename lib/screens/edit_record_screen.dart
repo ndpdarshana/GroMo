@@ -14,7 +14,7 @@ class EditRecordScreen extends StatefulWidget {
 
 class _EditRecordScreenState extends State<EditRecordScreen> {
   final _form = GlobalKey<FormState>();
-  DateTime _selectedDate;
+  DateTime? _selectedDate;
 
   final _nikFocusNode = FocusNode();
   final _dobFocusNode = FocusNode();
@@ -67,15 +67,15 @@ class _EditRecordScreenState extends State<EditRecordScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(AppLocalizations.of(context).translate('field_label_gender') + ": "),
+                  Text(AppLocalizations.of(context)!.translate('field_label_gender')! + ": "),
                   Container(
                     child: Row(
                       children: [
-                        Text(AppLocalizations.of(context).translate('field_placeholder_male')),
+                        Text(AppLocalizations.of(context)!.translate('field_placeholder_male')!),
                         Radio(
                           groupValue: null,
                           value: 1,
-                          onChanged: (value) {},
+                          onChanged: (dynamic value) {},
                         ),
                       ],
                     ),
@@ -84,11 +84,11 @@ class _EditRecordScreenState extends State<EditRecordScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(AppLocalizations.of(context).translate('field_placeholder_female')),
+                        Text(AppLocalizations.of(context)!.translate('field_placeholder_female')!),
                         Radio(
                           groupValue: null,
                           value: 0,
-                          onChanged: (value) {},
+                          onChanged: (dynamic value) {},
                         ),
                       ],
                     ),
@@ -101,7 +101,7 @@ class _EditRecordScreenState extends State<EditRecordScreen> {
                   children: [
                     Text('Date of Birth: '),
                     Expanded(
-                      child: Text(_selectedDate == null ? 'No date choosed' : DateFormat.yMd().format(_selectedDate)),
+                      child: Text(_selectedDate == null ? 'No date choosed' : DateFormat.yMd().format(_selectedDate!)),
                     ),
                     FlatButton(
                       textColor: Theme.of(context).primaryColor,

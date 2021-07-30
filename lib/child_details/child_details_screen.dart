@@ -12,7 +12,7 @@ class ChildDetailsSecreen extends StatelessWidget {
 
   final Child child;
 
-  const ChildDetailsSecreen({@required this.child}) : assert(child != null);
+  const ChildDetailsSecreen({required this.child}) : assert(child != null);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class ChildDetailsSecreen extends StatelessWidget {
                       height: 180,
                       color: Theme.of(context).primaryColor,
                       child: Center(
-                        child: Text(child.name),
+                        child: Text(child.name!),
                       ),
                     ),
                     Expanded(

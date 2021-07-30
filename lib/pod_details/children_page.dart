@@ -17,7 +17,7 @@ class ChildrenPage extends StatelessWidget {
             listener: (context, state) {
               if (state.status == PodDetailsStateStatus.failed) {
                 Scaffold.of(context).removeCurrentSnackBar();
-                Scaffold.of(context).showSnackBar(SnackBar(content: Text(state.error.message)));
+                Scaffold.of(context).showSnackBar(SnackBar(content: Text(state.error!.message)));
               } else {
                 Scaffold.of(context).removeCurrentSnackBar();
               }
@@ -30,14 +30,14 @@ class ChildrenPage extends StatelessWidget {
                     return Card(
                       child: ListTile(
                         leading: CircleAvatar(
-                          child: Text(state.filteredChildren[index].name[0]),
+                          child: Text(state.filteredChildren![index].name![0]),
                         ),
-                        title: Text(state.filteredChildren[index].name),
-                        subtitle: Text(state.filteredChildren[index].dob != null
-                            ? DateFormat.yMMMEd().format(state.filteredChildren[index].dob)
+                        title: Text(state.filteredChildren![index].name!),
+                        subtitle: Text(state.filteredChildren![index].dob != null
+                            ? DateFormat.yMMMEd().format(state.filteredChildren![index].dob!)
                             : '-'),
                         onTap: () => Navigator.of(context)
-                            .pushNamed(ChildDetailsSecreen.routeName, arguments: state.filteredChildren[index]),
+                            .pushNamed(ChildDetailsSecreen.routeName, arguments: state.filteredChildren![index]),
                       ),
                     );
                   },

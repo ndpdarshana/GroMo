@@ -8,11 +8,11 @@ import '/bloc_message_service.dart';
 part 'app_event.dart';
 part 'app_state.dart';
 
-class AppBloc extends Bloc<AppEvent, AppState> {
-  StreamSubscription<BlocMessage> _streamSubscription;
+class AppBloc extends Bloc<AppEvent?, AppState> {
+  late StreamSubscription<BlocMessage> _streamSubscription;
 
   AppBloc() : super(AppState()) {
-    _streamSubscription = BlocMessagingService().subscribe().listen((message) {
+    _streamSubscription = BlocMessagingService().subscribe()!.listen((message) {
       if (message.from == AuthBloc && message.to.keys.contains(AppBloc)) {
         add(message.to[AppBloc]);
       }
@@ -28,7 +28,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
   @override
   Stream<AppState> mapEventToState(
-    AppEvent event,
+    AppEvent? event,
   ) async* {
     if (event is AppLoaded) {
       yield _mapAppLoaded(event, state);

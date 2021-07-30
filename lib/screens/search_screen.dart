@@ -74,8 +74,8 @@ class SearchScreen extends StatelessWidget {
                   },
                   child: Card(
                     child: ListTile(
-                      title: Text(babies[index].name),
-                      subtitle: Text(DateFormat.yMMMMd().format(babies[index].dob)),
+                      title: Text(babies[index].name!),
+                      subtitle: Text(DateFormat.yMMMMd().format(babies[index].dob!)),
                     ),
                   ),
                 );

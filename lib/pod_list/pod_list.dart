@@ -12,7 +12,7 @@ class PodList extends StatelessWidget {
       listener: (_, state) {
         if (state.status == PodsStateStatus.failed) {
           Scaffold.of(context).removeCurrentSnackBar();
-          Scaffold.of(context).showSnackBar(SnackBar(content: Text(state.error.message)));
+          Scaffold.of(context).showSnackBar(SnackBar(content: Text(state.error!.message)));
         } else {
           Scaffold.of(context).removeCurrentSnackBar();
         }
@@ -21,19 +21,19 @@ class PodList extends StatelessWidget {
       builder: (_, state) {
         if (state.status == PodsStateStatus.pristine || state.status == PodsStateStatus.filtered) {
           return ListView.builder(
-            itemCount: state.filteredPods.length,
+            itemCount: state.filteredPods!.length,
             itemBuilder: (_, index) {
               return Card(
                 child: ListTile(
                   leading: CircleAvatar(
-                    child: Text(state.filteredPods[index].code),
+                    child: Text(state.filteredPods![index].code!),
                   ),
-                  title: Text(state.filteredPods[index].name),
-                  subtitle: Text(state.filteredPods[index].lastUpdate != null
-                      ? DateFormat.yMMMEd().format(state.filteredPods[index].lastUpdate)
+                  title: Text(state.filteredPods![index].name!),
+                  subtitle: Text(state.filteredPods![index].lastUpdate != null
+                      ? DateFormat.yMMMEd().format(state.filteredPods![index].lastUpdate!)
                       : '-'),
                   onTap: () =>
-                      Navigator.of(context).pushNamed(PodDetailsScreen.routeName, arguments: state.filteredPods[index]),
+                      Navigator.of(context).pushNamed(PodDetailsScreen.routeName, arguments: state.filteredPods![index]),
                 ),
               );
             },

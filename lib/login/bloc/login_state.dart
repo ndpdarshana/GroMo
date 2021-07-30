@@ -5,7 +5,7 @@ class LoginState extends Equatable {
   final UsernameInput usernameInput;
   final PasswordInput passwordInput;
   final bool obscurePassword;
-  final AppError error;
+  final AppError? error;
 
   const LoginState({
     this.status = FormzStatus.pure,
@@ -16,7 +16,7 @@ class LoginState extends Equatable {
   });
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         status,
         usernameInput,
         passwordInput,
@@ -25,11 +25,11 @@ class LoginState extends Equatable {
       ];
 
   LoginState copyWith({
-    FormzStatus status,
-    UsernameInput usernameInput,
-    PasswordInput passwordInput,
-    bool obscurePassword,
-    AppError error,
+    FormzStatus? status,
+    UsernameInput? usernameInput,
+    PasswordInput? passwordInput,
+    bool? obscurePassword,
+    AppError? error,
   }) {
     return LoginState(
       status: status ?? this.status,

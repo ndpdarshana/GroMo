@@ -12,12 +12,12 @@ part 'pod_details_event.dart';
 part 'pod_details_state.dart';
 
 class PodDetailsBloc extends Bloc<PodDetailsEvent, PodDetailsState> {
-  StreamSubscription _childrenSubscription;
+  StreamSubscription? _childrenSubscription;
   PodDetailsBloc() : super(PodDetailsState());
 
   @override
   Future<void> close() {
-    _childrenSubscription.cancel();
+    _childrenSubscription!.cancel();
     return super.close();
   }
 
@@ -43,7 +43,7 @@ class PodDetailsBloc extends Bloc<PodDetailsEvent, PodDetailsState> {
 
     _childrenSubscription?.cancel();
     _childrenSubscription = ChildrenRecordRepository()
-        .getChildrenList(podId: event.pod.id)
+        .getChildrenList(podId: event.pod.id!)
         .listen((children) => add(PodChildrenUpdated(children: children)));
   }
 
@@ -69,7 +69,7 @@ class PodDetailsBloc extends Bloc<PodDetailsEvent, PodDetailsState> {
 
   PodDetailsState _mapChildrenFilterBySerachTextToState(PodDetailsState state) {
     final filtered =
-        state.children.where((child) => child.name.toLowerCase().contains(state.searchTerm.toLowerCase())).toList();
+        state.children!.where((child) => child.name!.toLowerCase().contains(state.searchTerm!.toLowerCase())).toList();
     return state.copyWith(status: PodDetailsStateStatus.filtered, filteredChildren: filtered);
   }
 }

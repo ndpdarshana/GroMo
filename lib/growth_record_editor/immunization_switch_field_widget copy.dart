@@ -13,7 +13,7 @@ class ImunizationSwitchFieldWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            AppLocalizations.of(context).translate('field_label_immunization'),
+            AppLocalizations.of(context)!.translate('field_label_immunization')!,
             style: Theme.of(context).textTheme.subtitle1,
           ),
           Switch(value: false, onChanged: (value) {}),

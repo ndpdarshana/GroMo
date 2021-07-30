@@ -7,12 +7,12 @@ import 'package:intl/intl.dart';
 
 enum DobInputError { empty, invalid }
 
-class DobInput extends FormzInput<DateTime, DobInputError> {
-  DobInput.pure() : super.pure(null);
-  DobInput.dirty(DateTime value) : super.dirty(value);
+class DobInput extends FormzInput<DateTime?, DobInputError> {
+  const DobInput.pure() : super.pure(null);
+  const DobInput.dirty(DateTime? value) : super.dirty(value);
 
   @override
-  DobInputError validator(DateTime value) {
+  DobInputError? validator(DateTime? value) {
     if (value == null) {
       return DobInputError.empty;
     } else if (value.isAfter(DateTime.now())) {
@@ -32,20 +32,19 @@ class DateTimeFieldDob extends StatelessWidget {
           height: 70,
           child: Row(
             children: [
-              Text('${AppLocalizations.of(context).translate('field_label_dob')}: '),
+              Text('${AppLocalizations.of(context)!.translate('field_label_dob')}: '),
               Expanded(
                   child: Text(
                 state.dobInput.valid
-                    ? DateFormat.yMd().format(state.dobInput.value)
+                    ? DateFormat.yMd().format(state.dobInput.value!)
                     : state.dobInput.invalid
-                        ? AppLocalizations.of(context).translate('field_error_dob')
-                        : AppLocalizations.of(context).translate('field_placeholder_dob'),
+                        ? AppLocalizations.of(context)!.translate('field_error_dob')!
+                        : AppLocalizations.of(context)!.translate('field_placeholder_dob')!,
                 style: state.dobInput.invalid ? TextStyle(color: Theme.of(context).errorColor) : null,
               )),
-              FlatButton(
-                textColor: Theme.of(context).primaryColor,
+              TextButton(
                 child: Text(
-                  AppLocalizations.of(context).translate('btn_date_picker'),
+                  AppLocalizations.of(context)!.translate('btn_date_picker')!,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 onPressed: () {

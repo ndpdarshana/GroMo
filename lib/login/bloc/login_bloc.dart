@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:formz/formz.dart';
+
 import '/app/bloc/app_bloc.dart';
 import '/auth/bloc/auth_bloc.dart';
 import '/login/password_input.dart';
@@ -16,13 +16,10 @@ part 'login_state.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AppBloc appBloc;
   final AuthBloc authBloc;
-  StreamSubscription<AuthState> authSubscription;
+  late StreamSubscription<AuthState> authSubscription;
 
-  LoginBloc({@required this.appBloc, @required this.authBloc})
-      : assert(appBloc != null),
-        assert(authBloc != null),
-        super(LoginState()) {
-    authSubscription = authBloc.listen((authState) {
+  LoginBloc({required this.appBloc, required this.authBloc}) : super(LoginState()) {
+    authSubscription = authBloc.stream.listen((authState) {
       if (state.status == FormzStatus.submissionInProgress) {
         if (authState.status == AuthStatus.authenticated) {
           add(LoginSuccess());
@@ -34,9 +31,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   @override
-  Future<Function> close() {
+  Future<Function?> close() {
     super.close();
-    return authSubscription?.cancel();
+    return authSubscription.cancel().then((value) => value as Function?);
   }
 
   @override

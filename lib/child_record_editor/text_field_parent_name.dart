@@ -11,8 +11,8 @@ class ParentNameInput extends FormzInput<String, ParentNameInputError> {
   const ParentNameInput.dirty(String value) : super.dirty(value);
 
   @override
-  ParentNameInputError validator(String value) {
-    return value?.isNotEmpty == true ? null : ParentNameInputError.empty;
+  ParentNameInputError? validator(String value) {
+    return value.isNotEmpty ? null : ParentNameInputError.empty;
   }
 }
 
@@ -20,9 +20,7 @@ class TextFieldParentName extends StatelessWidget {
   final FocusNode parentNameFieldFocus;
   final FocusNode parentNicFieldFocus;
 
-  const TextFieldParentName({@required this.parentNameFieldFocus, @required this.parentNicFieldFocus})
-      : assert(parentNameFieldFocus != null),
-        assert(parentNicFieldFocus != null);
+  const TextFieldParentName({required this.parentNameFieldFocus, required this.parentNicFieldFocus});
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +33,9 @@ class TextFieldParentName extends StatelessWidget {
           decoration: InputDecoration(
             counterStyle: TextStyle(height: 0),
             counterText: '',
-            labelText: AppLocalizations.of(context).translate('field_label_parent_name'),
+            labelText: AppLocalizations.of(context)!.translate('field_label_parent_name'),
             errorText: state.parentNameInput.invalid
-                ? AppLocalizations.of(context).translate('field_error_parent_name')
+                ? AppLocalizations.of(context)!.translate('field_error_parent_name')
                 : null,
           ),
           enableSuggestions: false,

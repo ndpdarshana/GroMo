@@ -19,7 +19,7 @@ class LoadChildDetails extends ChildDetailsEvent {
 class ChildDetailsChangeSelectedPage extends ChildDetailsEvent {
   final ChildDetailPages page;
 
-  ChildDetailsChangeSelectedPage({@required this.page});
+  ChildDetailsChangeSelectedPage({required this.page});
 
   @override
   List<Object> get props => [page];

@@ -29,7 +29,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Stream<AuthState> _mapAuthLoaded(AuthState state) async* {
     final result = await AuthRepository().retriveUser();
-    if (result?.user != null) {
+    if (result.user != null) {
       yield state.copyWith(status: AuthStatus.authenticated);
       BlocMessagingService().publish(BlocMessage(from: AuthBloc, to: {AppBloc: AppLoaded()}));
     } else {
@@ -42,14 +42,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Stream<AuthState> _mapAuthSigninRequestToState(AuthSigninRequest event, AuthState state) async* {
     yield state.copyWith(status: AuthStatus.inProgress);
 
-    if ((event.username?.isNotEmpty ?? false) && (event.password?.isNotEmpty ?? false)) {
-      final result = await AuthRepository().signin(username: event.username, password: event.password);
-      if (result.error == null && result.user != null) {
-        BlocMessagingService().publish(BlocMessage(from: AuthBloc, to: {AppBloc: AppLoaded()}));
-        yield state.copyWith(status: AuthStatus.authenticated, user: result.user);
-      } else if (result.error != null) {
-        yield state.copyWith(status: AuthStatus.failed, error: result.error);
-      }
+    final result = await AuthRepository().signin(username: event.username, password: event.password);
+    if (result.error == null && result.user != null) {
+      BlocMessagingService().publish(BlocMessage(from: AuthBloc, to: {AppBloc: AppLoaded()}));
+      yield state.copyWith(status: AuthStatus.authenticated, user: result.user);
+    } else if (result.error != null) {
+      yield state.copyWith(status: AuthStatus.failed, error: result.error);
     }
   }
 

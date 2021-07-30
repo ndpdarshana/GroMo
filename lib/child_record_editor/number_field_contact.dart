@@ -11,10 +11,10 @@ class ContactInput extends FormzInput<String, ContactInputError> {
   const ContactInput.dirty(String value) : super.dirty(value);
 
   @override
-  ContactInputError validator(String value) {
+  ContactInputError? validator(String value) {
     String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
     RegExp regExp = RegExp(pattern);
-    if (value?.isEmpty ?? true) {
+    if (value.isEmpty) {
       return ContactInputError.empty;
     } else if (!regExp.hasMatch(value)) {
       return ContactInputError.invalidPhoneNumber;
@@ -26,7 +26,7 @@ class ContactInput extends FormzInput<String, ContactInputError> {
 class NumberFieldContact extends StatelessWidget {
   final FocusNode contactFieldFocus;
 
-  const NumberFieldContact({@required this.contactFieldFocus}) : assert(contactFieldFocus != null);
+  const NumberFieldContact({required this.contactFieldFocus});
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +39,11 @@ class NumberFieldContact extends StatelessWidget {
           decoration: InputDecoration(
             counterStyle: TextStyle(height: 0),
             counterText: '',
-            labelText: AppLocalizations.of(context).translate('field_label_contact'),
+            labelText: AppLocalizations.of(context)!.translate('field_label_contact'),
             errorText: state.contactInput.invalid
                 ? state.contactInput.error == ContactInputError.invalidPhoneNumber
-                    ? AppLocalizations.of(context).translate('filed_error_invalid_contact')
-                    : AppLocalizations.of(context).translate('field_error_contact')
+                    ? AppLocalizations.of(context)!.translate('filed_error_invalid_contact')
+                    : AppLocalizations.of(context)!.translate('field_error_contact')
                 : null,
           ),
           enableSuggestions: false,

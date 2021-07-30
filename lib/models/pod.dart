@@ -2,21 +2,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class Pod extends Equatable {
-  final String id;
-  final String code;
-  final String name;
-  final DateTime lastUpdate;
+  final String? id;
+  final String? code;
+  final String? name;
+  final DateTime? lastUpdate;
 
   const Pod({this.id, this.code, this.name, this.lastUpdate});
 
   @override
-  List<Object> get props => [id, code, name, lastUpdate];
+  List<Object?> get props => [id, code, name, lastUpdate];
 
   Pod copyWith({
-    String id,
-    String code,
-    String name,
-    DateTime lastUpdate,
+    String? id,
+    String? code,
+    String? name,
+    DateTime? lastUpdate,
   }) {
     return Pod(
       id: id ?? this.id,

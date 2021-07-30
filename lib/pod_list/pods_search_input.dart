@@ -10,7 +10,7 @@ class PodsSearchInput extends StatelessWidget {
       width: double.infinity,
       child: TextField(
         decoration: InputDecoration(
-          labelText: AppLocalizations.of(context).translate('field_label_search'),
+          labelText: AppLocalizations.of(context)!.translate('field_label_search'),
           suffixIcon: Icon(Icons.search),
         ),
         onChanged: (term) => context.read<PodsBloc>().add(PodsSearchTextChanged(searchTerm: term)),

@@ -11,8 +11,8 @@ class AddressInput extends FormzInput<String, AddressInputError> {
   const AddressInput.dirty(String value) : super.dirty(value);
 
   @override
-  AddressInputError validator(String value) {
-    return value?.isNotEmpty == true ? null : AddressInputError.empty;
+  AddressInputError? validator(String value) {
+    return value.isNotEmpty ? null : AddressInputError.empty;
   }
 }
 
@@ -20,9 +20,7 @@ class TextFieldAddress extends StatelessWidget {
   final FocusNode addressFieldFocus;
   final FocusNode parentNameFieldFocus;
 
-  const TextFieldAddress({@required this.addressFieldFocus, @required this.parentNameFieldFocus})
-      : assert(addressFieldFocus != null),
-        assert(parentNameFieldFocus != null);
+  const TextFieldAddress({required this.addressFieldFocus, required this.parentNameFieldFocus});
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +33,9 @@ class TextFieldAddress extends StatelessWidget {
           decoration: InputDecoration(
             counterStyle: TextStyle(height: 0),
             counterText: '',
-            labelText: AppLocalizations.of(context).translate('field_label_address'),
+            labelText: AppLocalizations.of(context)!.translate('field_label_address'),
             errorText:
-                state.addressInput.invalid ? AppLocalizations.of(context).translate('field_error_address') : null,
+                state.addressInput.invalid ? AppLocalizations.of(context)!.translate('field_error_address') : null,
           ),
           enableSuggestions: false,
           key: ValueKey('field-address'),

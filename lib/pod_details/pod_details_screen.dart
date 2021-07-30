@@ -11,7 +11,7 @@ class PodDetailsScreen extends StatelessWidget {
   static const String routeName = '/pods/pod_details';
   final Pod pod;
 
-  PodDetailsScreen({@required this.pod}) : assert(pod != null);
+  PodDetailsScreen({required this.pod}) : assert(pod != null);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class PodDetailsScreen extends StatelessWidget {
                       height: 180,
                       color: Theme.of(context).primaryColor,
                       child: Center(
-                        child: Text(pod.code),
+                        child: Text(pod.code!),
                       ),
                     ),
                     Expanded(

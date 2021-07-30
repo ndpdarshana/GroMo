@@ -19,7 +19,7 @@ class GrowthRecordEditorScreen extends StatelessWidget {
 
   final Child child;
 
-  const GrowthRecordEditorScreen({@required this.child}) : assert(child != null);
+  const GrowthRecordEditorScreen({required this.child}) : assert(child != null);
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +29,9 @@ class GrowthRecordEditorScreen extends StatelessWidget {
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.close),
-            onPressed: () => Navigator.pop(context, AppLocalizations.of(context).translate('message_user_canceled')),
+            onPressed: () => Navigator.pop(context, AppLocalizations.of(context)!.translate('message_user_canceled')),
           ),
-          title: Text(AppLocalizations.of(context).translate('title_new_growth_record')),
+          title: Text(AppLocalizations.of(context)!.translate('title_new_growth_record')!),
           actions: [GrowthSaveRecordButton(child: child)],
         ),
         body: Padding(

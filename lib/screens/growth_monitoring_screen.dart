@@ -21,14 +21,14 @@ class GrowthMonitoringScreen extends StatelessWidget {
             child: Column(
               children: [
                 CustomTextFormField(
-                  labelText: AppLocalizations.of(context).translate('field_label_waight'),
+                  labelText: AppLocalizations.of(context)!.translate('field_label_waight'),
                   onSaved: (value) {},
                   onFieldSubmitted: (value) {
                     FocusScope.of(context).requestFocus();
                   },
                 ),
                 CustomTextFormField(
-                  labelText: AppLocalizations.of(context).translate('field_label_height'),
+                  labelText: AppLocalizations.of(context)!.translate('field_label_height'),
                   onSaved: (value) {},
                   onFieldSubmitted: (value) {
                     FocusScope.of(context).requestFocus();
@@ -46,7 +46,7 @@ class GrowthMonitoringScreen extends StatelessWidget {
                 // ),
                 Row(
                   children: [
-                    Text(AppLocalizations.of(context).translate('field_label_ASI')),
+                    Text(AppLocalizations.of(context)!.translate('field_label_ASI')!),
                     Checkbox(
                       value: false,
                       onChanged: (value) {},
@@ -55,7 +55,7 @@ class GrowthMonitoringScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text(AppLocalizations.of(context).translate('field_label_BGM')),
+                    Text(AppLocalizations.of(context)!.translate('field_label_BGM')!),
                     Checkbox(
                       value: false,
                       onChanged: (value) {},
@@ -64,7 +64,7 @@ class GrowthMonitoringScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text(AppLocalizations.of(context).translate('field_label_pmt')),
+                    Text(AppLocalizations.of(context)!.translate('field_label_pmt')!),
                     Checkbox(
                       value: false,
                       onChanged: (value) {},
@@ -73,7 +73,7 @@ class GrowthMonitoringScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text(AppLocalizations.of(context).translate('field_label_vitamin_a')),
+                    Text(AppLocalizations.of(context)!.translate('field_label_vitamin_a')!),
                     Checkbox(
                       value: false,
                       onChanged: (value) {},
@@ -82,7 +82,7 @@ class GrowthMonitoringScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text(AppLocalizations.of(context).translate('field_label_2t')),
+                    Text(AppLocalizations.of(context)!.translate('field_label_2t')!),
                     Checkbox(
                       value: false,
                       onChanged: (value) {},
@@ -90,7 +90,7 @@ class GrowthMonitoringScreen extends StatelessWidget {
                   ],
                 ),
                 CustomTextFormField(
-                  labelText: AppLocalizations.of(context).translate('field_label_immunization'),
+                  labelText: AppLocalizations.of(context)!.translate('field_label_immunization'),
                   onSaved: (value) {},
                   onFieldSubmitted: (value) {
                     FocusScope.of(context).requestFocus();

@@ -42,9 +42,9 @@ class LoginSuccess extends LoginEvent {
 }
 
 class LoginFailed extends LoginEvent {
-  final AppError error;
+  final AppError? error;
   const LoginFailed({this.error});
 
   @override
-  List<Object> get props => [error];
+  List<Object?> get props => [error];
 }

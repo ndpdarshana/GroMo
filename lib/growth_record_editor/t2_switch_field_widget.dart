@@ -13,7 +13,7 @@ class T2SwitchFieldWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            AppLocalizations.of(context).translate('field_label_2t'),
+            AppLocalizations.of(context)!.translate('field_label_2t')!,
             style: Theme.of(context).textTheme.subtitle1,
           ),
           Switch(value: false, onChanged: (value) {}),

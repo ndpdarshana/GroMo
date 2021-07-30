@@ -14,7 +14,7 @@ class LoginForm extends StatelessWidget {
       listener: (context, state) {
         Scaffold.of(context).removeCurrentSnackBar();
         if (state.error != null) {
-          String message = AppLocalizations.of(context).translate('error_login');
+          String message = AppLocalizations.of(context)!.translate('error_login')!;
           Scaffold.of(context).showSnackBar(SnackBar(content: Text(message)));
         }
       },
@@ -44,7 +44,7 @@ class LoginForm extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                         color: Colors.green[200],
                         child: Text(
-                          AppLocalizations.of(context).translate('btn_login'),
+                          AppLocalizations.of(context)!.translate('btn_login')!,
                           style: TextStyle(color: Colors.white),
                         ),
                         onPressed: () {

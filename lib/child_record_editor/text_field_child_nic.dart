@@ -11,8 +11,8 @@ class ChildNicInput extends FormzInput<String, ChildNicInputError> {
   const ChildNicInput.dirty(String value) : super.dirty(value);
 
   @override
-  ChildNicInputError validator(String value) {
-    return value?.isNotEmpty == true ? null : ChildNicInputError.empty;
+  ChildNicInputError? validator(String value) {
+    return value.isNotEmpty ? null : ChildNicInputError.empty;
   }
 }
 
@@ -20,9 +20,7 @@ class TextFieldchildNic extends StatelessWidget {
   final FocusNode childNicFieldFocus;
   final FocusNode addressFieldFocus;
 
-  const TextFieldchildNic({@required this.childNicFieldFocus, @required this.addressFieldFocus})
-      : assert(childNicFieldFocus != null),
-        assert(addressFieldFocus != null);
+  const TextFieldchildNic({required this.childNicFieldFocus, required this.addressFieldFocus});
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +33,9 @@ class TextFieldchildNic extends StatelessWidget {
           decoration: InputDecoration(
             counterStyle: TextStyle(height: 0),
             counterText: '',
-            labelText: AppLocalizations.of(context).translate('field_label_child_nic'),
+            labelText: AppLocalizations.of(context)!.translate('field_label_child_nic'),
             errorText:
-                state.childNicInput.invalid ? AppLocalizations.of(context).translate('field_error_child_nic') : null,
+                state.childNicInput.invalid ? AppLocalizations.of(context)!.translate('field_error_child_nic') : null,
           ),
           enableSuggestions: false,
           key: ValueKey('field-child-nic'),

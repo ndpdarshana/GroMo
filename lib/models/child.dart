@@ -3,16 +3,16 @@ import 'package:equatable/equatable.dart';
 import '/child_record_editor/bloc/child_record_editor_bloc.dart';
 
 class Child extends Equatable {
-  final String id;
-  final String podId;
-  final String name;
-  final String nic;
-  final Gender gender;
-  final DateTime dob;
-  final String address;
-  final String parentName;
-  final String parentNic;
-  final String contact;
+  final String? id;
+  final String? podId;
+  final String? name;
+  final String? nic;
+  final Gender? gender;
+  final DateTime? dob;
+  final String? address;
+  final String? parentName;
+  final String? parentNic;
+  final String? contact;
 
   Child({
     this.id,
@@ -28,19 +28,19 @@ class Child extends Equatable {
   });
 
   @override
-  List<Object> get props => [id, podId, name, nic, gender, dob, address, parentName, parentNic, contact];
+  List<Object?> get props => [id, podId, name, nic, gender, dob, address, parentName, parentNic, contact];
 
   Child copyWith({
-    String id,
-    String podId,
-    String name,
-    String nic,
-    Gender gender,
-    DateTime dob,
-    String address,
-    String parentName,
-    String parentNic,
-    String contact,
+    String? id,
+    String? podId,
+    String? name,
+    String? nic,
+    Gender? gender,
+    DateTime? dob,
+    String? address,
+    String? parentName,
+    String? parentNic,
+    String? contact,
   }) {
     return Child(
       id: id ?? this.id,
@@ -91,7 +91,7 @@ class Child extends Equatable {
       'pod_id': podId,
       'name': name,
       'nic': nic,
-      'gender': gender.index,
+      'gender': gender!.index,
       'dob': dob,
       'address': address,
       'parent_name': parentName,

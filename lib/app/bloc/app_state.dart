@@ -9,7 +9,7 @@ class AppState extends Equatable {
   @override
   List<Object> get props => [status];
 
-  AppState copyWith({AppStatus status}) {
+  AppState copyWith({AppStatus? status}) {
     return AppState(status: status ?? this.status);
   }
 }

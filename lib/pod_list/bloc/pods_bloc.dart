@@ -37,10 +37,10 @@ class PodsBloc extends Bloc<PodsEvent, PodsState> {
 
   Stream<PodsState> _mapPodsSearchTextChangedToState(PodsSearchTextChanged event, PodsState state) async* {
     yield state.copyWith(status: PodsStateStatus.searching);
-    final filteredPods = state.pods
+    final filteredPods = state.pods!
         .where((pod) =>
-            (pod.code.toLowerCase().contains(event.searchTerm.toLowerCase())) ||
-            (pod.name.toLowerCase().contains(event.searchTerm.toLowerCase())))
+            (pod.code!.toLowerCase().contains(event.searchTerm!.toLowerCase())) ||
+            (pod.name!.toLowerCase().contains(event.searchTerm!.toLowerCase())))
         .toList();
 
     yield state.copyWith(status: PodsStateStatus.filtered, filteredPods: filteredPods);

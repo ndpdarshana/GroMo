@@ -11,15 +11,15 @@ class ChildNameInput extends FormzInput<String, ChildNameInputError> {
   const ChildNameInput.dirty(String value) : super.dirty(value);
 
   @override
-  ChildNameInputError validator(String value) {
-    return value?.isNotEmpty == true ? null : ChildNameInputError.empty;
+  ChildNameInputError? validator(String value) {
+    return value.isNotEmpty ? null : ChildNameInputError.empty;
   }
 }
 
 class TextFieldChildName extends StatelessWidget {
   final FocusNode childNicFieldFocus;
 
-  const TextFieldChildName({@required this.childNicFieldFocus}) : assert(childNicFieldFocus != null);
+  const TextFieldChildName({required this.childNicFieldFocus}) : assert(childNicFieldFocus != null);
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +31,9 @@ class TextFieldChildName extends StatelessWidget {
           decoration: InputDecoration(
             counterStyle: TextStyle(height: 0),
             counterText: '',
-            labelText: AppLocalizations.of(context).translate('field_label_child_name'),
+            labelText: AppLocalizations.of(context)!.translate('field_label_child_name'),
             errorText:
-                state.childNameInput.invalid ? AppLocalizations.of(context).translate('field_error_child_name') : null,
+                state.childNameInput.invalid ? AppLocalizations.of(context)!.translate('field_error_child_name') : null,
           ),
           enableSuggestions: false,
           key: ValueKey('field-child-name'),

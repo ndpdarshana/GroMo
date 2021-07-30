@@ -13,7 +13,7 @@ class HeightScalerFieldWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            AppLocalizations.of(context).translate('field_label_height'),
+            AppLocalizations.of(context)!.translate('field_label_height')!,
             style: Theme.of(context).textTheme.subtitle1,
           ),
           Row(

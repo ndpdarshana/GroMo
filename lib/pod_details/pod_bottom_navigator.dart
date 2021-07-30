@@ -13,11 +13,11 @@ class PodBottomNavigator extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.search), label: AppLocalizations.of(context).translate('label_children')),
+                icon: Icon(Icons.search), label: AppLocalizations.of(context)!.translate('label_children')),
             BottomNavigationBarItem(
-                icon: Icon(Icons.add), label: AppLocalizations.of(context).translate('label_create_new')),
+                icon: Icon(Icons.add), label: AppLocalizations.of(context)!.translate('label_create_new')),
             BottomNavigationBarItem(
-                icon: Icon(Icons.article), label: AppLocalizations.of(context).translate('label_f1_form')),
+                icon: Icon(Icons.article), label: AppLocalizations.of(context)!.translate('label_f1_form')),
           ],
           onTap: (index) async {
             switch (index) {
@@ -31,7 +31,7 @@ class PodBottomNavigator extends StatelessWidget {
                 if (result != null) {
                   Scaffold.of(context)
                     ..removeCurrentSnackBar()
-                    ..showSnackBar(SnackBar(content: Text(result)));
+                    ..showSnackBar(SnackBar(content: Text(result as String)));
                 }
                 break;
               case (2):

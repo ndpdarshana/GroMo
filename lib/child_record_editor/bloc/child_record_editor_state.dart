@@ -12,14 +12,14 @@ class ChildRecordEditorState extends Equatable {
   final ParentNameInput parentNameInput;
   final ParentNicInput parentNicInput;
   final ContactInput contactInput;
-  final AppError error;
+  final AppError? error;
 
   const ChildRecordEditorState({
     this.status = FormzStatus.pure,
     this.childNameInput = const ChildNameInput.pure(),
     this.childNicInput = const ChildNicInput.pure(),
     this.gender = Gender.male,
-    this.dobInput, //Due to the fact that DateTime.now() can not be used to initialized in named parameter, this object has to be initialized later
+    this.dobInput = const DobInput.pure(),
     this.addressInput = const AddressInput.pure(),
     this.parentNameInput = const ParentNameInput.pure(),
     this.parentNicInput = const ParentNicInput.pure(),
@@ -28,7 +28,7 @@ class ChildRecordEditorState extends Equatable {
   });
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         status,
         childNameInput,
         childNicInput,
@@ -42,16 +42,16 @@ class ChildRecordEditorState extends Equatable {
       ];
 
   ChildRecordEditorState copyWith({
-    FormzStatus status,
-    ChildNameInput childNameInput,
-    ChildNicInput childNicInput,
-    Gender gender,
-    DobInput dobInput,
-    AddressInput addressInput,
-    ParentNameInput parentNameInput,
-    ParentNicInput parentNicInput,
-    ContactInput contactInput,
-    AppError error,
+    FormzStatus? status,
+    ChildNameInput? childNameInput,
+    ChildNicInput? childNicInput,
+    Gender? gender,
+    DobInput? dobInput,
+    AddressInput? addressInput,
+    ParentNameInput? parentNameInput,
+    ParentNicInput? parentNicInput,
+    ContactInput? contactInput,
+    AppError? error,
   }) {
     return ChildRecordEditorState(
       status: status ?? this.status,

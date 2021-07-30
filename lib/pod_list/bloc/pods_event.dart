@@ -4,7 +4,7 @@ abstract class PodsEvent extends Equatable {
   const PodsEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class LoadPods extends PodsEvent {
@@ -15,10 +15,10 @@ class LoadPods extends PodsEvent {
 }
 
 class PodsSearchTextChanged extends PodsEvent {
-  final String searchTerm;
+  final String? searchTerm;
 
   const PodsSearchTextChanged({this.searchTerm});
 
   @override
-  List<Object> get props => [searchTerm];
+  List<Object?> get props => [searchTerm];
 }

@@ -4,7 +4,7 @@ import '../screens/home_screen.dart';
 
 class SubmitButton extends StatelessWidget {
   const SubmitButton({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

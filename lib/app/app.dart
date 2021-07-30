@@ -14,7 +14,7 @@ import '/splash_screen.dart';
 
 class App extends StatelessWidget {
   final _navigatorKey = GlobalKey<NavigatorState>();
-  NavigatorState get _navigator => _navigatorKey.currentState;
+  NavigatorState? get _navigator => _navigatorKey.currentState;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class App extends StatelessWidget {
       localeResolutionCallback: (locale, supportedLocales) {
         // Check if the current device locale is supported
         for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode &&
+          if (supportedLocale.languageCode == locale!.languageCode &&
               supportedLocale.countryCode == locale.countryCode) {
             return supportedLocale;
           }
@@ -55,7 +55,7 @@ class App extends StatelessWidget {
             listenWhen: (previous, current) => previous.status != current.status,
             listener: (_, state) {
               if (state.status == AppStatus.done) {
-                _navigator.pushNamedAndRemoveUntil(PodsScreen.routeName, (route) => false);
+                _navigator!.pushNamedAndRemoveUntil(PodsScreen.routeName, (route) => false);
               }
             },
           ),
@@ -63,11 +63,11 @@ class App extends StatelessWidget {
             listenWhen: (previous, current) => previous.status != current.status,
             listener: (_, state) {
               if (state.status == AuthStatus.unauthenticated) {
-                _navigator.pushNamedAndRemoveUntil(LoginScreen.routeName, (route) => false);
+                _navigator!.pushNamedAndRemoveUntil(LoginScreen.routeName, (route) => false);
               }
             },
           )
-        ], child: child);
+        ], child: child!);
       },
       onGenerateRoute: AppRoutes.generate(),
     );

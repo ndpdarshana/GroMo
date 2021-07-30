@@ -8,7 +8,7 @@ import '/models/child.dart';
 class GrowthSaveRecordButton extends StatelessWidget {
   final Child child;
 
-  const GrowthSaveRecordButton({@required this.child}) : assert(child != null);
+  const GrowthSaveRecordButton({required this.child}) : assert(child != null);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class GrowthSaveRecordButton extends StatelessWidget {
               ? () => context.read<GrowthRecordEditorBloc>().add(GrowthRecordSubmitted())
               : null,
           child: Text(
-            AppLocalizations.of(context).translate('btn_save'),
+            AppLocalizations.of(context)!.translate('btn_save')!,
             style: TextStyle(color: Colors.white),
           ),
         );

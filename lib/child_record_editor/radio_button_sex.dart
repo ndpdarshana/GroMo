@@ -14,15 +14,15 @@ class RadioButtonSex extends StatelessWidget {
         return Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(AppLocalizations.of(context).translate('field_label_gender') + ": "),
+            Text(AppLocalizations.of(context)!.translate('field_label_gender')! + ": "),
             Container(
               child: Row(
                 children: [
-                  Text(AppLocalizations.of(context).translate('field_placeholder_male')),
+                  Text(AppLocalizations.of(context)!.translate('field_placeholder_male')!),
                   Radio(
                     groupValue: state.gender,
                     value: Gender.male,
-                    onChanged: (Gender value) => value != null
+                    onChanged: (Gender? value) => value != null
                         ? context.read<ChildRecordEditorBloc>().add(ChildGenderRadioChanged(value))
                         : null,
                   ),
@@ -33,11 +33,11 @@ class RadioButtonSex extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text(AppLocalizations.of(context).translate('field_placeholder_female')),
+                  Text(AppLocalizations.of(context)!.translate('field_placeholder_female')!),
                   Radio(
                     groupValue: state.gender,
                     value: Gender.female,
-                    onChanged: (Gender value) => value != null
+                    onChanged: (Gender? value) => value != null
                         ? context.read<ChildRecordEditorBloc>().add(ChildGenderRadioChanged(value))
                         : null,
                   ),

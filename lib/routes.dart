@@ -12,7 +12,7 @@ import '/splash_screen.dart';
 class AppRoutes {
   static generate() {
     return (settings) {
-      Widget widget;
+      late Widget widget;
       switch (settings.name) {
         case '/':
           widget = SplashScreen();

@@ -17,9 +17,7 @@ class AuthLoaded extends AuthEvent {
 class AuthSigninRequest extends AuthEvent {
   final String username;
   final String password;
-  const AuthSigninRequest({this.username, this.password})
-      : assert(username != null),
-        assert(password != null);
+  const AuthSigninRequest({required this.username, required this.password});
 
   @override
   List<Object> get props => [username, password];

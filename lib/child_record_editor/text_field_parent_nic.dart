@@ -11,8 +11,8 @@ class ParentNicInput extends FormzInput<String, ParentNicInputError> {
   const ParentNicInput.dirty(String value) : super.dirty(value);
 
   @override
-  ParentNicInputError validator(String value) {
-    return value?.isNotEmpty == true ? null : ParentNicInputError.empty;
+  ParentNicInputError? validator(String value) {
+    return value.isNotEmpty ? null : ParentNicInputError.empty;
   }
 }
 
@@ -20,9 +20,7 @@ class TextFieldParentNic extends StatelessWidget {
   final FocusNode parentNicFieldFocus;
   final FocusNode contactFieldFocus;
 
-  const TextFieldParentNic({@required this.parentNicFieldFocus, @required this.contactFieldFocus})
-      : assert(parentNicFieldFocus != null),
-        assert(contactFieldFocus != null);
+  const TextFieldParentNic({required this.parentNicFieldFocus, required this.contactFieldFocus});
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +33,9 @@ class TextFieldParentNic extends StatelessWidget {
           decoration: InputDecoration(
             counterStyle: TextStyle(height: 0),
             counterText: '',
-            labelText: AppLocalizations.of(context).translate('field_label_parent_nic'),
+            labelText: AppLocalizations.of(context)!.translate('field_label_parent_nic'),
             errorText:
-                state.parentNicInput.invalid ? AppLocalizations.of(context).translate('field_error_parent_nic') : null,
+                state.parentNicInput.invalid ? AppLocalizations.of(context)!.translate('field_error_parent_nic') : null,
           ),
           enableSuggestions: false,
           key: ValueKey('field-parent-nic'),

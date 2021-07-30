@@ -1,17 +1,15 @@
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 class BlocMessage extends Equatable {
   final Type from;
   final Map<Type, dynamic> to;
 
   BlocMessage({
-    @required this.from,
-    @required this.to,
-  })  : assert(from != null),
-        assert(to != null);
+    required this.from,
+    required this.to,
+  });
 
   @override
   List<Object> get props => [from, to];
@@ -19,7 +17,7 @@ class BlocMessage extends Equatable {
 
 class BlocMessagingService {
   static BlocMessagingService _instance = BlocMessagingService._internal();
-  StreamController<BlocMessage> _streamController;
+  StreamController<BlocMessage>? _streamController;
 
   factory BlocMessagingService() {
     return _instance;
@@ -31,9 +29,9 @@ class BlocMessagingService {
     }
   }
 
-  void publish(BlocMessage message) => _streamController?.sink?.add(message);
+  void publish(BlocMessage message) => _streamController?.sink.add(message);
 
-  Stream<BlocMessage> subscribe() => _streamController?.stream?.asBroadcastStream();
+  Stream<BlocMessage>? subscribe() => _streamController?.stream.asBroadcastStream();
 
   void close() => _streamController?.close();
 }

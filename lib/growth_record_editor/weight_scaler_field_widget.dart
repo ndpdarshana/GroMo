@@ -13,7 +13,7 @@ class WeightScalerFieldWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            AppLocalizations.of(context).translate('field_label_weight'),
+            AppLocalizations.of(context)!.translate('field_label_weight')!,
             style: Theme.of(context).textTheme.subtitle1,
           ),
           Row(

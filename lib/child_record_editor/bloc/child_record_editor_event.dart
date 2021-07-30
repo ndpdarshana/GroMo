@@ -4,7 +4,7 @@ abstract class ChildRecordEditorEvent extends Equatable {
   const ChildRecordEditorEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class ChildNameFieldChanged extends ChildRecordEditorEvent {
@@ -35,12 +35,12 @@ class ChildGenderRadioChanged extends ChildRecordEditorEvent {
 }
 
 class ChildDobChanged extends ChildRecordEditorEvent {
-  final DateTime dob;
+  final DateTime? dob;
 
   const ChildDobChanged(this.dob);
 
   @override
-  List<Object> get props => [dob];
+  List<Object?> get props => [dob];
 }
 
 class AddressFieldChanged extends ChildRecordEditorEvent {
@@ -82,7 +82,7 @@ class ContactFieldChanged extends ChildRecordEditorEvent {
 class SubmitChildRecordCreateRequest extends ChildRecordEditorEvent {
   final String podId;
 
-  const SubmitChildRecordCreateRequest({@required this.podId}) : assert(podId != null);
+  const SubmitChildRecordCreateRequest({required this.podId}) : assert(podId != null);
 
   @override
   List<Object> get props => [podId];

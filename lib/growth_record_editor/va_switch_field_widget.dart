@@ -13,7 +13,7 @@ class VaSwitchFieldWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            AppLocalizations.of(context).translate('field_label_vitamin_a'),
+            AppLocalizations.of(context)!.translate('field_label_vitamin_a')!,
             style: Theme.of(context).textTheme.subtitle1,
           ),
           Switch(value: false, onChanged: (value) {}),

@@ -46,6 +46,7 @@ class LoginForm extends StatelessWidget {
                           style: TextStyle(color: Colors.white),
                         ),
                         onPressed: () {
+                          FocusScope.of(context).unfocus();
                           context.read<LoginBloc>().add(LoginSubmit());
                         },
                       ),

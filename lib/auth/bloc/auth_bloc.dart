@@ -44,8 +44,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     final result = await AuthRepository().signin(username: event.username, password: event.password);
     if (result.error == null && result.user != null) {
-      BlocMessagingService().publish(BlocMessage(from: AuthBloc, to: {AppBloc: AppLoaded()}));
       yield state.copyWith(status: AuthStatus.authenticated, user: result.user);
+      BlocMessagingService().publish(BlocMessage(from: AuthBloc, to: {AppBloc: AppLoaded()}));
     } else if (result.error != null) {
       yield state.copyWith(status: AuthStatus.failed, error: result.error);
     }
@@ -58,6 +58,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     if (result.error == null) {
       yield state.copyWith(status: AuthStatus.unauthenticated);
+      BlocMessagingService().publish(BlocMessage(from: AuthBloc, to: {AppBloc: AppReset()}));
     } else {
       yield state.copyWith(error: result.error);
     }

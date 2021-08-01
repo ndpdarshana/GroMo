@@ -1,6 +1,6 @@
 part of 'app_bloc.dart';
 
-class AppEvent extends Equatable {
+abstract class AppEvent extends Equatable {
   const AppEvent();
 
   @override
@@ -13,3 +13,5 @@ class AppLoaded extends AppEvent {
   @override
   List<Object> get props => [];
 }
+
+class AppReset extends AppEvent {}

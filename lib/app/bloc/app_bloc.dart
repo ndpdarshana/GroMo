@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:growmo/app/app.dart';
 import '/auth/bloc/auth_bloc.dart';
 import '/bloc_message_service.dart';
 
@@ -30,10 +31,14 @@ class AppBloc extends Bloc<AppEvent?, AppState> {
   Stream<AppState> mapEventToState(
     AppEvent? event,
   ) async* {
-    if (event is AppLoaded) {
+    if (event is AppReset) {
+      yield _mapAppResetToState();
+    } else if (event is AppLoaded) {
       yield _mapAppLoaded(event, state);
     }
   }
+
+  AppState _mapAppResetToState() => AppState();
 
   AppState _mapAppLoaded(AppLoaded event, AppState state) {
     return state.copyWith(status: AppStatus.done);

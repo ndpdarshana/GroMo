@@ -12,7 +12,7 @@ class ChildDetailsSecreen extends StatelessWidget {
 
   final Child child;
 
-  const ChildDetailsSecreen({required this.child}) : assert(child != null);
+  const ChildDetailsSecreen({required this.child});
 
   @override
   Widget build(BuildContext context) {

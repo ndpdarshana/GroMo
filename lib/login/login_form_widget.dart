@@ -12,10 +12,10 @@ class LoginForm extends StatelessWidget {
     return BlocListener<LoginBloc, LoginState>(
       listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
-        Scaffold.of(context).removeCurrentSnackBar();
+        ScaffoldMessenger.of(context).removeCurrentSnackBar();
         if (state.error != null) {
           String message = AppLocalizations.of(context)!.translate('error_login')!;
-          Scaffold.of(context).showSnackBar(SnackBar(content: Text(message)));
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
         }
       },
       child: Form(
@@ -40,9 +40,7 @@ class LoginForm extends StatelessWidget {
                   direction: Axis.horizontal,
                   children: [
                     Expanded(
-                      child: FlatButton(
-                        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                        color: Colors.green[200],
+                      child: ElevatedButton(
                         child: Text(
                           AppLocalizations.of(context)!.translate('btn_login')!,
                           style: TextStyle(color: Colors.white),

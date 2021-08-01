@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+
 import '/child_details/child_details_screen.dart';
 import '/pod_details/bloc/pod_details_bloc.dart';
 import '/pod_details/children_search_input.dart';
-import 'package:intl/intl.dart';
 
 class ChildrenPage extends StatelessWidget {
   @override
@@ -16,10 +17,10 @@ class ChildrenPage extends StatelessWidget {
             listenWhen: (previous, current) => previous.status != current.status,
             listener: (context, state) {
               if (state.status == PodDetailsStateStatus.failed) {
-                Scaffold.of(context).removeCurrentSnackBar();
-                Scaffold.of(context).showSnackBar(SnackBar(content: Text(state.error!.message)));
+                ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error!.message)));
               } else {
-                Scaffold.of(context).removeCurrentSnackBar();
+                ScaffoldMessenger.of(context).removeCurrentSnackBar();
               }
             },
             builder: (_, state) {

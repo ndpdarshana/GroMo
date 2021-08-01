@@ -82,7 +82,7 @@ class ContactFieldChanged extends ChildRecordEditorEvent {
 class SubmitChildRecordCreateRequest extends ChildRecordEditorEvent {
   final String podId;
 
-  const SubmitChildRecordCreateRequest({required this.podId}) : assert(podId != null);
+  const SubmitChildRecordCreateRequest({required this.podId});
 
   @override
   List<Object> get props => [podId];

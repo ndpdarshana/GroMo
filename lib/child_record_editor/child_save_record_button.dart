@@ -8,13 +8,13 @@ import '/models/pod.dart';
 class ChildSaveRecordButton extends StatelessWidget {
   final Pod pod;
 
-  const ChildSaveRecordButton({required this.pod}) : assert(pod != null);
+  const ChildSaveRecordButton({required this.pod});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ChildRecordEditorBloc, ChildRecordEditorState>(
       builder: (_, state) {
-        return FlatButton(
+        return TextButton(
           onPressed: state.status == FormzStatus.valid
               ? () => context.read<ChildRecordEditorBloc>().add(SubmitChildRecordCreateRequest(podId: pod.id!))
               : null,

@@ -21,7 +21,7 @@ class ChildRecordEditorScreen extends StatelessWidget {
 
   final Pod pod;
 
-  ChildRecordEditorScreen({required this.pod}) : assert(pod != null);
+  ChildRecordEditorScreen({required this.pod});
 
   final FocusNode childNicFieldFocusNode = FocusNode();
   final FocusNode addressFieldFocusNode = FocusNode();
@@ -46,13 +46,13 @@ class ChildRecordEditorScreen extends StatelessWidget {
           listenWhen: (previous, current) => previous.status != current.status,
           listener: (context, state) {
             if (state.status == FormzStatus.submissionSuccess) {
-              Scaffold.of(context).removeCurrentSnackBar();
+              ScaffoldMessenger.of(context).removeCurrentSnackBar();
               Navigator.pop(context, AppLocalizations.of(context)!.translate('message_created'));
             } else if (state.status == FormzStatus.submissionFailure) {
-              Scaffold.of(context).removeCurrentSnackBar();
-              Scaffold.of(context).showSnackBar(SnackBar(content: Text(state.error!.message)));
+              ScaffoldMessenger.of(context).removeCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error!.message)));
             } else {
-              Scaffold.of(context).removeCurrentSnackBar();
+              ScaffoldMessenger.of(context).removeCurrentSnackBar();
             }
           },
           child: Container(

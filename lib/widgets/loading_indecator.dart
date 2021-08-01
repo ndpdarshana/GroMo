@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class LoadingIndecator extends StatelessWidget {
   final bool visible;
 
-  const LoadingIndecator({required this.visible}) : assert(visible != null);
+  const LoadingIndecator({required this.visible});
   @override
   Widget build(BuildContext context) {
     return Visibility(

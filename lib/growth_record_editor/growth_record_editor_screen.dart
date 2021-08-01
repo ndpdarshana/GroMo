@@ -19,7 +19,7 @@ class GrowthRecordEditorScreen extends StatelessWidget {
 
   final Child child;
 
-  const GrowthRecordEditorScreen({required this.child}) : assert(child != null);
+  const GrowthRecordEditorScreen({required this.child});
 
   @override
   Widget build(BuildContext context) {

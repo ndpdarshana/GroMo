@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
 import '/app/bloc/app_bloc.dart';
 import '/app_localizations.dart';
 import '/app_theme_data.dart';
 import '/auth/bloc/auth_bloc.dart';
 import '/login/login_screen.dart';
-import '/models/pod.dart';
-import '/pod_details/pod_details_screen.dart';
 import '/pod_list/pods_screen.dart';
 import '/routes.dart';
-import '/splash_screen.dart';
 
 class App extends StatelessWidget {
   final _navigatorKey = GlobalKey<NavigatorState>();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '/app_localizations.dart';
 import '/child_record_editor/child_record_editor_screen.dart';
 import '/pod_details/bloc/pod_details_bloc.dart';
@@ -29,7 +30,7 @@ class PodBottomNavigator extends StatelessWidget {
                     await Navigator.of(context).pushNamed(ChildRecordEditorScreen.routeName, arguments: state.pod);
 
                 if (result != null) {
-                  Scaffold.of(context)
+                  ScaffoldMessenger.of(context)
                     ..removeCurrentSnackBar()
                     ..showSnackBar(SnackBar(content: Text(result as String)));
                 }

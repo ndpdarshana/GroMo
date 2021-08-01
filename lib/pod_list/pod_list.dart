@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+
 import '/pod_details/pod_details_screen.dart';
 import '/pod_list/bloc/pods_bloc.dart';
-import 'package:intl/intl.dart';
 
 class PodList extends StatelessWidget {
   @override
@@ -11,10 +12,10 @@ class PodList extends StatelessWidget {
       listenWhen: (previous, current) => previous.status != current.status,
       listener: (_, state) {
         if (state.status == PodsStateStatus.failed) {
-          Scaffold.of(context).removeCurrentSnackBar();
-          Scaffold.of(context).showSnackBar(SnackBar(content: Text(state.error!.message)));
+          ScaffoldMessenger.of(context).removeCurrentSnackBar();
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error!.message)));
         } else {
-          Scaffold.of(context).removeCurrentSnackBar();
+          ScaffoldMessenger.of(context).removeCurrentSnackBar();
         }
       },
       buildWhen: (previous, current) => previous.status != current.status,
@@ -32,8 +33,8 @@ class PodList extends StatelessWidget {
                   subtitle: Text(state.filteredPods![index].lastUpdate != null
                       ? DateFormat.yMMMEd().format(state.filteredPods![index].lastUpdate!)
                       : '-'),
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(PodDetailsScreen.routeName, arguments: state.filteredPods![index]),
+                  onTap: () => Navigator.of(context)
+                      .pushNamed(PodDetailsScreen.routeName, arguments: state.filteredPods![index]),
                 ),
               );
             },

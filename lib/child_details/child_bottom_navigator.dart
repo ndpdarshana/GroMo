@@ -28,9 +28,8 @@ class ChildBottomNavigator extends StatelessWidget {
                     await Navigator.of(context).pushNamed(GrowthRecordEditorScreen.routeName, arguments: state.child);
 
                 if (result != null) {
-                  Scaffold.of(context)
-                    ..removeCurrentSnackBar()
-                    ..showSnackBar(SnackBar(content: Text(result as String)));
+                  ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result as String)));
                 }
                 break;
               case (2):

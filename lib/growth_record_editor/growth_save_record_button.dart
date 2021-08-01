@@ -8,13 +8,13 @@ import '/models/child.dart';
 class GrowthSaveRecordButton extends StatelessWidget {
   final Child child;
 
-  const GrowthSaveRecordButton({required this.child}) : assert(child != null);
+  const GrowthSaveRecordButton({required this.child});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GrowthRecordEditorBloc, GrowthRecordEditorState>(
       builder: (_, state) {
-        return FlatButton(
+        return TextButton(
           onPressed: state.status == FormzStatus.valid
               ? () => context.read<GrowthRecordEditorBloc>().add(GrowthRecordSubmitted())
               : null,

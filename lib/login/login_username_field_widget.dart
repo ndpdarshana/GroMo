@@ -6,7 +6,7 @@ import '/login/bloc/login_bloc.dart';
 class LoginUsernameField extends StatelessWidget {
   final FocusNode passwordFieldFocus;
 
-  const LoginUsernameField({required this.passwordFieldFocus}) : assert(passwordFieldFocus != null);
+  const LoginUsernameField({required this.passwordFieldFocus});
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(

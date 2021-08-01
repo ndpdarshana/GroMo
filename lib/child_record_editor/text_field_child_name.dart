@@ -19,7 +19,7 @@ class ChildNameInput extends FormzInput<String, ChildNameInputError> {
 class TextFieldChildName extends StatelessWidget {
   final FocusNode childNicFieldFocus;
 
-  const TextFieldChildName({required this.childNicFieldFocus}) : assert(childNicFieldFocus != null);
+  const TextFieldChildName({required this.childNicFieldFocus});
 
   @override
   Widget build(BuildContext context) {

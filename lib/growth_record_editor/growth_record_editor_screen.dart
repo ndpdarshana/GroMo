@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 import '/app_localizations.dart';
 import '/growth_record_editor/asi_switch_field_widget.dart';
 import '/growth_record_editor/bgm_switch_field_widget.dart';
@@ -26,35 +27,47 @@ class GrowthRecordEditorScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => GrowthRecordEditorBloc(),
       child: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.close),
-            onPressed: () => Navigator.pop(context, AppLocalizations.of(context)!.translate('message_user_canceled')),
+          appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.close),
+              onPressed: () => Navigator.pop(context, AppLocalizations.of(context)!.translate('message_user_canceled')),
+            ),
+            title: Text(AppLocalizations.of(context)!.translate('title_new_growth_record')!),
+            actions: [GrowthSaveRecordButton(child: child)],
           ),
-          title: Text(AppLocalizations.of(context)!.translate('title_new_growth_record')!),
-          actions: [GrowthSaveRecordButton(child: child)],
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SingleChildScrollView(
-            child: Form(
-              child: Column(
-                children: [
-                  CurrentDateTimeWidget(),
-                  WeightScalerFieldWidget(),
-                  HeightScalerFieldWidget(),
-                  AsiSwitchFieldWidget(),
-                  BgmSwitchFieldWidget(),
-                  PmtSwitchFieldWidget(),
-                  VaSwitchFieldWidget(),
-                  T2SwitchFieldWidget(),
-                  ImunizationSwitchFieldWidget(),
-                ],
+          body: BlocListener<GrowthRecordEditorBloc, GrowthRecordEditorState>(
+            listener: (context, state) {
+              if (state.status == FormzStatus.submissionSuccess) {
+                ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                Navigator.pop(context, AppLocalizations.of(context)!.translate('message_created'));
+              } else if (state.status == FormzStatus.submissionFailure) {
+                ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error!.message)));
+              } else {
+                ScaffoldMessenger.of(context).removeCurrentSnackBar();
+              }
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SingleChildScrollView(
+                child: Form(
+                  child: Column(
+                    children: [
+                      CurrentDateTimeWidget(),
+                      WeightScalerFieldWidget(),
+                      HeightScalerFieldWidget(),
+                      AsiSwitchFieldWidget(),
+                      BgmSwitchFieldWidget(),
+                      PmtSwitchFieldWidget(),
+                      VaSwitchFieldWidget(),
+                      T2SwitchFieldWidget(),
+                      ImunizationSwitchFieldWidget(),
+                    ],
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
-      ),
+          )),
     );
   }
 }

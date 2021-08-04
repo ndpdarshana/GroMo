@@ -29,7 +29,7 @@
   "field_error_contact": "Contact number must not be empty",
   "filed_error_invalid_contact": "Contact number must be valid",
   "btn_save":	"Save",
-  "field_label_weight":	"Weight (g)",
+  "field_label_weight":	"Weight (Kg)",
   "field_label_height":	"Height (cm)",
   "field_label_arm_height":	"LILA",
   "field_label_BGM":	"BGM",

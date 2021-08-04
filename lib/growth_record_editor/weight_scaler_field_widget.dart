@@ -6,15 +6,21 @@ import 'package:growmo/growth_record_editor/bloc/growth_record_editor_bloc.dart'
 import '/app_localizations.dart';
 
 enum WeightInputError { invalid }
-const int MAX_WEIGHT = 3000;
+const double MAX_WEIGHT = 20.0;
 
-class WeightInput extends FormzInput<int, WeightInputError> {
-  const WeightInput.pure() : super.pure(0);
-  const WeightInput.dirty(int value) : super.dirty(value);
+class WeightInput extends FormzInput<String, WeightInputError> {
+  final bool isSlider;
+
+  const WeightInput.pure()
+      : isSlider = false,
+        super.pure('');
+  const WeightInput.dirty(String value, [bool isSlider = false])
+      : isSlider = isSlider,
+        super.dirty(value);
 
   @override
-  WeightInputError? validator(int value) {
-    return value > 0 ? null : WeightInputError.invalid;
+  WeightInputError? validator(String value) {
+    return value.isNotEmpty ? null : WeightInputError.invalid;
   }
 }
 
@@ -42,8 +48,15 @@ class _WeightScalerFieldWidgetState extends State<WeightScalerFieldWidget> {
             listenWhen: (previous, current) => previous.weightInput != current.weightInput,
             listener: (context, state) {
               setState(() {
-                // _textFieldController.text = state.weightInput.value.toString();
-                _slider = state.weightInput.value.toDouble();
+                if (state.weightInput.isSlider) {
+                  _textFieldController.text = state.weightInput.value.toString();
+                }
+                _slider = double.tryParse(state.weightInput.value) ?? 0.0;
+                if (_slider > MAX_WEIGHT) {
+                  _slider = MAX_WEIGHT;
+                } else if (_slider < 0) {
+                  _slider = 0.0;
+                }
               });
             },
             child: Row(
@@ -52,7 +65,7 @@ class _WeightScalerFieldWidgetState extends State<WeightScalerFieldWidget> {
                   child: Slider(
                     value: _slider,
                     min: 0,
-                    max: MAX_WEIGHT.toDouble(),
+                    max: MAX_WEIGHT,
                     onChanged: (value) => context.read<GrowthRecordEditorBloc>().add(WeightSliderChanged(value)),
                   ),
                 ),
@@ -60,9 +73,9 @@ class _WeightScalerFieldWidgetState extends State<WeightScalerFieldWidget> {
                   width: 80,
                   child: TextFormField(
                     controller: _textFieldController,
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.numberWithOptions(decimal: true),
                     textInputAction: TextInputAction.next,
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,1}'))],
                     onChanged: (value) => context.read<GrowthRecordEditorBloc>().add(WeightFieldChanged(value)),
                   ),
                 ),

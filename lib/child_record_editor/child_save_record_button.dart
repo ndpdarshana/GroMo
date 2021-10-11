@@ -14,13 +14,12 @@ class ChildSaveRecordButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ChildRecordEditorBloc, ChildRecordEditorState>(
       builder: (_, state) {
-        return TextButton(
+        return ElevatedButton(
           onPressed: state.status == FormzStatus.valid
               ? () => context.read<ChildRecordEditorBloc>().add(SubmitChildRecordCreateRequest(podId: pod.id!))
               : null,
           child: Text(
             AppLocalizations.of(context)!.translate('btn_save')!,
-            style: TextStyle(color: Colors.white),
           ),
         );
       },

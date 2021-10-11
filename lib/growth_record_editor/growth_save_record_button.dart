@@ -14,13 +14,12 @@ class GrowthSaveRecordButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GrowthRecordEditorBloc, GrowthRecordEditorState>(
       builder: (_, state) {
-        return TextButton(
+        return ElevatedButton(
           onPressed: state.status == FormzStatus.valid
               ? () => context.read<GrowthRecordEditorBloc>().add(GrowthRecordSubmitted())
               : null,
           child: Text(
             AppLocalizations.of(context)!.translate('btn_save')!,
-            style: TextStyle(color: Colors.white),
           ),
         );
       },

@@ -50,7 +50,8 @@ class ChildRecordEditorScreen extends StatelessWidget {
               Navigator.pop(context, AppLocalizations.of(context)!.translate('message_created'));
             } else if (state.status == FormzStatus.submissionFailure) {
               ScaffoldMessenger.of(context).removeCurrentSnackBar();
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error!.message)));
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(state.error?.message ?? 'Unknown error')));
             } else {
               ScaffoldMessenger.of(context).removeCurrentSnackBar();
             }

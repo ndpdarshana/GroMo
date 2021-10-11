@@ -25,7 +25,7 @@ class GrowthRecordEditorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GrowthRecordEditorBloc(),
+      create: (context) => GrowthRecordEditorBloc(child.id!),
       child: Scaffold(
           appBar: AppBar(
             leading: IconButton(
@@ -42,7 +42,8 @@ class GrowthRecordEditorScreen extends StatelessWidget {
                 Navigator.pop(context, AppLocalizations.of(context)!.translate('message_created'));
               } else if (state.status == FormzStatus.submissionFailure) {
                 ScaffoldMessenger.of(context).removeCurrentSnackBar();
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error!.message)));
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(SnackBar(content: Text(state.error?.message ?? 'Unknown error')));
               } else {
                 ScaffoldMessenger.of(context).removeCurrentSnackBar();
               }

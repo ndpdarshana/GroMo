@@ -14,7 +14,7 @@ class Child extends Equatable {
   final String? parentNic;
   final String? contact;
 
-  Child({
+  const Child({
     this.id,
     this.podId,
     this.name,

@@ -13,7 +13,7 @@ class PodList extends StatelessWidget {
       listener: (_, state) {
         if (state.status == PodsStateStatus.failed) {
           ScaffoldMessenger.of(context).removeCurrentSnackBar();
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error!.message)));
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error?.message ?? 'Unknown error')));
         } else {
           ScaffoldMessenger.of(context).removeCurrentSnackBar();
         }

@@ -2,6 +2,7 @@ part of 'growth_record_editor_bloc.dart';
 
 class GrowthRecordEditorState extends Equatable {
   final FormzStatus status;
+  final String childId;
   final WeightInput weightInput;
   final HeightInput heightInput;
   final bool asi;
@@ -14,6 +15,7 @@ class GrowthRecordEditorState extends Equatable {
 
   const GrowthRecordEditorState({
     this.status = FormzStatus.pure,
+    required this.childId,
     this.weightInput = const WeightInput.pure(),
     this.heightInput = const HeightInput.pure(),
     this.asi = false,
@@ -26,10 +28,12 @@ class GrowthRecordEditorState extends Equatable {
   });
 
   @override
-  List<Object?> get props => [status, weightInput, heightInput, asi, bgm, pmt, vitaminA, t2, immunization, error];
+  List<Object?> get props =>
+      [status, childId, weightInput, heightInput, asi, bgm, pmt, vitaminA, t2, immunization, error];
 
   GrowthRecordEditorState copyWith({
     FormzStatus? status,
+    String? childId,
     WeightInput? weightInput,
     HeightInput? heightInput,
     bool? asi,
@@ -42,6 +46,7 @@ class GrowthRecordEditorState extends Equatable {
   }) =>
       GrowthRecordEditorState(
         status: status ?? this.status,
+        childId: childId ?? this.childId,
         weightInput: weightInput ?? this.weightInput,
         heightInput: heightInput ?? this.heightInput,
         asi: asi ?? this.asi,

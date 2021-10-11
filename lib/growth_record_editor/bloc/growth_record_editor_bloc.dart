@@ -3,15 +3,17 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
+import 'package:growmo/growth_record_editor/growth_record_repository.dart';
 import 'package:growmo/growth_record_editor/height_scaler_field_widget.dart';
 import 'package:growmo/growth_record_editor/weight_scaler_field_widget.dart';
 import 'package:growmo/models/app_error.dart';
+import 'package:growmo/models/growth_entry.dart';
 
 part 'growth_record_editor_event.dart';
 part 'growth_record_editor_state.dart';
 
 class GrowthRecordEditorBloc extends Bloc<GrowthRecordEditorEvent, GrowthRecordEditorState> {
-  GrowthRecordEditorBloc() : super(GrowthRecordEditorState());
+  GrowthRecordEditorBloc(String childId) : super(GrowthRecordEditorState(childId: childId));
 
   @override
   Stream<GrowthRecordEditorState> mapEventToState(
@@ -37,6 +39,8 @@ class GrowthRecordEditorBloc extends Bloc<GrowthRecordEditorEvent, GrowthRecordE
       yield _mapT2SwitchChangedToState();
     } else if (event is ImmunizationSwitchChanged) {
       yield _mapImmunizationSwitchChangedToState();
+    } else if (event is GrowthRecordSubmitted) {
+      yield* _mapGrowthRecordSubmittedToState();
     }
   }
 
@@ -82,5 +86,29 @@ class GrowthRecordEditorBloc extends Bloc<GrowthRecordEditorEvent, GrowthRecordE
 
   GrowthRecordEditorState _mapImmunizationSwitchChangedToState() {
     return state.copyWith(immunization: !state.immunization);
+  }
+
+  Stream<GrowthRecordEditorState> _mapGrowthRecordSubmittedToState() async* {
+    if (state.status == FormzStatus.valid) {
+      yield state.copyWith(status: FormzStatus.submissionInProgress);
+
+      var entry = GrowthEntry(
+        weight: double.tryParse(state.weightInput.value) ?? 0.0,
+        height: double.tryParse(state.heightInput.value) ?? 0.0,
+        asi: state.asi,
+        bgm: state.bgm,
+        pmt: state.pmt,
+        vitaminA: state.vitaminA,
+        t2: state.t2,
+        immunization: state.immunization,
+      );
+
+      final result = await GrowthRecordRepository().createGrowthRecord(state.childId, entry);
+      if (result.singleEntry != null) {
+        yield state.copyWith(status: FormzStatus.submissionSuccess);
+      } else {
+        yield state.copyWith(status: FormzStatus.submissionFailure, error: result.error);
+      }
+    }
   }
 }

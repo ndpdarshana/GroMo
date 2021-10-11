@@ -43,4 +43,16 @@ class HeightFieldChanged extends GrowthRecordEditorEvent {
   List<Object> get props => [height];
 }
 
+class ASISwitchChanged extends GrowthRecordEditorEvent {}
+
+class BGMSwitchChanged extends GrowthRecordEditorEvent {}
+
+class PMTSwitchChanged extends GrowthRecordEditorEvent {}
+
+class VitaminASwitchChanged extends GrowthRecordEditorEvent {}
+
+class T2SwitchChanged extends GrowthRecordEditorEvent {}
+
+class ImmunizationSwitchChanged extends GrowthRecordEditorEvent {}
+
 class GrowthRecordSubmitted extends GrowthRecordEditorEvent {}

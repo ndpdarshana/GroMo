@@ -11,7 +11,7 @@ import '/growth_record_editor/height_scaler_field_widget.dart';
 import '/growth_record_editor/immunization_switch_field_widget%20copy.dart';
 import '/growth_record_editor/pmt_switch_field_widget.dart';
 import '/growth_record_editor/t2_switch_field_widget.dart';
-import '/growth_record_editor/va_switch_field_widget.dart';
+import 'vitamina_switch_field_widget.dart';
 import '/growth_record_editor/weight_scaler_field_widget.dart';
 import '/models/child.dart';
 
@@ -59,7 +59,7 @@ class GrowthRecordEditorScreen extends StatelessWidget {
                       AsiSwitchFieldWidget(),
                       BgmSwitchFieldWidget(),
                       PmtSwitchFieldWidget(),
-                      VaSwitchFieldWidget(),
+                      VitaminASwitchFieldWidget(),
                       T2SwitchFieldWidget(),
                       ImunizationSwitchFieldWidget(),
                     ],

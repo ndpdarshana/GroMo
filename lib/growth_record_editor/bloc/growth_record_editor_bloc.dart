@@ -25,6 +25,18 @@ class GrowthRecordEditorBloc extends Bloc<GrowthRecordEditorEvent, GrowthRecordE
       yield _mapHeightSliderChangedToState(event);
     } else if (event is HeightFieldChanged) {
       yield _mapHeightFieldChangedToState(event);
+    } else if (event is ASISwitchChanged) {
+      yield _mapASISwitchChangedToState();
+    } else if (event is BGMSwitchChanged) {
+      yield _mapBGMSwitchChangedToState();
+    } else if (event is PMTSwitchChanged) {
+      yield _mapPMTSwitchChangedToState();
+    } else if (event is VitaminASwitchChanged) {
+      yield _mapVitaminASwitchChangedToState();
+    } else if (event is T2SwitchChanged) {
+      yield _mapT2SwitchChangedToState();
+    } else if (event is ImmunizationSwitchChanged) {
+      yield _mapImmunizationSwitchChangedToState();
     }
   }
 
@@ -46,5 +58,29 @@ class GrowthRecordEditorBloc extends Bloc<GrowthRecordEditorEvent, GrowthRecordE
   GrowthRecordEditorState _mapHeightFieldChangedToState(HeightFieldChanged event) {
     final heightInput = HeightInput.dirty(event.height);
     return state.copyWith(heightInput: heightInput, status: Formz.validate([heightInput, state.weightInput]));
+  }
+
+  GrowthRecordEditorState _mapASISwitchChangedToState() {
+    return state.copyWith(asi: !state.asi);
+  }
+
+  GrowthRecordEditorState _mapBGMSwitchChangedToState() {
+    return state.copyWith(bgm: !state.bgm);
+  }
+
+  GrowthRecordEditorState _mapPMTSwitchChangedToState() {
+    return state.copyWith(pmt: !state.pmt);
+  }
+
+  GrowthRecordEditorState _mapVitaminASwitchChangedToState() {
+    return state.copyWith(vitaminA: !state.vitaminA);
+  }
+
+  GrowthRecordEditorState _mapT2SwitchChangedToState() {
+    return state.copyWith(t2: !state.t2);
+  }
+
+  GrowthRecordEditorState _mapImmunizationSwitchChangedToState() {
+    return state.copyWith(immunization: !state.immunization);
   }
 }

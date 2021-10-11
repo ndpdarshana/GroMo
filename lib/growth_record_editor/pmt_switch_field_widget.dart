@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:growmo/growth_record_editor/bloc/growth_record_editor_bloc.dart';
 import '/app_localizations.dart';
 
 class PmtSwitchFieldWidget extends StatelessWidget {
@@ -16,7 +18,10 @@ class PmtSwitchFieldWidget extends StatelessWidget {
             AppLocalizations.of(context)!.translate('field_label_pmt')!,
             style: Theme.of(context).textTheme.subtitle1,
           ),
-          Switch(value: false, onChanged: (value) {}),
+          Switch(
+            value: context.select<GrowthRecordEditorBloc, bool>((bloc) => bloc.state.pmt),
+            onChanged: (_) => context.read<GrowthRecordEditorBloc>().add(PMTSwitchChanged()),
+          ),
         ],
       ),
     );

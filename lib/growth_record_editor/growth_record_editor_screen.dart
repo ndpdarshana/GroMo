@@ -8,7 +8,7 @@ import '/growth_record_editor/bloc/growth_record_editor_bloc.dart';
 import '/growth_record_editor/current_date_time_widget.dart';
 import '/growth_record_editor/growth_save_record_button.dart';
 import '/growth_record_editor/height_scaler_field_widget.dart';
-import '/growth_record_editor/immunization_switch_field_widget%20copy.dart';
+import 'immunization_switch_field_widget.dart';
 import '/growth_record_editor/pmt_switch_field_widget.dart';
 import '/growth_record_editor/t2_switch_field_widget.dart';
 import 'vitamina_switch_field_widget.dart';

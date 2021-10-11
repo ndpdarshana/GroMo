@@ -25,4 +25,22 @@ class WeightFieldChanged extends GrowthRecordEditorEvent {
   List<Object> get props => [weight];
 }
 
+class HeightSliderChanged extends GrowthRecordEditorEvent {
+  final double height;
+
+  const HeightSliderChanged(this.height);
+
+  @override
+  List<Object> get props => [height];
+}
+
+class HeightFieldChanged extends GrowthRecordEditorEvent {
+  final String height;
+
+  const HeightFieldChanged(this.height);
+
+  @override
+  List<Object> get props => [height];
+}
+
 class GrowthRecordSubmitted extends GrowthRecordEditorEvent {}

@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import '/models/app_error.dart';
 import '/models/pod.dart';
-import '/pod_list/pods_repository.dart';
+import '../../repositories/pods_repository.dart';
 
 part 'pods_event.dart';
 part 'pods_state.dart';

@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 
-import '/child_record_editor/child_record_repository.dart';
+import '../../repositories/child_record_repository.dart';
 import '/child_record_editor/datetime_field_dob.dart';
 import '/child_record_editor/number_field_contact.dart';
 import '/child_record_editor/text_field_address.dart';

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '/child_record_editor/child_record_repository.dart';
+import '../../repositories/child_record_repository.dart';
 import '/models/app_error.dart';
 import '/models/child.dart';
 import '/models/pod.dart';

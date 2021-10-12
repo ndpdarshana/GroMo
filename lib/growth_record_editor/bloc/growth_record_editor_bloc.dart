@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
-import 'package:growmo/growth_record_editor/growth_record_repository.dart';
+import 'package:growmo/repositories/growth_record_repository.dart';
 import 'package:growmo/growth_record_editor/height_scaler_field_widget.dart';
 import 'package:growmo/growth_record_editor/weight_scaler_field_widget.dart';
 import 'package:growmo/models/app_error.dart';

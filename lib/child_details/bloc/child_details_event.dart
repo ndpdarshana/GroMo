@@ -16,11 +16,15 @@ class LoadChildDetails extends ChildDetailsEvent {
   List<Object> get props => [child];
 }
 
-class ChildDetailsChangeSelectedPage extends ChildDetailsEvent {
-  final ChildDetailPages page;
+class NavigatedToOverviewPage extends ChildDetailsEvent {}
 
-  ChildDetailsChangeSelectedPage({required this.page});
+class NavigatedToRecordsPage extends ChildDetailsEvent {}
+
+class GrowthRecordsUpdated extends ChildDetailsEvent {
+  final List<GrowthEntry> records;
+
+  const GrowthRecordsUpdated(this.records);
 
   @override
-  List<Object> get props => [page];
+  List<Object> get props => [records];
 }

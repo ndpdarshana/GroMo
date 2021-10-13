@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class GrowthEntry extends Equatable {
@@ -10,6 +11,7 @@ class GrowthEntry extends Equatable {
   final bool vitaminA;
   final bool t2;
   final bool immunization;
+  final Timestamp? timestamp;
 
   const GrowthEntry({
     this.id,
@@ -21,10 +23,11 @@ class GrowthEntry extends Equatable {
     this.t2 = false,
     this.vitaminA = false,
     this.immunization = false,
+    this.timestamp,
   });
 
   @override
-  List<Object?> get props => [id, weight, height, asi, bgm, pmt, vitaminA, t2, immunization];
+  List<Object?> get props => [id, weight, height, asi, bgm, pmt, vitaminA, t2, immunization, timestamp];
 
   GrowthEntry copyWith({
     String? id,
@@ -36,6 +39,7 @@ class GrowthEntry extends Equatable {
     bool? vitaminA,
     bool? t2,
     bool? immunization,
+    Timestamp? timestamp,
   }) =>
       GrowthEntry(
         id: id ?? this.id,
@@ -47,6 +51,7 @@ class GrowthEntry extends Equatable {
         vitaminA: vitaminA ?? this.vitaminA,
         t2: t2 ?? this.t2,
         immunization: immunization ?? this.immunization,
+        timestamp: timestamp ?? this.timestamp,
       );
 
   factory GrowthEntry.fromMap(String id, Map<String, dynamic> data) => GrowthEntry(
@@ -59,6 +64,7 @@ class GrowthEntry extends Equatable {
         t2: data['t2'],
         vitaminA: data['vitaminA'],
         immunization: data['immunization'],
+        timestamp: data['createdAt'],
       );
 
   Map<String, dynamic> toMap() {
@@ -66,10 +72,12 @@ class GrowthEntry extends Equatable {
       'weight': weight,
       'height': height,
       'asi': asi,
+      'bgm': bgm,
       'pmt': pmt,
       't2': t2,
       'vitaminA': vitaminA,
-      'immunization': immunization
+      'immunization': immunization,
+      'createdAt': FieldValue.serverTimestamp()
     };
   }
 }

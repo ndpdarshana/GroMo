@@ -21,7 +21,7 @@ class ChildBottomNavigator extends StatelessWidget {
           onTap: (index) async {
             switch (index) {
               case (0):
-                context.read<ChildDetailsBloc>().add(ChildDetailsChangeSelectedPage(page: ChildDetailPages.overview));
+                context.read<ChildDetailsBloc>().add(NavigatedToOverviewPage());
                 break;
               case (1):
                 final result =
@@ -33,7 +33,7 @@ class ChildBottomNavigator extends StatelessWidget {
                 }
                 break;
               case (2):
-                context.read<ChildDetailsBloc>().add(ChildDetailsChangeSelectedPage(page: ChildDetailPages.records));
+                context.read<ChildDetailsBloc>().add(NavigatedToRecordsPage());
                 break;
             }
           },

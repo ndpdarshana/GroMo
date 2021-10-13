@@ -44,5 +44,10 @@
   "error_login": "Incorrect username or password",
   "field_label_search": "Search",
   "message_user_canceled": "User canceled the opereration",
-  "message_created": "Record created successfully"
+  "message_created": "Record created successfully",
+  "label_asi": "ASI",
+  "label_bgm": "BGM",
+  "label_pmt": "PMT",
+  "label_vitamin_a": "Vit A",
+  "label_immunization": "immun"
 }

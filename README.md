@@ -4,13 +4,10 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[android siginkey](https://blog.codemagic.io/the-simple-guide-to-android-code-signing/)
+## Build for firebase release
+ - flutter clean
+ - flutter build apk --debug
+ - flutter build apk --profile
+ - flutter build apk --release --no-shrink --split-per-abi
+   - build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk

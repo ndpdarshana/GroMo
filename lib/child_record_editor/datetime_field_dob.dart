@@ -51,7 +51,7 @@ class DateTimeFieldDob extends StatelessWidget {
                   showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
-                          firstDate: DateTime.now().subtract(Duration(days: 365)),
+                          firstDate: DateTime.now().subtract(Duration(days: 365 * 5)),
                           lastDate: DateTime.now())
                       .then((pickedDate) {
                     context.read<ChildRecordEditorBloc>().add(ChildDobChanged(pickedDate));

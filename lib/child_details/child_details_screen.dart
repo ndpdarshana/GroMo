@@ -31,7 +31,10 @@ class ChildDetailsSecreen extends StatelessWidget {
                       height: 180,
                       color: Theme.of(context).primaryColor,
                       child: Center(
-                        child: Text(child.name!),
+                        child: Text(
+                          child.name!,
+                          style: Theme.of(context).textTheme.headline6!.apply(color: Colors.white),
+                        ),
                       ),
                     ),
                     Expanded(
@@ -54,6 +57,7 @@ class ChildDetailsSecreen extends StatelessWidget {
                 Positioned(
                   child: IconButton(
                     icon: BackButtonIcon(),
+                    color: Colors.white,
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                 ),

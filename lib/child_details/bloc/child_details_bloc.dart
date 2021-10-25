@@ -12,8 +12,9 @@ part 'child_details_event.dart';
 part 'child_details_state.dart';
 
 class ChildDetailsBloc extends Bloc<ChildDetailsEvent, ChildDetailsState> {
+  final Child child;
   StreamSubscription? _growthRecordsSubscription;
-  ChildDetailsBloc() : super(ChildDetailsState());
+  ChildDetailsBloc(this.child) : super(ChildDetailsState(child: child));
 
   @override
   Future<void> close() {
@@ -39,7 +40,7 @@ class ChildDetailsBloc extends Bloc<ChildDetailsEvent, ChildDetailsState> {
   Stream<ChildDetailsState> _mapLoadChildDetailsToState(LoadChildDetails event, ChildDetailsState state) async* {
     yield state.copyWith(status: ChildDetailsStateStatus.loading);
 
-    yield state.copyWith(status: ChildDetailsStateStatus.pristin, child: event.child, page: ChildDetailPages.overview);
+    yield state.copyWith(status: ChildDetailsStateStatus.pristin, page: ChildDetailPages.overview);
   }
 
   ChildDetailsState _mapNavigatedToOverviewPageToState() {
@@ -51,7 +52,7 @@ class ChildDetailsBloc extends Bloc<ChildDetailsEvent, ChildDetailsState> {
 
     _growthRecordsSubscription?.cancel();
     _growthRecordsSubscription = GrowthRecordRepository()
-        .getGrowthEntries(childId: state.child!.id!)
+        .getGrowthEntries(childId: state.child.id!)
         .listen((records) => add(GrowthRecordsUpdated(records)));
   }
 

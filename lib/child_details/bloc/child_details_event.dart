@@ -7,14 +7,7 @@ abstract class ChildDetailsEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadChildDetails extends ChildDetailsEvent {
-  final Child child;
-
-  const LoadChildDetails(this.child);
-
-  @override
-  List<Object> get props => [child];
-}
+class LoadChildDetails extends ChildDetailsEvent {}
 
 class NavigatedToOverviewPage extends ChildDetailsEvent {}
 

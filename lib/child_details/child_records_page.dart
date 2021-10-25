@@ -47,16 +47,34 @@ class ChildRecordsPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  subtitle: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  subtitle: Column(
                     children: [
-                      if (state.records![index].asi) Text('${AppLocalizations.of(context)!.translate('label_asi')!} '),
-                      if (state.records![index].bgm) Text('${AppLocalizations.of(context)!.translate('label_bgm')!} '),
-                      if (state.records![index].pmt) Text('${AppLocalizations.of(context)!.translate('label_pmt')!} '),
-                      if (state.records![index].vitaminA)
-                        Text('${AppLocalizations.of(context)!.translate('label_vitamin_a')!} '),
-                      if (state.records![index].immunization)
-                        Text('${AppLocalizations.of(context)!.translate('label_immunization')!}'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          if (state.records![index].asi)
+                            _LabelText('${AppLocalizations.of(context)!.translate('label_asi')!}'),
+                          if (state.records![index].bgm)
+                            _LabelText('${AppLocalizations.of(context)!.translate('label_bgm')!}'),
+                          if (state.records![index].pmt)
+                            _LabelText('${AppLocalizations.of(context)!.translate('label_pmt')!}'),
+                          if (state.records![index].vitaminA)
+                            _LabelText('${AppLocalizations.of(context)!.translate('label_vitamin_a')!}'),
+                          if (state.records![index].immunization)
+                            _LabelText('${AppLocalizations.of(context)!.translate('label_immunization')!}'),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          _WeightGroup(label: '-3 SD', color: Colors.red),
+                          _WeightGroup(label: '-2 SD', color: Colors.orange),
+                          _WeightGroup(label: '-1 SD', color: Colors.amber),
+                          _WeightGroup(label: 'Median', color: Colors.green),
+                          _WeightGroup(label: '1 SD', color: Colors.amber),
+                          _WeightGroup(label: '2 SD', color: Colors.orange),
+                          _WeightGroup(label: '3 SD', color: Colors.red, opacity: 1.0),
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -67,6 +85,43 @@ class ChildRecordsPage extends StatelessWidget {
           return SizedBox.shrink();
         }
       },
+    );
+  }
+}
+
+class _WeightGroup extends StatelessWidget {
+  final String label;
+  final Color color;
+  final double opacity;
+  const _WeightGroup({required this.label, required this.color, this.opacity = 0.2, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        color: color.withOpacity(opacity),
+        child: Center(
+          child: Text(
+            label,
+            style: TextStyle(fontSize: 12, color: Colors.white),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _LabelText extends StatelessWidget {
+  final String label;
+  const _LabelText(this.label, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 4),
+      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 4),
+      color: Theme.of(context).primaryColor,
+      child: Text(label, style: TextStyle(color: Colors.white)),
     );
   }
 }

@@ -17,7 +17,7 @@ class ChildDetailsSecreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ChildDetailsBloc()..add(LoadChildDetails(child)),
+      create: (context) => ChildDetailsBloc(child)..add(LoadChildDetails()),
       child: Container(
         color: Theme.of(context).primaryColor,
         child: SafeArea(

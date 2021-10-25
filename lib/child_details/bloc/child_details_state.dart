@@ -4,13 +4,13 @@ enum ChildDetailsStateStatus { loading, pristin, failed }
 enum ChildDetailPages { overview, newrecord, records }
 
 class ChildDetailsState extends Equatable {
+  final Child child;
   final ChildDetailsStateStatus? status;
   final ChildDetailPages? page;
   final List<GrowthEntry>? records;
-  final Child? child;
   final AppError? error;
 
-  const ChildDetailsState({this.status, this.page, this.records, this.child, this.error});
+  const ChildDetailsState({required this.child, this.status, this.page, this.records, this.error});
 
   @override
   List<Object?> get props => [status, page, records, child, error];
@@ -19,14 +19,13 @@ class ChildDetailsState extends Equatable {
     ChildDetailsStateStatus? status,
     ChildDetailPages? page,
     List<GrowthEntry>? records,
-    Child? child,
     AppError? error,
   }) {
     return ChildDetailsState(
       status: status ?? this.status,
       page: page ?? this.page,
       records: records ?? this.records,
-      child: child ?? this.child,
+      child: this.child,
       error: error ?? this.error,
     );
   }

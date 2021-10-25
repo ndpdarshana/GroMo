@@ -20,7 +20,8 @@ class TextFieldParentNic extends StatelessWidget {
   final FocusNode parentNicFieldFocus;
   final FocusNode contactFieldFocus;
 
-  const TextFieldParentNic({required this.parentNicFieldFocus, required this.contactFieldFocus});
+  const TextFieldParentNic({required this.parentNicFieldFocus, required this.contactFieldFocus, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +32,14 @@ class TextFieldParentNic extends StatelessWidget {
           autocorrect: false,
           focusNode: parentNicFieldFocus,
           decoration: InputDecoration(
-            counterStyle: TextStyle(height: 0),
+            counterStyle: const TextStyle(height: 0),
             counterText: '',
             labelText: AppLocalizations.of(context)!.translate('field_label_parent_nic'),
             errorText:
                 state.parentNicInput.invalid ? AppLocalizations.of(context)!.translate('field_error_parent_nic') : null,
           ),
           enableSuggestions: false,
-          key: ValueKey('field-parent-nic'),
+          key: const ValueKey('field-parent-nic'),
           maxLength: 100,
           onChanged: (value) => context.read<ChildRecordEditorBloc>().add(ParentNicFieldChanged(value)),
           onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(contactFieldFocus),

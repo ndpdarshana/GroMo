@@ -12,7 +12,7 @@ class PodDetailsScreen extends StatelessWidget {
   static const String routeName = '/pods/pod_details';
   final Pod pod;
 
-  PodDetailsScreen({required this.pod});
+  const PodDetailsScreen({required this.pod, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +41,9 @@ class PodDetailsScreen extends StatelessWidget {
                           buildWhen: (previous, current) => previous.page != current.page,
                           builder: (_, state) {
                             if (state.page == PodDetailPages.reports) {
-                              return ReportsPage();
+                              return const ReportsPage();
                             } else {
-                              return ChildrenPage();
+                              return const ChildrenPage();
                             }
                           },
                         ),
@@ -53,7 +53,7 @@ class PodDetailsScreen extends StatelessWidget {
                 ),
                 Positioned(
                   child: IconButton(
-                    icon: BackButtonIcon(),
+                    icon: const BackButtonIcon(),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                 ),
@@ -65,7 +65,7 @@ class PodDetailsScreen extends StatelessWidget {
                 )
               ],
             ),
-            bottomNavigationBar: PodBottomNavigator(),
+            bottomNavigationBar: const PodBottomNavigator(),
           ),
         ),
       ),

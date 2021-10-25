@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '/widgets/logo_widget.dart';
 
 class SplashScreen extends StatelessWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,7 +11,7 @@ class SplashScreen extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.centerLeft,
-            end: Alignment(1.0, 1.0),
+            end: const Alignment(1.0, 1.0),
             colors: [
               Colors.blue[100]!,
               Colors.blue[700]!,
@@ -18,7 +20,7 @@ class SplashScreen extends StatelessWidget {
         ),
         height: MediaQuery.of(context).size.height,
         width: double.infinity,
-        child: Center(child: LogoWidget()),
+        child: const Center(child: LogoWidget()),
       ),
     );
   }

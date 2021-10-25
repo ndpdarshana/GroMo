@@ -7,6 +7,8 @@ import '/login/login_password_field_widget.dart';
 
 class LoginForm extends StatelessWidget {
   final FocusNode passwordFocusNode = FocusNode();
+
+  LoginForm({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginState>(
@@ -21,10 +23,10 @@ class LoginForm extends StatelessWidget {
       child: Form(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.4,
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             border: Border.all(color: Colors.transparent),
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
             color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.75),
           ),
           child: Column(
@@ -43,11 +45,11 @@ class LoginForm extends StatelessWidget {
                       child: ElevatedButton(
                         child: Text(
                           AppLocalizations.of(context)!.translate('btn_login')!,
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                         ),
                         onPressed: () {
                           FocusScope.of(context).unfocus();
-                          context.read<LoginBloc>().add(LoginSubmit());
+                          context.read<LoginBloc>().add(const LoginSubmit());
                         },
                       ),
                     ),

@@ -12,6 +12,8 @@ import '/routes.dart';
 
 class App extends StatelessWidget {
   final _navigatorKey = GlobalKey<NavigatorState>();
+
+  App({Key? key}) : super(key: key);
   NavigatorState? get _navigator => _navigatorKey.currentState;
 
   @override
@@ -19,12 +21,12 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'GrowMo',
       //List all the supported localizations
-      supportedLocales: [
+      supportedLocales: const [
         Locale('en', 'US'),
         Locale('id', 'ID'),
       ],
       // These delagates make sure that the localization data for the proper language is loaded
-      localizationsDelegates: [
+      localizationsDelegates: const [
         // A class which loads the translations from json files
         AppLocalizations.delegate,
         // Built-in localization of basic text for Material widgets

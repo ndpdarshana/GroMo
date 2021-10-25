@@ -6,6 +6,8 @@ import '/child_record_editor/child_record_editor_screen.dart';
 import '/pod_details/bloc/pod_details_bloc.dart';
 
 class PodBottomNavigator extends StatelessWidget {
+  const PodBottomNavigator({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PodDetailsBloc, PodDetailsState>(
@@ -14,16 +16,16 @@ class PodBottomNavigator extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.search), label: AppLocalizations.of(context)!.translate('label_children')),
+                icon: const Icon(Icons.search), label: AppLocalizations.of(context)!.translate('label_children')),
             BottomNavigationBarItem(
-                icon: Icon(Icons.add), label: AppLocalizations.of(context)!.translate('label_create_new')),
+                icon: const Icon(Icons.add), label: AppLocalizations.of(context)!.translate('label_create_new')),
             BottomNavigationBarItem(
-                icon: Icon(Icons.article), label: AppLocalizations.of(context)!.translate('label_f1_form')),
+                icon: const Icon(Icons.article), label: AppLocalizations.of(context)!.translate('label_f1_form')),
           ],
           onTap: (index) async {
             switch (index) {
               case (0):
-                context.read<PodDetailsBloc>().add(ChangeSelectedPage(page: PodDetailPages.children));
+                context.read<PodDetailsBloc>().add(const ChangeSelectedPage(page: PodDetailPages.children));
                 break;
               case (1):
                 final result =
@@ -36,7 +38,7 @@ class PodBottomNavigator extends StatelessWidget {
                 }
                 break;
               case (2):
-                context.read<PodDetailsBloc>().add(ChangeSelectedPage(page: PodDetailPages.reports));
+                context.read<PodDetailsBloc>().add(const ChangeSelectedPage(page: PodDetailPages.reports));
                 break;
             }
           },

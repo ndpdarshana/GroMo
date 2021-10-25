@@ -10,33 +10,33 @@ import '/widgets/loading_indecator.dart';
 class PodsScreen extends StatelessWidget {
   static const String routeName = '/pods';
 
+  const PodsScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => PodsBloc()..add(LoadPods()),
+      create: (_) => PodsBloc()..add(const LoadPods()),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Pods List'),
+          title: const Text('Pods List'),
           actions: [
             DropdownButton(
-              icon: Icon(Icons.more_vert, color: Colors.white),
+              icon: const Icon(Icons.more_vert, color: Colors.white),
               items: [
                 DropdownMenuItem(
-                  child: Container(
-                    child: Row(
-                      children: [
-                        Icon(Icons.exit_to_app, color: Theme.of(context).iconTheme.color),
-                        SizedBox(width: 8),
-                        Text('Loagout'),
-                      ],
-                    ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.exit_to_app, color: Theme.of(context).iconTheme.color),
+                      const SizedBox(width: 8),
+                      const Text('Loagout'),
+                    ],
                   ),
                   value: 'logout',
                 )
               ],
               onChanged: (value) {
                 if (value == 'logout') {
-                  context.read<AuthBloc>().add(AuthSignoutRequest());
+                  context.read<AuthBloc>().add(const AuthSignoutRequest());
                 }
               },
             )
@@ -48,7 +48,7 @@ class PodsScreen extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(8),
               child: Column(
-                children: [
+                children: const [
                   PodsSearchInput(),
                   Expanded(child: PodList()),
                 ],

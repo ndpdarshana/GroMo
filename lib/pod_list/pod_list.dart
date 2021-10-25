@@ -6,6 +6,8 @@ import '/pod_details/pod_details_screen.dart';
 import '/pod_list/bloc/pods_bloc.dart';
 
 class PodList extends StatelessWidget {
+  const PodList({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PodsBloc, PodsState>(
@@ -40,7 +42,7 @@ class PodList extends StatelessWidget {
             },
           );
         } else {
-          return SizedBox();
+          return const SizedBox();
         }
       },
     );

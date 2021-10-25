@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ReportsPage extends StatelessWidget {
+  const ReportsPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('F1 reports'),
-      ),
+    return const Center(
+      child: Text('F1 reports'),
     );
   }
 }

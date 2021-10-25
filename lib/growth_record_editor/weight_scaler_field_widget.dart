@@ -3,10 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:growmo/growth_record_editor/bloc/growth_record_editor_bloc.dart';
+
 import '/app_localizations.dart';
 
 enum WeightInputError { invalid }
-const double MAX_WEIGHT = 20.0;
+const double maxWeight = 20.0;
 
 class WeightInput extends FormzInput<String, WeightInputError> {
   final bool isSlider;
@@ -14,9 +15,7 @@ class WeightInput extends FormzInput<String, WeightInputError> {
   const WeightInput.pure()
       : isSlider = false,
         super.pure('');
-  const WeightInput.dirty(String value, [bool isSlider = false])
-      : isSlider = isSlider,
-        super.dirty(value);
+  const WeightInput.dirty(String value, {this.isSlider = false}) : super.dirty(value);
 
   @override
   WeightInputError? validator(String value) {
@@ -25,6 +24,8 @@ class WeightInput extends FormzInput<String, WeightInputError> {
 }
 
 class WeightScalerFieldWidget extends StatefulWidget {
+  const WeightScalerFieldWidget({Key? key}) : super(key: key);
+
   @override
   _WeightScalerFieldWidgetState createState() => _WeightScalerFieldWidgetState();
 }
@@ -52,8 +53,8 @@ class _WeightScalerFieldWidgetState extends State<WeightScalerFieldWidget> {
                   _textFieldController.text = state.weightInput.value.toString();
                 }
                 _slider = double.tryParse(state.weightInput.value) ?? 0.0;
-                if (_slider > MAX_WEIGHT) {
-                  _slider = MAX_WEIGHT;
+                if (_slider > maxWeight) {
+                  _slider = maxWeight;
                 } else if (_slider < 0) {
                   _slider = 0.0;
                 }
@@ -65,15 +66,15 @@ class _WeightScalerFieldWidgetState extends State<WeightScalerFieldWidget> {
                   child: Slider(
                     value: _slider,
                     min: 0,
-                    max: MAX_WEIGHT,
+                    max: maxWeight,
                     onChanged: (value) => context.read<GrowthRecordEditorBloc>().add(WeightSliderChanged(value)),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 80,
                   child: TextFormField(
                     controller: _textFieldController,
-                    keyboardType: TextInputType.numberWithOptions(decimal: true),
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
                     textInputAction: TextInputAction.next,
                     inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,1}'))],
                     onChanged: (value) => context.read<GrowthRecordEditorBloc>().add(WeightFieldChanged(value)),

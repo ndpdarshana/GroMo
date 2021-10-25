@@ -8,7 +8,7 @@ import '/models/child.dart';
 class GrowthSaveRecordButton extends StatelessWidget {
   final Child child;
 
-  const GrowthSaveRecordButton({required this.child});
+  const GrowthSaveRecordButton({required this.child, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

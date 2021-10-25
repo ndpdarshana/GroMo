@@ -12,7 +12,7 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc() : super(AuthState());
+  AuthBloc() : super(const AuthState());
 
   @override
   Stream<AuthState> mapEventToState(
@@ -31,7 +31,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final result = await AuthRepository().retriveUser();
     if (result.user != null) {
       yield state.copyWith(status: AuthStatus.authenticated);
-      BlocMessagingService().publish(BlocMessage(from: AuthBloc, to: {AppBloc: AppLoaded()}));
+      BlocMessagingService().publish(const BlocMessage(from: AuthBloc, to: {AppBloc: AppLoaded()}));
     } else {
       await AuthRepository().signout();
       yield state.copyWith(status: AuthStatus.unauthenticated);
@@ -45,7 +45,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final result = await AuthRepository().signin(username: event.username, password: event.password);
     if (result.error == null && result.user != null) {
       yield state.copyWith(status: AuthStatus.authenticated, user: result.user);
-      BlocMessagingService().publish(BlocMessage(from: AuthBloc, to: {AppBloc: AppLoaded()}));
+      BlocMessagingService().publish(const BlocMessage(from: AuthBloc, to: {AppBloc: AppLoaded()}));
     } else if (result.error != null) {
       yield state.copyWith(status: AuthStatus.failed, error: result.error);
     }

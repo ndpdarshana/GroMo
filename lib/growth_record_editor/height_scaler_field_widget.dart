@@ -6,7 +6,7 @@ import 'package:growmo/growth_record_editor/bloc/growth_record_editor_bloc.dart'
 import '/app_localizations.dart';
 
 enum HeightInputError { invalid }
-const double MAX_HEIGHT = 100.0;
+const double maxHeight = 100.0;
 
 class HeightInput extends FormzInput<String, HeightInputError> {
   final bool isSlider;
@@ -14,9 +14,7 @@ class HeightInput extends FormzInput<String, HeightInputError> {
   const HeightInput.pure()
       : isSlider = false,
         super.pure('');
-  const HeightInput.dirty(String value, [bool isSlider = false])
-      : isSlider = isSlider,
-        super.dirty(value);
+  const HeightInput.dirty(String value, {this.isSlider = false}) : super.dirty(value);
 
   @override
   HeightInputError? validator(String value) {
@@ -25,6 +23,8 @@ class HeightInput extends FormzInput<String, HeightInputError> {
 }
 
 class HeightScalerFieldWidget extends StatefulWidget {
+  const HeightScalerFieldWidget({Key? key}) : super(key: key);
+
   @override
   _HeightScalerFieldWidgetState createState() => _HeightScalerFieldWidgetState();
 }
@@ -52,8 +52,8 @@ class _HeightScalerFieldWidgetState extends State<HeightScalerFieldWidget> {
                   _textFieldController.text = state.heightInput.value.toString();
                 }
                 _slider = double.tryParse(state.heightInput.value) ?? 0.0;
-                if (_slider > MAX_HEIGHT) {
-                  _slider = MAX_HEIGHT;
+                if (_slider > maxHeight) {
+                  _slider = maxHeight;
                 } else if (_slider < 0) {
                   _slider = 0.0;
                 }
@@ -65,15 +65,15 @@ class _HeightScalerFieldWidgetState extends State<HeightScalerFieldWidget> {
                   child: Slider(
                     value: _slider,
                     min: 0,
-                    max: MAX_HEIGHT,
+                    max: maxHeight,
                     onChanged: (value) => context.read<GrowthRecordEditorBloc>().add(HeightSliderChanged(value)),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 80,
                   child: TextFormField(
                     controller: _textFieldController,
-                    keyboardType: TextInputType.numberWithOptions(decimal: true),
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
                     textInputAction: TextInputAction.next,
                     inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,1}'))],
                     onChanged: (value) => context.read<GrowthRecordEditorBloc>().add(HeightFieldChanged(value)),

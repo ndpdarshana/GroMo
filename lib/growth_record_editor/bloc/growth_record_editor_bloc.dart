@@ -45,7 +45,7 @@ class GrowthRecordEditorBloc extends Bloc<GrowthRecordEditorEvent, GrowthRecordE
   }
 
   GrowthRecordEditorState _mapWeightScalerChangedToState(WeightSliderChanged event) {
-    final weightInput = WeightInput.dirty(event.weight.toStringAsFixed(1), true);
+    final weightInput = WeightInput.dirty(event.weight.toStringAsFixed(1), isSlider: true);
     return state.copyWith(weightInput: weightInput, status: Formz.validate([weightInput, state.heightInput]));
   }
 
@@ -55,7 +55,7 @@ class GrowthRecordEditorBloc extends Bloc<GrowthRecordEditorEvent, GrowthRecordE
   }
 
   GrowthRecordEditorState _mapHeightSliderChangedToState(HeightSliderChanged event) {
-    final heightInput = HeightInput.dirty(event.height.toStringAsFixed(1), true);
+    final heightInput = HeightInput.dirty(event.height.toStringAsFixed(1), isSlider: true);
     return state.copyWith(heightInput: heightInput, status: Formz.validate([heightInput, state.weightInput]));
   }
 

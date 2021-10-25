@@ -6,7 +6,7 @@ import '/login/bloc/login_bloc.dart';
 class LoginUsernameField extends StatelessWidget {
   final FocusNode passwordFieldFocus;
 
-  const LoginUsernameField({required this.passwordFieldFocus});
+  const LoginUsernameField({required this.passwordFieldFocus, Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
@@ -15,14 +15,14 @@ class LoginUsernameField extends StatelessWidget {
         return TextFormField(
           autocorrect: false,
           decoration: InputDecoration(
-            counterStyle: TextStyle(height: 0),
+            counterStyle: const TextStyle(height: 0),
             counterText: '',
             labelText: AppLocalizations.of(context)!.translate('field_label_username'),
             errorText:
                 state.usernameInput.invalid ? AppLocalizations.of(context)!.translate('field_error_username') : null,
           ),
           enableSuggestions: false,
-          key: ValueKey('field-username'),
+          key: const ValueKey('field-username'),
           maxLength: 100,
           onChanged: (username) => context.read<LoginBloc>().add(LoginUsernameChanged(username)),
           onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(passwordFieldFocus),

@@ -13,7 +13,7 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => AppBloc()),
-        BlocProvider(create: (_) => AuthBloc()..add(AuthLoaded())),
+        BlocProvider(create: (_) => AuthBloc()..add(const AuthLoaded())),
       ],
       child: App(),
     ),

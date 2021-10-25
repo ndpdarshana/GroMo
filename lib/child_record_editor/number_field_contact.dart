@@ -26,7 +26,7 @@ class ContactInput extends FormzInput<String, ContactInputError> {
 class NumberFieldContact extends StatelessWidget {
   final FocusNode contactFieldFocus;
 
-  const NumberFieldContact({required this.contactFieldFocus});
+  const NumberFieldContact({required this.contactFieldFocus, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class NumberFieldContact extends StatelessWidget {
           autocorrect: false,
           focusNode: contactFieldFocus,
           decoration: InputDecoration(
-            counterStyle: TextStyle(height: 0),
+            counterStyle: const TextStyle(height: 0),
             counterText: '',
             labelText: AppLocalizations.of(context)!.translate('field_label_contact'),
             errorText: state.contactInput.invalid
@@ -47,7 +47,7 @@ class NumberFieldContact extends StatelessWidget {
                 : null,
           ),
           enableSuggestions: false,
-          key: ValueKey('field-contact'),
+          key: const ValueKey('field-contact'),
           maxLength: 100,
           onChanged: (value) => context.read<ChildRecordEditorBloc>().add(ContactFieldChanged(value)),
           keyboardType: TextInputType.phone,

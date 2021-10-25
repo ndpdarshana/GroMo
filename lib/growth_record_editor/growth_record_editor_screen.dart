@@ -20,7 +20,7 @@ class GrowthRecordEditorScreen extends StatelessWidget {
 
   final Child child;
 
-  const GrowthRecordEditorScreen({required this.child});
+  const GrowthRecordEditorScreen({required this.child, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class GrowthRecordEditorScreen extends StatelessWidget {
       child: Scaffold(
           appBar: AppBar(
             leading: IconButton(
-              icon: Icon(Icons.close),
+              icon: const Icon(Icons.close),
               onPressed: () => Navigator.pop(context, AppLocalizations.of(context)!.translate('message_user_canceled')),
             ),
             title: Text(AppLocalizations.of(context)!.translate('title_new_growth_record')!),
@@ -53,7 +53,7 @@ class GrowthRecordEditorScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Form(
                   child: Column(
-                    children: [
+                    children: const [
                       CurrentDateTimeWidget(),
                       WeightScalerFieldWidget(),
                       HeightScalerFieldWidget(),

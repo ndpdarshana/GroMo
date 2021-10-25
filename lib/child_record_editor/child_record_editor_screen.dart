@@ -14,14 +14,14 @@ import '/child_record_editor/text_field_parent_name.dart';
 import '/child_record_editor/text_field_parent_nic.dart';
 import '/models/pod.dart';
 
-enum PopStatus { user_canceled, record_created, record_updated }
+enum PopStatus { userCanceled, recordCreated, recordUpdated }
 
 class ChildRecordEditorScreen extends StatelessWidget {
   static const String routeName = '/pods/pod_details/child_record_editor';
 
   final Pod pod;
 
-  ChildRecordEditorScreen({required this.pod});
+  ChildRecordEditorScreen({Key? key, required this.pod}) : super(key: key);
 
   final FocusNode childNicFieldFocusNode = FocusNode();
   final FocusNode addressFieldFocusNode = FocusNode();
@@ -36,7 +36,7 @@ class ChildRecordEditorScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(Icons.close),
+            icon: const Icon(Icons.close),
             onPressed: () => Navigator.pop(context, AppLocalizations.of(context)!.translate('message_user_canceled')),
           ),
           title: Text(AppLocalizations.of(context)!.translate('title_new_child_record')!),
@@ -63,23 +63,23 @@ class ChildRecordEditorScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     TextFieldChildName(childNicFieldFocus: childNicFieldFocusNode),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     TextFieldchildNic(
                         childNicFieldFocus: childNicFieldFocusNode, addressFieldFocus: addressFieldFocusNode),
-                    SizedBox(height: 8),
-                    RadioButtonSex(),
-                    SizedBox(height: 8),
-                    DateTimeFieldDob(),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
+                    const RadioButtonSex(),
+                    const SizedBox(height: 8),
+                    const DateTimeFieldDob(),
+                    const SizedBox(height: 8),
                     TextFieldAddress(
                         addressFieldFocus: addressFieldFocusNode, parentNameFieldFocus: parentNameFieldFocusNode),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     TextFieldParentName(
                         parentNameFieldFocus: parentNameFieldFocusNode, parentNicFieldFocus: parentNicFieldFocusNode),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     TextFieldParentNic(
                         parentNicFieldFocus: parentNicFieldFocusNode, contactFieldFocus: contactFieldFocusNode),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     NumberFieldContact(contactFieldFocus: contactFieldFocusNode),
                   ],
                 ),

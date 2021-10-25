@@ -15,13 +15,13 @@ class AppRoutes {
       late Widget widget;
       switch (settings.name) {
         case '/':
-          widget = SplashScreen();
+          widget = const SplashScreen();
           break;
         case LoginScreen.routeName:
           widget = LoginScreen();
           break;
         case PodsScreen.routeName:
-          widget = PodsScreen();
+          widget = const PodsScreen();
           break;
         case PodDetailsScreen.routeName:
           Pod pod = settings.arguments;

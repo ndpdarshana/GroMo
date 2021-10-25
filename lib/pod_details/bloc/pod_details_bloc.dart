@@ -13,7 +13,7 @@ part 'pod_details_state.dart';
 
 class PodDetailsBloc extends Bloc<PodDetailsEvent, PodDetailsState> {
   StreamSubscription? _childrenSubscription;
-  PodDetailsBloc() : super(PodDetailsState());
+  PodDetailsBloc() : super(const PodDetailsState());
 
   @override
   Future<void> close() {
@@ -50,7 +50,7 @@ class PodDetailsBloc extends Bloc<PodDetailsEvent, PodDetailsState> {
   Stream<PodDetailsState> _mapPodChildrenUpdatedToState(PodChildrenUpdated event, PodDetailsState state) async* {
     if (state.status == PodDetailsStateStatus.filtered) {
       yield state.copyWith(children: event.children);
-      add(ChildrenFilterBySerachText());
+      add(const ChildrenFilterBySerachText());
     } else {
       yield state.copyWith(
           status: PodDetailsStateStatus.pristine, children: event.children, filteredChildren: event.children);
@@ -64,7 +64,7 @@ class PodDetailsBloc extends Bloc<PodDetailsEvent, PodDetailsState> {
   Stream<PodDetailsState> _mapChildrenSerachTextChangedToState(
       ChildrenSerachTextChanged event, PodDetailsState state) async* {
     yield state.copyWith(status: PodDetailsStateStatus.searching, searchTerm: event.searchTerm);
-    add(ChildrenFilterBySerachText());
+    add(const ChildrenFilterBySerachText());
   }
 
   PodDetailsState _mapChildrenFilterBySerachTextToState(PodDetailsState state) {

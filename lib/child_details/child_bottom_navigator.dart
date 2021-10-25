@@ -5,6 +5,8 @@ import '/child_details/bloc/child_details_bloc.dart';
 import '/growth_record_editor/growth_record_editor_screen.dart';
 
 class ChildBottomNavigator extends StatelessWidget {
+  const ChildBottomNavigator({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ChildDetailsBloc, ChildDetailsState>(
@@ -12,11 +14,11 @@ class ChildBottomNavigator extends StatelessWidget {
         return BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.pages), label: AppLocalizations.of(context)!.translate('label_overview')),
+                icon: const Icon(Icons.pages), label: AppLocalizations.of(context)!.translate('label_overview')),
             BottomNavigationBarItem(
-                icon: Icon(Icons.add), label: AppLocalizations.of(context)!.translate('label_create_new')),
+                icon: const Icon(Icons.add), label: AppLocalizations.of(context)!.translate('label_create_new')),
             BottomNavigationBarItem(
-                icon: Icon(Icons.article), label: AppLocalizations.of(context)!.translate('label_records'))
+                icon: const Icon(Icons.article), label: AppLocalizations.of(context)!.translate('label_records'))
           ],
           onTap: (index) async {
             switch (index) {

@@ -6,7 +6,7 @@ class BlocMessage extends Equatable {
   final Type from;
   final Map<Type, dynamic> to;
 
-  BlocMessage({
+  const BlocMessage({
     required this.from,
     required this.to,
   });
@@ -16,7 +16,7 @@ class BlocMessage extends Equatable {
 }
 
 class BlocMessagingService {
-  static BlocMessagingService _instance = BlocMessagingService._internal();
+  static final BlocMessagingService _instance = BlocMessagingService._internal();
   StreamController<BlocMessage>? _streamController;
 
   factory BlocMessagingService() {

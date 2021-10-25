@@ -12,7 +12,7 @@ class ChildDetailsSecreen extends StatelessWidget {
 
   final Child child;
 
-  const ChildDetailsSecreen({required this.child});
+  const ChildDetailsSecreen({required this.child, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +44,9 @@ class ChildDetailsSecreen extends StatelessWidget {
                           buildWhen: (previous, current) => previous.page != current.page,
                           builder: (_, state) {
                             if (state.page == ChildDetailPages.overview) {
-                              return ChildOverviewPage();
+                              return const ChildOverviewPage();
                             } else {
-                              return ChildRecordsPage();
+                              return const ChildRecordsPage();
                             }
                           },
                         ),
@@ -56,7 +56,7 @@ class ChildDetailsSecreen extends StatelessWidget {
                 ),
                 Positioned(
                   child: IconButton(
-                    icon: BackButtonIcon(),
+                    icon: const BackButtonIcon(),
                     color: Colors.white,
                     onPressed: () => Navigator.of(context).pop(),
                   ),
@@ -69,7 +69,7 @@ class ChildDetailsSecreen extends StatelessWidget {
                 )
               ],
             ),
-            bottomNavigationBar: ChildBottomNavigator(),
+            bottomNavigationBar: const ChildBottomNavigator(),
           ),
         ),
       ),

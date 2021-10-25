@@ -11,6 +11,8 @@ import '/widgets/logo_widget.dart';
 class LoginScreen extends StatelessWidget {
   static const routeName = '/auth';
   final FocusNode passwordFocusNode = FocusNode();
+
+  LoginScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -22,7 +24,7 @@ class LoginScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.centerLeft,
-                  end: Alignment(1.0, 1.0),
+                  end: const Alignment(1.0, 1.0),
                   colors: [
                     Colors.blue[100]!,
                     Colors.blue[700]!,
@@ -33,7 +35,7 @@ class LoginScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    LogoWidget(),
+                    const LogoWidget(),
                     LoginForm(),
                   ],
                 ),

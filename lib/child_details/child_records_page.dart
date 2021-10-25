@@ -5,6 +5,8 @@ import 'package:growmo/child_details/bloc/child_details_bloc.dart';
 import 'package:intl/intl.dart';
 
 class ChildRecordsPage extends StatelessWidget {
+  const ChildRecordsPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ChildDetailsBloc, ChildDetailsState>(
@@ -31,7 +33,7 @@ class ChildRecordsPage extends StatelessWidget {
                         Text(state.records![index].timestamp!.toDate().day.toString()),
                         Text(
                           DateFormat('MMM').format(state.records![index].timestamp!.toDate()),
-                          style: TextStyle(fontSize: 10),
+                          style: const TextStyle(fontSize: 10),
                         ),
                       ],
                     ),
@@ -53,19 +55,19 @@ class ChildRecordsPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           if (state.records![index].asi)
-                            _LabelText('${AppLocalizations.of(context)!.translate('label_asi')!}'),
+                            _LabelText(AppLocalizations.of(context)!.translate('label_asi')!),
                           if (state.records![index].bgm)
-                            _LabelText('${AppLocalizations.of(context)!.translate('label_bgm')!}'),
+                            _LabelText(AppLocalizations.of(context)!.translate('label_bgm')!),
                           if (state.records![index].pmt)
-                            _LabelText('${AppLocalizations.of(context)!.translate('label_pmt')!}'),
+                            _LabelText(AppLocalizations.of(context)!.translate('label_pmt')!),
                           if (state.records![index].vitaminA)
-                            _LabelText('${AppLocalizations.of(context)!.translate('label_vitamin_a')!}'),
+                            _LabelText(AppLocalizations.of(context)!.translate('label_vitamin_a')!),
                           if (state.records![index].immunization)
-                            _LabelText('${AppLocalizations.of(context)!.translate('label_immunization')!}'),
+                            _LabelText(AppLocalizations.of(context)!.translate('label_immunization')!),
                         ],
                       ),
                       Row(
-                        children: [
+                        children: const [
                           _WeightGroup(label: '-3 SD', color: Colors.red),
                           _WeightGroup(label: '-2 SD', color: Colors.orange),
                           _WeightGroup(label: '-1 SD', color: Colors.amber),
@@ -82,7 +84,7 @@ class ChildRecordsPage extends StatelessWidget {
             },
           );
         } else {
-          return SizedBox.shrink();
+          return const SizedBox.shrink();
         }
       },
     );
@@ -103,7 +105,7 @@ class _WeightGroup extends StatelessWidget {
         child: Center(
           child: Text(
             label,
-            style: TextStyle(fontSize: 12, color: Colors.white),
+            style: const TextStyle(fontSize: 12, color: Colors.white),
           ),
         ),
       ),
@@ -121,7 +123,7 @@ class _LabelText extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 4),
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 4),
       color: Theme.of(context).primaryColor,
-      child: Text(label, style: TextStyle(color: Colors.white)),
+      child: Text(label, style: const TextStyle(color: Colors.white)),
     );
   }
 }

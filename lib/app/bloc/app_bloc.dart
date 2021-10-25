@@ -11,7 +11,7 @@ part 'app_state.dart';
 class AppBloc extends Bloc<AppEvent?, AppState> {
   late StreamSubscription<BlocMessage> _streamSubscription;
 
-  AppBloc() : super(AppState()) {
+  AppBloc() : super(const AppState()) {
     _streamSubscription = BlocMessagingService().subscribe()!.listen((message) {
       if (message.from == AuthBloc && message.to.keys.contains(AppBloc)) {
         add(message.to[AppBloc]);
@@ -37,7 +37,7 @@ class AppBloc extends Bloc<AppEvent?, AppState> {
     }
   }
 
-  AppState _mapAppResetToState() => AppState();
+  AppState _mapAppResetToState() => const AppState();
 
   AppState _mapAppLoaded(AppLoaded event, AppState state) {
     return state.copyWith(status: AppStatus.done);

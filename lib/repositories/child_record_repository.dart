@@ -9,15 +9,15 @@ class ChildrenRecordRepositoryResult extends Equatable {
 
   const ChildrenRecordRepositoryResult({this.children, this.error});
 
-  Child? get singleChild => children?.first ?? null;
+  Child? get singleChild => children?.first;
 
   @override
   List<Object?> get props => [children, error];
 }
 
 class ChildrenRecordRepository {
-  static ChildrenRecordRepository _instance = ChildrenRecordRepository._internal();
-  static FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  static final ChildrenRecordRepository _instance = ChildrenRecordRepository._internal();
+  static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final CollectionReference childrenCollection;
 
   factory ChildrenRecordRepository() {
@@ -36,7 +36,6 @@ class ChildrenRecordRepository {
       DocumentReference documentReference = await childrenCollection.add(child.toMap());
       return Future.value(ChildrenRecordRepositoryResult(children: [child.copyWith(id: documentReference.id)]));
     } on FirebaseException catch (e) {
-      print('ChildrenRecordRepository->createChild $e');
       return Future.value(ChildrenRecordRepositoryResult(error: AppError(code: e.code, message: e.message!)));
     }
   }

@@ -20,7 +20,8 @@ class TextFieldAddress extends StatelessWidget {
   final FocusNode addressFieldFocus;
   final FocusNode parentNameFieldFocus;
 
-  const TextFieldAddress({required this.addressFieldFocus, required this.parentNameFieldFocus});
+  const TextFieldAddress({required this.addressFieldFocus, required this.parentNameFieldFocus, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +32,14 @@ class TextFieldAddress extends StatelessWidget {
           autocorrect: false,
           focusNode: addressFieldFocus,
           decoration: InputDecoration(
-            counterStyle: TextStyle(height: 0),
+            counterStyle: const TextStyle(height: 0),
             counterText: '',
             labelText: AppLocalizations.of(context)!.translate('field_label_address'),
             errorText:
                 state.addressInput.invalid ? AppLocalizations.of(context)!.translate('field_error_address') : null,
           ),
           enableSuggestions: false,
-          key: ValueKey('field-address'),
+          key: const ValueKey('field-address'),
           maxLength: 100,
           onChanged: (value) => context.read<ChildRecordEditorBloc>().add(AddressFieldChanged(value)),
           onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(parentNameFieldFocus),

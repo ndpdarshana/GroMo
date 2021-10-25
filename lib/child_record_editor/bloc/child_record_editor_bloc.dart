@@ -19,7 +19,7 @@ part 'child_record_editor_event.dart';
 part 'child_record_editor_state.dart';
 
 class ChildRecordEditorBloc extends Bloc<ChildRecordEditorEvent, ChildRecordEditorState> {
-  ChildRecordEditorBloc() : super(ChildRecordEditorState(dobInput: DobInput.pure()));
+  ChildRecordEditorBloc() : super(const ChildRecordEditorState(dobInput: DobInput.pure()));
 
   @override
   Stream<ChildRecordEditorState> mapEventToState(

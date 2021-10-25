@@ -7,11 +7,13 @@ import '/pod_details/bloc/pod_details_bloc.dart';
 import '/pod_details/children_search_input.dart';
 
 class ChildrenPage extends StatelessWidget {
+  const ChildrenPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ChildrenSearchInput(),
+        const ChildrenSearchInput(),
         Expanded(
           child: BlocConsumer<PodDetailsBloc, PodDetailsState>(
             listenWhen: (previous, current) => previous.status != current.status,
@@ -45,7 +47,7 @@ class ChildrenPage extends StatelessWidget {
                   },
                 );
               } else {
-                return SizedBox();
+                return const SizedBox();
               }
             },
           ),

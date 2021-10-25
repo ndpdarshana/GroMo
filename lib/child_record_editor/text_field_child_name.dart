@@ -19,7 +19,7 @@ class ChildNameInput extends FormzInput<String, ChildNameInputError> {
 class TextFieldChildName extends StatelessWidget {
   final FocusNode childNicFieldFocus;
 
-  const TextFieldChildName({required this.childNicFieldFocus});
+  const TextFieldChildName({required this.childNicFieldFocus, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +29,14 @@ class TextFieldChildName extends StatelessWidget {
         return TextFormField(
           autocorrect: false,
           decoration: InputDecoration(
-            counterStyle: TextStyle(height: 0),
+            counterStyle: const TextStyle(height: 0),
             counterText: '',
             labelText: AppLocalizations.of(context)!.translate('field_label_child_name'),
             errorText:
                 state.childNameInput.invalid ? AppLocalizations.of(context)!.translate('field_error_child_name') : null,
           ),
           enableSuggestions: false,
-          key: ValueKey('field-child-name'),
+          key: const ValueKey('field-child-name'),
           maxLength: 100,
           onChanged: (value) => context.read<ChildRecordEditorBloc>().add(ChildNameFieldChanged(value)),
           onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(childNicFieldFocus),

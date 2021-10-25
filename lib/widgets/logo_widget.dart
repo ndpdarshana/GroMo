@@ -8,14 +8,14 @@ class LogoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         top: 120,
         bottom: 50,
       ),
       child: Container(
         height: 128,
         width: 128,
-        child: CircleAvatar(
+        child: const CircleAvatar(
           backgroundColor: Colors.transparent,
           foregroundColor: Colors.white,
           radius: 100,

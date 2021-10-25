@@ -10,7 +10,7 @@ part 'pods_event.dart';
 part 'pods_state.dart';
 
 class PodsBloc extends Bloc<PodsEvent, PodsState> {
-  PodsBloc() : super(PodsState());
+  PodsBloc() : super(const PodsState());
 
   @override
   Stream<PodsState> mapEventToState(

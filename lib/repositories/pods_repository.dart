@@ -15,8 +15,8 @@ class PodsRepositoryResult extends Equatable {
 }
 
 class PodsRepository {
-  static PodsRepository _instance = PodsRepository._intarnal();
-  static FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  static final PodsRepository _instance = PodsRepository._intarnal();
+  static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final CollectionReference podsCollection;
 
   factory PodsRepository() {
@@ -33,7 +33,6 @@ class PodsRepository {
           .toList();
       return Future.value(PodsRepositoryResult(pods: pods));
     } on FirebaseException catch (e) {
-      print('PodsRepository->getPodList $e');
       return Future.value(PodsRepositoryResult(error: AppError(code: e.code, message: e.message!)));
     }
   }

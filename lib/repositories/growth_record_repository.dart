@@ -9,15 +9,15 @@ class GrowthRecordRepositoryResult extends Equatable {
 
   const GrowthRecordRepositoryResult({this.growthEntries, this.error});
 
-  GrowthEntry? get singleEntry => growthEntries?.first ?? null;
+  GrowthEntry? get singleEntry => growthEntries?.first;
 
   @override
   List<Object?> get props => [growthEntries, error];
 }
 
 class GrowthRecordRepository {
-  static GrowthRecordRepository _instance = GrowthRecordRepository._internal();
-  static FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  static final GrowthRecordRepository _instance = GrowthRecordRepository._internal();
+  static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   factory GrowthRecordRepository() {
     return _instance;
@@ -26,7 +26,7 @@ class GrowthRecordRepository {
   GrowthRecordRepository._internal();
 
   CollectionReference _getGrowthRecordsCollection(String childId) {
-    return _firestore.collection('children').doc('$childId').collection('growth_entries');
+    return _firestore.collection('children').doc(childId).collection('growth_entries');
   }
 
   Stream<List<GrowthEntry>> getGrowthEntries({required String childId}) {
@@ -39,7 +39,6 @@ class GrowthRecordRepository {
       DocumentReference documentReference = await _getGrowthRecordsCollection(childId).add(entry.toMap());
       return Future.value(GrowthRecordRepositoryResult(growthEntries: [entry.copyWith(id: documentReference.id)]));
     } on FirebaseException catch (e) {
-      print('GrowthRecordRepository->createGrowthRecord $e');
       return Future.value(GrowthRecordRepositoryResult(error: AppError(code: e.code, message: e.message)));
     }
   }

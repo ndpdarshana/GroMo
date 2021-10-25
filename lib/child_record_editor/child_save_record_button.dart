@@ -8,7 +8,7 @@ import '/models/pod.dart';
 class ChildSaveRecordButton extends StatelessWidget {
   final Pod pod;
 
-  const ChildSaveRecordButton({required this.pod});
+  const ChildSaveRecordButton({required this.pod, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -4,14 +4,16 @@ import '/app_localizations.dart';
 import '/pod_details/bloc/pod_details_bloc.dart';
 
 class ChildrenSearchInput extends StatelessWidget {
+  const ChildrenSearchInput({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: TextField(
         decoration: InputDecoration(
           labelText: AppLocalizations.of(context)!.translate('field_label_search'),
-          suffixIcon: Icon(Icons.search),
+          suffixIcon: const Icon(Icons.search),
         ),
         onChanged: (term) => context.read<PodDetailsBloc>().add(ChildrenSerachTextChanged(searchTerm: term)),
         textInputAction: TextInputAction.search,

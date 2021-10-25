@@ -20,7 +20,8 @@ class TextFieldParentName extends StatelessWidget {
   final FocusNode parentNameFieldFocus;
   final FocusNode parentNicFieldFocus;
 
-  const TextFieldParentName({required this.parentNameFieldFocus, required this.parentNicFieldFocus});
+  const TextFieldParentName({required this.parentNameFieldFocus, required this.parentNicFieldFocus, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class TextFieldParentName extends StatelessWidget {
           autocorrect: false,
           focusNode: parentNameFieldFocus,
           decoration: InputDecoration(
-            counterStyle: TextStyle(height: 0),
+            counterStyle: const TextStyle(height: 0),
             counterText: '',
             labelText: AppLocalizations.of(context)!.translate('field_label_parent_name'),
             errorText: state.parentNameInput.invalid
@@ -39,7 +40,7 @@ class TextFieldParentName extends StatelessWidget {
                 : null,
           ),
           enableSuggestions: false,
-          key: ValueKey('field-parent-name'),
+          key: const ValueKey('field-parent-name'),
           maxLength: 100,
           onChanged: (value) => context.read<ChildRecordEditorBloc>().add(ParentNameFieldChanged(value)),
           onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(parentNicFieldFocus),

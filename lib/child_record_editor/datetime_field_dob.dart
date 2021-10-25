@@ -23,12 +23,14 @@ class DobInput extends FormzInput<DateTime?, DobInputError> {
 }
 
 class DateTimeFieldDob extends StatelessWidget {
+  const DateTimeFieldDob({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ChildRecordEditorBloc, ChildRecordEditorState>(
       buildWhen: (previous, current) => previous.dobInput != current.dobInput,
       builder: (context, state) {
-        return Container(
+        return SizedBox(
           height: 70,
           child: Row(
             children: [
@@ -45,13 +47,13 @@ class DateTimeFieldDob extends StatelessWidget {
               TextButton(
                 child: Text(
                   AppLocalizations.of(context)!.translate('btn_date_picker')!,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 onPressed: () {
                   showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
-                          firstDate: DateTime.now().subtract(Duration(days: 365 * 5)),
+                          firstDate: DateTime.now().subtract(const Duration(days: 365 * 5)),
                           lastDate: DateTime.now())
                       .then((pickedDate) {
                     context.read<ChildRecordEditorBloc>().add(ChildDobChanged(pickedDate));

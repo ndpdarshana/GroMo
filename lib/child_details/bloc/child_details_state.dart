@@ -25,7 +25,7 @@ class ChildDetailsState extends Equatable {
       status: status ?? this.status,
       page: page ?? this.page,
       records: records ?? this.records,
-      child: this.child,
+      child: child,
       error: error ?? this.error,
     );
   }

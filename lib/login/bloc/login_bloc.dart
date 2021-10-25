@@ -18,11 +18,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthBloc authBloc;
   late StreamSubscription<AuthState> authSubscription;
 
-  LoginBloc({required this.appBloc, required this.authBloc}) : super(LoginState()) {
+  LoginBloc({required this.appBloc, required this.authBloc}) : super(const LoginState()) {
     authSubscription = authBloc.stream.listen((authState) {
       if (state.status == FormzStatus.submissionInProgress) {
         if (authState.status == AuthStatus.authenticated) {
-          add(LoginSuccess());
+          add(const LoginSuccess());
         } else if (authState.status == AuthStatus.failed) {
           add(LoginFailed(error: authState.error));
         }
@@ -81,7 +81,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       authBloc.add(AuthSigninRequest(username: state.usernameInput.value, password: state.passwordInput.value));
     } else {
       yield state.copyWith(
-          status: FormzStatus.invalid, error: AppError(code: '1001', message: 'ID and Password required'));
+        status: FormzStatus.invalid,
+        error: const AppError(code: '1001', message: 'ID and Password required'),
+      );
     }
   }
 

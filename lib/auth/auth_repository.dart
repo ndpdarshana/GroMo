@@ -14,8 +14,8 @@ class AuthRepositoryResult extends Equatable {
 }
 
 class AuthRepository {
-  static AuthRepository _instance = AuthRepository._internal();
-  static FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  static final AuthRepository _instance = AuthRepository._internal();
+  static final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   factory AuthRepository() {
     return _instance;
@@ -24,20 +24,16 @@ class AuthRepository {
   AuthRepository._internal();
 
   Future<AuthRepositoryResult> createUser() async {
-    const String email = "ndp.mymail@gmail.com";
-    const String password = "Abc@1234";
+    const String email = 'ndp.mymail@gmail.com';
+    const String password = 'Abc@1234';
 
     try {
       UserCredential userCredential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
       return AuthRepositoryResult(user: AppUser(username: userCredential.user!.email, id: userCredential.user!.uid));
-    } on FirebaseAuthException catch (e) {
-      print('AuthRepository->createUser ${e.code}');
-    } catch (e) {
-      print("AuthRepository->createUser $e");
+    } catch (_) {
+      return const AuthRepositoryResult(error: AppError(code: '400', message: 'Auth error occuerd'));
     }
-
-    return AuthRepositoryResult();
   }
 
   Future<AuthRepositoryResult> retriveUser() async {
@@ -50,10 +46,9 @@ class AuthRepository {
             user: AppUser(id: idTokenResult.claims!['uid'], username: idTokenResult.claims!['username']));
       }
 
-      return Future.value(AuthRepositoryResult(error: AppError(code: '403', message: 'No user logged in')));
+      return Future.value(const AuthRepositoryResult(error: AppError(code: '403', message: 'No user logged in')));
     } catch (e) {
-      print('AuthRepository->retriveUser $e');
-      return Future.value(AuthRepositoryResult(error: AppError(code: '500', message: 'Unexpected error')));
+      return Future.value(const AuthRepositoryResult(error: AppError(code: '500', message: 'Unexpected error')));
     }
   }
 
@@ -63,7 +58,6 @@ class AuthRepository {
           await _firebaseAuth.signInWithEmailAndPassword(email: username, password: password);
       return AuthRepositoryResult(user: AppUser(username: userCredential.user!.email, id: userCredential.user!.uid));
     } on FirebaseAuthException catch (e) {
-      print('AuthRepository->signin: ${e.code}');
       return AuthRepositoryResult(error: AppError(code: '1001', message: e.code));
     }
   }
@@ -71,9 +65,8 @@ class AuthRepository {
   Future<AuthRepositoryResult> signout() async {
     try {
       await _firebaseAuth.signOut();
-      return AuthRepositoryResult();
+      return const AuthRepositoryResult();
     } on FirebaseAuthException catch (e) {
-      print('AuthRepository->signout: ${e.code}');
       return AuthRepositoryResult(error: AppError(code: '1001', message: e.code));
     }
   }

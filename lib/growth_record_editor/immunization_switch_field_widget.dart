@@ -4,7 +4,7 @@ import 'package:growmo/growth_record_editor/bloc/growth_record_editor_bloc.dart'
 import '/app_localizations.dart';
 
 class ImunizationSwitchFieldWidget extends StatelessWidget {
-  const ImunizationSwitchFieldWidget();
+  const ImunizationSwitchFieldWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

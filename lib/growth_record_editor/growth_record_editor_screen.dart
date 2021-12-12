@@ -25,7 +25,7 @@ class GrowthRecordEditorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GrowthRecordEditorBloc(child.id!),
+      create: (context) => GrowthRecordEditorBloc(child.id),
       child: Scaffold(
           appBar: AppBar(
             leading: IconButton(

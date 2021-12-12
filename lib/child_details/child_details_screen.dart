@@ -32,7 +32,7 @@ class ChildDetailsSecreen extends StatelessWidget {
                       color: Theme.of(context).primaryColor,
                       child: Center(
                         child: Text(
-                          child.name!,
+                          child.name,
                           style: Theme.of(context).textTheme.headline6!.apply(color: Colors.white),
                         ),
                       ),

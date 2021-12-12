@@ -3,27 +3,27 @@ import 'package:equatable/equatable.dart';
 import '/child_record_editor/bloc/child_record_editor_bloc.dart';
 
 class Child extends Equatable {
-  final String? id;
-  final String? podId;
-  final String? name;
+  final String id;
+  final String podId;
+  final String name;
   final String? nic;
-  final Gender? gender;
-  final DateTime? dob;
+  final Gender gender;
+  final DateTime dob;
   final String? address;
-  final String? parentName;
-  final String? parentNic;
+  final String parentName;
+  final String parentNic;
   final String? contact;
 
   const Child({
-    this.id,
-    this.podId,
-    this.name,
+    required this.id,
+    required this.podId,
+    required this.name,
     this.nic,
-    this.gender,
-    this.dob,
+    required this.gender,
+    required this.dob,
     this.address,
-    this.parentName,
-    this.parentNic,
+    required this.parentName,
+    required this.parentNic,
     this.contact,
   });
 
@@ -62,6 +62,8 @@ class Child extends Equatable {
       podId: data['pod_id'],
       name: data['name'],
       nic: data['nic'],
+      gender: data['gender'] == 0 ? Gender.male : Gender.female,
+      dob: data['dob'],
       address: data['address'],
       parentName: data['parent_name'],
       parentNic: data['parent_nic'],
@@ -91,7 +93,7 @@ class Child extends Equatable {
       'pod_id': podId,
       'name': name,
       'nic': nic,
-      'gender': gender!.index,
+      'gender': gender.index,
       'dob': dob,
       'address': address,
       'parent_name': parentName,

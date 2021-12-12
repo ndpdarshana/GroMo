@@ -34,12 +34,10 @@ class ChildrenPage extends StatelessWidget {
                     return Card(
                       child: ListTile(
                         leading: CircleAvatar(
-                          child: Text(state.filteredChildren![index].name![0]),
+                          child: Text(state.filteredChildren![index].name[0]),
                         ),
-                        title: Text(state.filteredChildren![index].name!),
-                        subtitle: Text(state.filteredChildren![index].dob != null
-                            ? DateFormat.yMMMEd().format(state.filteredChildren![index].dob!)
-                            : '-'),
+                        title: Text(state.filteredChildren![index].name),
+                        subtitle: Text(DateFormat.yMMMEd().format(state.filteredChildren![index].dob)),
                         onTap: () => Navigator.of(context)
                             .pushNamed(ChildDetailsSecreen.routeName, arguments: state.filteredChildren![index]),
                       ),

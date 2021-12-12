@@ -29,6 +29,9 @@ class GrowthEntry extends Equatable {
   @override
   List<Object?> get props => [id, weight, height, asi, bgm, pmt, vitaminA, t2, immunization, timestamp];
 
+  double weightToAgeRatio(int monthsSinceBirth) => weight / monthsSinceBirth;
+  double heightToAgeRatio(int monthsSinceBirth) => height / monthsSinceBirth;
+
   GrowthEntry copyWith({
     String? id,
     double? weight,

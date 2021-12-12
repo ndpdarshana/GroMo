@@ -172,15 +172,17 @@ class ChildRecordEditorBloc extends Bloc<ChildRecordEditorEvent, ChildRecordEdit
       yield state.copyWith(status: FormzStatus.submissionInProgress);
 
       var child = Child(
-          podId: event.podId,
-          name: state.childNameInput.value,
-          nic: state.childNicInput.value,
-          gender: state.gender,
-          dob: state.dobInput.value,
-          address: state.addressInput.value,
-          parentName: state.parentNameInput.value,
-          parentNic: state.parentNicInput.value,
-          contact: state.contactInput.value);
+        id: '-',
+        podId: event.podId,
+        name: state.childNameInput.value,
+        nic: state.childNicInput.value,
+        gender: state.gender,
+        dob: state.dobInput.value!,
+        address: state.addressInput.value,
+        parentName: state.parentNameInput.value,
+        parentNic: state.parentNicInput.value,
+        contact: state.contactInput.value,
+      );
 
       ChildrenRecordRepositoryResult result = await ChildrenRecordRepository().createChild(child);
       if (result.singleChild != null) {

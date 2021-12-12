@@ -12,6 +12,13 @@ class ChildDetailsState extends Equatable {
 
   const ChildDetailsState({required this.child, this.status, this.page, this.records, this.error});
 
+  int get monthsSinceBirth {
+    DateTime today = DateTime.now();
+    DateTime dob = child.dob;
+    final diffInMonths = today.difference(dob).inDays ~/ 30;
+    return diffInMonths;
+  }
+
   @override
   List<Object?> get props => [status, page, records, child, error];
 

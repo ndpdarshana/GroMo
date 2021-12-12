@@ -52,7 +52,7 @@ class ChildDetailsBloc extends Bloc<ChildDetailsEvent, ChildDetailsState> {
 
     _growthRecordsSubscription?.cancel();
     _growthRecordsSubscription = GrowthRecordRepository()
-        .getGrowthEntries(childId: state.child.id!)
+        .getGrowthEntries(childId: state.child.id)
         .listen((records) => add(GrowthRecordsUpdated(records)));
   }
 
